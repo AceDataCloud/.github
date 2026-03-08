@@ -68,9 +68,38 @@ def fetch_github_repos(token: str) -> list[dict]:
     return sorted(all_repos, key=lambda r: r["name"])
 
 
-SKIP_ALIASES = {"aichat"}
+SKIP_ALIASES = {"aichat", "shorturl", "localization"}
 SKIP_CATEGORIES = {"CAPTCHA", "Proxy", "Identity"}
 SKIP_TYPES = {"Dataset", "Deployment", "Proxy", "Introduction", "Agent"}
+SKIP_TAGS = {"captcha", "proxy", "identity"}
+
+# Map tag values to canonical category names
+TAG_TO_CATEGORY = {
+    "aichat": "AI Chat",
+    "aiimage": "AI Image",
+    "aivideo": "AI Video",
+    "aiaudio": "AI Audio",
+}
+
+
+def _derive_category(svc: dict) -> str:
+    """Derive category from explicit field or tags."""
+    cat = svc.get("category", "")
+    if cat:
+        return cat
+    for tag in svc.get("tags", []):
+        if tag in TAG_TO_CATEGORY:
+            return TAG_TO_CATEGORY[tag]
+    return "Web & Data"
+
+
+def _derive_display_name(svc: dict) -> str:
+    """Derive display name from explicit field or alias."""
+    name = svc.get("display_name", "")
+    if name:
+        return name
+    alias = svc.get("alias", "")
+    return alias.replace("-", " ").title()
 
 
 def load_service_mapping(workspace_root: Path) -> list[dict]:
@@ -92,10 +121,14 @@ def load_service_mapping(workspace_root: Path) -> list[dict]:
             continue
         if svc.get("type", "") in SKIP_TYPES:
             continue
-        if svc.get("alias", "") in SKIP_ALIASES:
+        alias = svc.get("alias", "")
+        if alias in SKIP_ALIASES:
             continue
-        category = svc.get("category", "")
+        category = _derive_category(svc)
         if category in SKIP_CATEGORIES:
+            continue
+        tags = set(svc.get("tags") or [])
+        if tags & SKIP_TAGS:
             continue
         raw_apis = svc.get("apis", [])
         if not raw_apis:
@@ -111,10 +144,10 @@ def load_service_mapping(workspace_root: Path) -> list[dict]:
             )
         result.append(
             {
-                "alias": svc.get("alias", ""),
-                "display_name": svc.get("display_name", ""),
+                "alias": alias,
+                "display_name": _derive_display_name(svc),
                 "type": svc.get("type", ""),
-                "tags": svc.get("tags") or [],
+                "tags": list(tags),
                 "category": category,
                 "apis": apis,
             }

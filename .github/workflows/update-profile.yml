@@ -27,7 +27,7 @@ jobs:
           git sparse-checkout init --cone
           git sparse-checkout set PlatformBackend MCPLuma MCPMidjourney MCPNanoBanana MCPSerp MCPSora MCPSuno MCPVeo
           git checkout
-          git submodule update --init --depth 1 PlatformBackend
+          git submodule update --init --depth 1 --remote PlatformBackend
           for dir in MCP*; do
             git submodule update --init --depth 1 "$dir" 2>/dev/null || true
           done
