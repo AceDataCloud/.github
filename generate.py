@@ -82,16 +82,24 @@ def load_service_mapping(workspace_root: Path) -> list[dict]:
     for svc in services:
         if svc.get("private"):
             continue
+        apis = svc.get("apis", [])
         result.append(
             {
                 "alias": svc.get("alias", ""),
-                "title": svc.get("title", ""),
+                "display_name": svc.get("display_name", ""),
                 "type": svc.get("type", ""),
                 "unit": svc.get("unit", ""),
                 "tags": svc.get("tags") or [],
+                "category": svc.get("category", ""),
                 "rank": svc.get("rank", 0),
-                "api_count": len(svc.get("apis", [])),
-                "api_paths": [a.get("path", "") for a in svc.get("apis", [])[:5]],
+                "apis": [
+                    {
+                        "title": a.get("title", a.get("name", "")),
+                        "path": a.get("path", ""),
+                        "stage": a.get("stage", ""),
+                    }
+                    for a in apis
+                ],
             }
         )
     return sorted(result, key=lambda s: s.get("rank", 0))
@@ -147,7 +155,7 @@ def call_llm(system_prompt: str, user_prompt: str, api_key: str) -> str:
             {"role": "user", "content": user_prompt},
         ],
         "temperature": 0.3,
-        "max_tokens": 4096,
+        "max_tokens": 8192,
     }
 
     print(f"\n{'=' * 60}", file=sys.stderr)
@@ -158,9 +166,15 @@ def call_llm(system_prompt: str, user_prompt: str, api_key: str) -> str:
     print(f"  Temperature: {payload['temperature']}", file=sys.stderr)
     print(f"  Max tokens:  {payload['max_tokens']}", file=sys.stderr)
     print(f"\n  System prompt ({len(system_prompt)} chars):", file=sys.stderr)
-    print(f"  {system_prompt[:500]}{'...' if len(system_prompt) > 500 else ''}", file=sys.stderr)
+    print(
+        f"  {system_prompt[:500]}{'...' if len(system_prompt) > 500 else ''}",
+        file=sys.stderr,
+    )
     print(f"\n  User prompt ({len(user_prompt)} chars):", file=sys.stderr)
-    print(f"  {user_prompt[:2000]}{'...' if len(user_prompt) > 2000 else ''}", file=sys.stderr)
+    print(
+        f"  {user_prompt[:2000]}{'...' if len(user_prompt) > 2000 else ''}",
+        file=sys.stderr,
+    )
     print(f"{'=' * 60}", file=sys.stderr)
 
     body = json.dumps(payload).encode("utf-8")
@@ -175,9 +189,16 @@ def call_llm(system_prompt: str, user_prompt: str, api_key: str) -> str:
     print("LLM RESPONSE", file=sys.stderr)
     print(f"{'=' * 60}", file=sys.stderr)
     if usage:
-        print(f"  Prompt tokens:     {usage.get('prompt_tokens', 'N/A')}", file=sys.stderr)
-        print(f"  Completion tokens: {usage.get('completion_tokens', 'N/A')}", file=sys.stderr)
-        print(f"  Total tokens:      {usage.get('total_tokens', 'N/A')}", file=sys.stderr)
+        print(
+            f"  Prompt tokens:     {usage.get('prompt_tokens', 'N/A')}", file=sys.stderr
+        )
+        print(
+            f"  Completion tokens: {usage.get('completion_tokens', 'N/A')}",
+            file=sys.stderr,
+        )
+        print(
+            f"  Total tokens:      {usage.get('total_tokens', 'N/A')}", file=sys.stderr
+        )
     print(f"  Response length:   {len(content)} chars", file=sys.stderr)
     print(f"\n  Full response:", file=sys.stderr)
     print(content, file=sys.stderr)
@@ -202,38 +223,36 @@ REQUIREMENTS:
    - Close </div> with a blank line (NO --- horizontal rule)
 
 2. Sections in order:
-   a) "## \U0001f680 What We Do" - brief intro paragraph + Markdown TABLE of service categories.
-      Categories: LLM Chat, Image Generation, Video Generation, Music & Audio, Web Search.
-      Populate each category from the service catalog data I provide.
-      SKIP services of type Dataset, Deployment, Proxy, Introduction, Agent.
-      SKIP infrastructure services (captcha, proxy, URL shortener, localization, identity, exchange-rate).
-      SKIP the service with alias "aichat" (it is an internal alias, NOT a brand).
-      Use proper brand names (e.g. "DeepSeek" not "Deepseek", "Midjourney" not "midjourney").
-      For the service with alias "openai", show as "GPT / DALL-E" in LLM Chat AND Image Gen categories.
-      Do NOT duplicate services - each brand name should appear AT MOST ONCE across the ENTIRE table.
-      If a service belongs to multiple categories (e.g. openai has tags aichat+aiimage), pick the primary category only.
-      The "openai" service should appear ONLY in LLM Chat as "GPT / DALL-E".
-      Tag mapping: "aichat" -> LLM Chat, "aiimage" -> Image Gen, "aivideo" -> Video Gen, "aiaudio" -> Music & Audio.
-      The "serp" service goes in Web Search.
-      Make sure to include ALL matching services; do not omit any from the provided data.
-      Only list clean brand names, not aliases. Capitalize properly:
-      "fish" -> "Fish Audio", "producer" -> "Producer", "hailuo" -> "Hailuo", "nano-banana" -> "NanoBanana",
-      "seedream" -> "Seedream", "seedance" -> "Seedance", "serp" -> "Google SERP".
+   a) "## \U0001f680 What We Do" - brief intro paragraph.
 
-   b) "## \U0001f50c MCP Servers (Model Context Protocol)" - intro line + Markdown TABLE.
+   b) "## \U0001f4e1 Service Catalog" - THE MAIN SECTION. Show rich detail from the service catalog.
+      Group services by their `category` field. Use category as section header: "### \U0001f4ac AI Chat", "### \U0001f5bc AI Image", "### \U0001f3ac AI Video", "### \U0001f3b5 AI Audio", "### \U0001f50d Web & Data".
+      SKIP services of type Dataset, Deployment, Proxy, Introduction, Agent.
+      SKIP infrastructure services: categories CAPTCHA, Identity, Proxy, or services with alias in (aichat, shorturl, localization, image2text, wechat-bot, openclaw).
+      For each category, create a Markdown TABLE with columns: Service | API Endpoints | Stage.
+      - Service: use `display_name` as the brand name. Clean up if needed.
+        Special: alias "openai" -> "OpenAI (GPT / DALL-E)", alias "serp" -> "Google SERP".
+      - API Endpoints: show the actual API paths from the data, formatted as inline code `GET /path`.
+        Show ALL paths, one per line within the cell (use <br/> for line breaks).
+        Base URL is `https://api.acedata.cloud`.
+      - Stage: show the stage badge. Use emoji: Production -> \U0001f7e2, Beta -> \U0001f7e1, Alpha -> \U0001f534
+        If all APIs in a service share the same stage, show it once. Otherwise show per-API.
+      Sort services within each category by rank (ascending = higher priority first).
+
+   c) "## \U0001f50c MCP Servers (Model Context Protocol)" - intro line + Markdown TABLE.
       Columns: Server | PyPI | Description.
       Server column: link to GitHub repo [DirName](https://github.com/AceDataCloud/{dir_name})
       PyPI column: badge [![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/)
       Description: clean short desc (remove "MCP Server for" and "via AceDataCloud API" prefixes/suffixes).
       After table: pip install command with all package names.
 
-   c) "## \U0001f4da API Documentation Repos" - intro line + inline dot-separated links.
+   d) "## \U0001f4da API Documentation Repos" - intro line + inline dot-separated links.
       Include ONLY repos whose name ends with "API" (e.g. "SunoAPI", "FluxAPI").
       Exclude repos like "Docs", "Nexior", "StatusPage", "Roadmap", ".github" - only *API suffix repos.
       Format: [Display Name](https://github.com/AceDataCloud/{name})
-      Display name: split CamelCase, e.g. "MidjourneyAPI" -> "Midjourney API", "GPT4oImageAPI" -> "GPT4o Image API".
+      Display name: split CamelCase, e.g. "MidjourneyAPI" -> "Midjourney API".
 
-   d) "## \U0001f310 Live Services" - Markdown TABLE.
+   e) "## \U0001f310 Live Services" - Markdown TABLE.
       Must include these rows exactly:
       Developer Platform | platform.acedata.cloud | API keys, docs, billing, analytics
       API Gateway | api.acedata.cloud | OpenAI-compatible REST API endpoint
@@ -243,20 +262,21 @@ REQUIREMENTS:
       Status | status.acedata.cloud | Real-time service health monitoring
       Roadmap | roadmap.acedata.cloud | Public feature roadmap
 
-   e) "## \u26a1 Quick Start" - curl example to /v1/chat/completions with Bearer YOUR_API_KEY, model gpt-4o.
+   f) "## \u26a1 Quick Start" - curl example to /v1/chat/completions with Bearer YOUR_API_KEY, model gpt-4o.
       Then "Get your API key at [platform.acedata.cloud](...) - free tier available."
 
-   f) "## \U0001f4b0 $ACE Token" - brief paragraph.
+   g) "## \U0001f4b0 $ACE Token" - brief paragraph.
       Link: https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump
 
-   g) "## \U0001f4ec Connect" - bullet list:
+   h) "## \U0001f4ec Connect" - bullet list:
       Website (platform.acedata.cloud), Documentation (docs.acedata.cloud),
       Twitter/X (x.com/AceDataCloud), Discord (discord.gg/aedatacloud)
 
 CRITICAL RULES:
-- Use ONLY data I provide. Do NOT invent model names or versions.
-- For service names, derive correct branding from alias + title key + API paths.
-- Keep it professional and concise.
+- Use ONLY data I provide. Do NOT invent model names, versions, or API paths.
+- Show ALL API endpoints from the data for each service. Do not truncate or omit any.
+- For service names, use the `display_name` field from the data.
+- Keep it professional but rich in detail — this is the org's public profile.
 - No trailing whitespace on lines.
 - End with a single newline.
 """
@@ -291,8 +311,11 @@ def main() -> None:
             repos = fetch_github_repos(github_token)
             print(f"  Found {len(repos)} public repos", file=sys.stderr)
             for r in repos:
-                stars = f" ★{r['stars']}" if r['stars'] else ""
-                print(f"    - {r['name']}: {r['description'][:80]}{stars}", file=sys.stderr)
+                stars = f" ★{r['stars']}" if r["stars"] else ""
+                print(
+                    f"    - {r['name']}: {r['description'][:80]}{stars}",
+                    file=sys.stderr,
+                )
         except Exception as e:
             print(f"  Warning: GitHub API error: {e}", file=sys.stderr)
     else:
@@ -302,13 +325,20 @@ def main() -> None:
     services = load_service_mapping(workspace_root)
     print(f"  Found {len(services)} public services", file=sys.stderr)
     for svc in services:
-        print(f"    - {svc['alias']} ({svc['type']}, unit={svc['unit']}, apis={svc['api_count']}, tags={svc.get('tags', [])})", file=sys.stderr)
+        api_paths = [a['path'] for a in svc.get('apis', [])]
+        print(
+            f"    - {svc['alias']} ({svc['type']}, cat={svc.get('category','')}, display={svc.get('display_name','')}, apis={len(api_paths)}, tags={svc.get('tags', [])}, paths={api_paths})",
+            file=sys.stderr,
+        )
 
     print("\n[3/3] Discovering MCP servers...", file=sys.stderr)
     mcp_servers = discover_mcp_servers(workspace_root)
     print(f"  Found {len(mcp_servers)} MCP servers", file=sys.stderr)
     for s in mcp_servers:
-        print(f"    - {s['dir_name']}: {s['package_name']} — {s['description']}", file=sys.stderr)
+        print(
+            f"    - {s['dir_name']}: {s['package_name']} — {s['description']}",
+            file=sys.stderr,
+        )
 
     # Build user prompt with all collected data
     user_prompt = "Generate the organization profile README using this real data:\n\n"
