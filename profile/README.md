@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://cdn.acedata.cloud/acedatacloud.png" alt="Ace Data Cloud" width="120" />
+<img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
 
 # Ace Data Cloud
 
