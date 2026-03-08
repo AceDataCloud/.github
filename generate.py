@@ -16,6 +16,7 @@ Environment variables:
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import sys
@@ -24,8 +25,8 @@ import urllib.request
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-WORKSPACE_ROOT = SCRIPT_DIR.parent
 OUTPUT_PATH = SCRIPT_DIR / "profile" / "README.md"
+WORKSPACE_ROOT = SCRIPT_DIR.parent  # parent monorepo (AceDataCloud/)
 
 OPENAI_BASE_URL = "https://api.acedata.cloud/v1"
 OPENAI_MODEL = "gpt-4.1-mini"
@@ -68,10 +69,10 @@ def fetch_github_repos(token: str) -> list[dict]:
     return sorted(all_repos, key=lambda r: r["name"])
 
 
-def load_service_mapping() -> list[dict]:
+def load_service_mapping(workspace_root: Path) -> list[dict]:
     """Load the public service catalog from service_api_mapping.json."""
     mapping_path = (
-        WORKSPACE_ROOT / "PlatformBackend" / "cost" / "service_api_mapping.json"
+        workspace_root / "PlatformBackend" / "cost" / "service_api_mapping.json"
     )
     if not mapping_path.exists():
         print(f"Warning: {mapping_path} not found", file=sys.stderr)
@@ -97,7 +98,7 @@ def load_service_mapping() -> list[dict]:
     return sorted(result, key=lambda s: s.get("rank", 0))
 
 
-def discover_mcp_servers() -> list[dict]:
+def discover_mcp_servers(workspace_root: Path) -> list[dict]:
     """Discover MCP servers from MCP*/pyproject.toml files."""
     try:
         if sys.version_info >= (3, 11):
@@ -112,7 +113,7 @@ def discover_mcp_servers() -> list[dict]:
         return []
 
     servers = []
-    for mcp_dir in sorted(WORKSPACE_ROOT.glob("MCP*")):
+    for mcp_dir in sorted(workspace_root.glob("MCP*")):
         pyproject = mcp_dir / "pyproject.toml"
         if not pyproject.exists():
             continue
@@ -233,6 +234,16 @@ CRITICAL RULES:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate organization profile README")
+    parser.add_argument(
+        "--workspace",
+        type=Path,
+        default=SCRIPT_DIR.parent,
+        help="Root of the Index workspace containing PlatformBackend/ and MCP*/ submodules",
+    )
+    args = parser.parse_args()
+    workspace_root = args.workspace.resolve()
+
     api_key = os.environ.get("ACEDATACLOUD_OPENAI_KEY", "")
     github_token = os.environ.get("GITHUB_TOKEN", "")
 
@@ -253,11 +264,11 @@ def main() -> None:
         print("  GITHUB_TOKEN not set, skipping repo discovery", file=sys.stderr)
 
     print("Loading service catalog...", file=sys.stderr)
-    services = load_service_mapping()
+    services = load_service_mapping(workspace_root)
     print(f"  Found {len(services)} public services", file=sys.stderr)
 
     print("Discovering MCP servers...", file=sys.stderr)
-    mcp_servers = discover_mcp_servers()
+    mcp_servers = discover_mcp_servers(workspace_root)
     print(f"  Found {len(mcp_servers)} MCP servers", file=sys.stderr)
 
     # Build user prompt with all collected data

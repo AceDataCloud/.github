@@ -22,7 +22,10 @@ jobs:
           python-version: '3.12'
 
       - name: Generate README
-        run: python scripts/generate_readme.py
+        env:
+          ACEDATACLOUD_OPENAI_KEY: ${{ secrets.ACEDATACLOUD_OPENAI_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python generate.py
 
       - name: Commit and push if changed
         run: |
