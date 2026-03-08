@@ -149,11 +149,41 @@ def call_llm(system_prompt: str, user_prompt: str, api_key: str) -> str:
         "temperature": 0.3,
         "max_tokens": 4096,
     }
+
+    print(f"\n{'=' * 60}", file=sys.stderr)
+    print("LLM REQUEST", file=sys.stderr)
+    print(f"{'=' * 60}", file=sys.stderr)
+    print(f"  URL:         {url}", file=sys.stderr)
+    print(f"  Model:       {OPENAI_MODEL}", file=sys.stderr)
+    print(f"  Temperature: {payload['temperature']}", file=sys.stderr)
+    print(f"  Max tokens:  {payload['max_tokens']}", file=sys.stderr)
+    print(f"\n  System prompt ({len(system_prompt)} chars):", file=sys.stderr)
+    print(f"  {system_prompt[:500]}{'...' if len(system_prompt) > 500 else ''}", file=sys.stderr)
+    print(f"\n  User prompt ({len(user_prompt)} chars):", file=sys.stderr)
+    print(f"  {user_prompt[:2000]}{'...' if len(user_prompt) > 2000 else ''}", file=sys.stderr)
+    print(f"{'=' * 60}", file=sys.stderr)
+
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=body, headers=headers, method="POST")
     with urllib.request.urlopen(req, timeout=120) as resp:
         data = json.loads(resp.read())
-    return data["choices"][0]["message"]["content"].strip()
+
+    content = data["choices"][0]["message"]["content"].strip()
+    usage = data.get("usage", {})
+
+    print(f"\n{'=' * 60}", file=sys.stderr)
+    print("LLM RESPONSE", file=sys.stderr)
+    print(f"{'=' * 60}", file=sys.stderr)
+    if usage:
+        print(f"  Prompt tokens:     {usage.get('prompt_tokens', 'N/A')}", file=sys.stderr)
+        print(f"  Completion tokens: {usage.get('completion_tokens', 'N/A')}", file=sys.stderr)
+        print(f"  Total tokens:      {usage.get('total_tokens', 'N/A')}", file=sys.stderr)
+    print(f"  Response length:   {len(content)} chars", file=sys.stderr)
+    print(f"\n  Full response:", file=sys.stderr)
+    print(content, file=sys.stderr)
+    print(f"{'=' * 60}\n", file=sys.stderr)
+
+    return content
 
 
 SYSTEM_PROMPT = """\
@@ -169,7 +199,7 @@ REQUIREMENTS:
    - Badges: use HTML <a><img> tags (NOT Markdown ![]()), because Markdown images don't render inside <div>.
      Example: <a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/Platform-blue?style=flat-square" /></a>
      Badges: Platform (blue, links platform.acedata.cloud), API Docs (green, links docs.acedata.cloud), Nexior (orange, links hub.acedata.cloud), Status (brightgreen, links status.acedata.cloud)
-   - Close </div> then ---
+   - Close </div> with a blank line (NO --- horizontal rule)
 
 2. Sections in order:
    a) "## \U0001f680 What We Do" - brief intro paragraph + Markdown TABLE of service categories.
@@ -251,24 +281,34 @@ def main() -> None:
         sys.exit(1)
 
     # Collect data from all sources
-    print("Collecting GitHub repos...", file=sys.stderr)
+    print(f"\nWorkspace root: {workspace_root}", file=sys.stderr)
+    print(f"Output path:    {OUTPUT_PATH}", file=sys.stderr)
+
+    print("\n[1/3] Collecting GitHub repos...", file=sys.stderr)
     repos: list[dict] = []
     if github_token:
         try:
             repos = fetch_github_repos(github_token)
             print(f"  Found {len(repos)} public repos", file=sys.stderr)
+            for r in repos:
+                stars = f" ★{r['stars']}" if r['stars'] else ""
+                print(f"    - {r['name']}: {r['description'][:80]}{stars}", file=sys.stderr)
         except Exception as e:
             print(f"  Warning: GitHub API error: {e}", file=sys.stderr)
     else:
         print("  GITHUB_TOKEN not set, skipping repo discovery", file=sys.stderr)
 
-    print("Loading service catalog...", file=sys.stderr)
+    print("\n[2/3] Loading service catalog...", file=sys.stderr)
     services = load_service_mapping(workspace_root)
     print(f"  Found {len(services)} public services", file=sys.stderr)
+    for svc in services:
+        print(f"    - {svc['alias']} ({svc['type']}, unit={svc['unit']}, apis={svc['api_count']}, tags={svc.get('tags', [])})", file=sys.stderr)
 
-    print("Discovering MCP servers...", file=sys.stderr)
+    print("\n[3/3] Discovering MCP servers...", file=sys.stderr)
     mcp_servers = discover_mcp_servers(workspace_root)
     print(f"  Found {len(mcp_servers)} MCP servers", file=sys.stderr)
+    for s in mcp_servers:
+        print(f"    - {s['dir_name']}: {s['package_name']} — {s['description']}", file=sys.stderr)
 
     # Build user prompt with all collected data
     user_prompt = "Generate the organization profile README using this real data:\n\n"
