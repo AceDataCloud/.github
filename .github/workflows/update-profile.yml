@@ -20,8 +20,9 @@ jobs:
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
+          git config --global url."https://x-access-token:${BOT_TOKEN}@github.com/".insteadOf "https://github.com/"
           git clone --no-checkout --depth 1 \
-            "https://x-access-token:${BOT_TOKEN}@github.com/AceDataCloud/Index.git" /tmp/index
+            "https://github.com/AceDataCloud/Index.git" /tmp/index
           cd /tmp/index
           git sparse-checkout init --cone
           git sparse-checkout set PlatformBackend MCPLuma MCPMidjourney MCPNanoBanana MCPSerp MCPSora MCPSuno MCPVeo
