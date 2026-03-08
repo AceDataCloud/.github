@@ -82,7 +82,15 @@ def load_service_mapping(workspace_root: Path) -> list[dict]:
     for svc in services:
         if svc.get("private"):
             continue
-        apis = svc.get("apis", [])
+        apis = []
+        for a in svc.get("apis", []):
+            apis.append(
+                {
+                    "name": a.get("name", ""),
+                    "path": a.get("path", ""),
+                    "stage": a.get("stage", ""),
+                }
+            )
         result.append(
             {
                 "alias": svc.get("alias", ""),
@@ -91,15 +99,9 @@ def load_service_mapping(workspace_root: Path) -> list[dict]:
                 "unit": svc.get("unit", ""),
                 "tags": svc.get("tags") or [],
                 "category": svc.get("category", ""),
+                "category_icon": svc.get("category_icon", ""),
                 "rank": svc.get("rank", 0),
-                "apis": [
-                    {
-                        "title": a.get("title", a.get("name", "")),
-                        "path": a.get("path", ""),
-                        "stage": a.get("stage", ""),
-                    }
-                    for a in apis
-                ],
+                "apis": apis,
             }
         )
     return sorted(result, key=lambda s: s.get("rank", 0))
@@ -209,76 +211,69 @@ def call_llm(system_prompt: str, user_prompt: str, api_key: str) -> str:
 
 SYSTEM_PROMPT = """\
 You are a technical writer generating a GitHub organization profile README for \
-Ace Data Cloud (AceDataCloud). Output ONLY the raw Markdown, no ```markdown fences, \
+Ace Data Cloud (AceDataCloud). Output ONLY the raw Markdown — no ```markdown fences, \
 no explanations, no preamble.
 
-REQUIREMENTS:
-1. Start with a centered header block (<div align="center">):
+GOAL: Make the profile informative, data-rich, and visually engaging — like a \
+landing page that helps developers quickly understand what Ace Data Cloud offers \
+and how to start using it.  Show off the breadth of services with real data.
+
+STRUCTURE (keep this order, but write naturally — not like a rigid template):
+
+1. **Header** (<div align="center">):
    - Logo: <img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
-   - Title: <h1>Ace Data Cloud</h1> (must be HTML h1 tag, not Markdown #, since it is inside a div)
-   - Tagline: <b>bold one-liner about unified AI API platform</b> (HTML bold, not Markdown)
-   - Badges: use HTML <a><img> tags (NOT Markdown ![]()), because Markdown images don't render inside <div>.
-     Example: <a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/Platform-blue?style=flat-square" /></a>
-     Badges: Platform (blue, links platform.acedata.cloud), API Docs (green, links docs.acedata.cloud), Nexior (orange, links hub.acedata.cloud), Status (brightgreen, links status.acedata.cloud)
-   - Close </div> with a blank line (NO --- horizontal rule)
+   - <h1>Ace Data Cloud</h1> (HTML h1, not Markdown #, since it is inside a div)
+   - <b>Catchy one-liner about the unified AI API platform</b> (HTML bold)
+   - Badges as HTML <a><img> (Markdown images don't render inside div):
+     Platform (blue, platform.acedata.cloud), API Docs (green, docs.acedata.cloud),
+     Nexior (orange, hub.acedata.cloud), Status (brightgreen, status.acedata.cloud)
+   - Close </div>, blank line, NO --- rule
 
-2. Sections in order:
-   a) "## \U0001f680 What We Do" - brief intro paragraph.
+2. **## \U0001f680 What We Do** — Engaging intro paragraph (2-3 sentences), then a summary
+   stat line like "**X AI services \u00b7 Y API endpoints \u00b7 Z categories**" derived from
+   the real data counts I provide.
 
-   b) "## \U0001f4e1 Service Catalog" - THE MAIN SECTION. Show rich detail from the service catalog.
-      Group services by their `category` field. Use category as section header: "### \U0001f4ac AI Chat", "### \U0001f5bc AI Image", "### \U0001f3ac AI Video", "### \U0001f3b5 AI Audio", "### \U0001f50d Web & Data".
-      SKIP services of type Dataset, Deployment, Proxy, Introduction, Agent.
-      SKIP infrastructure services: categories CAPTCHA, Identity, Proxy, or services with alias in (aichat, shorturl, localization, image2text, wechat-bot, openclaw).
-      For each category, create a Markdown TABLE with columns: Service | API Endpoints | Stage.
-      - Service: use `display_name` as the brand name. Clean up if needed.
-        Special: alias "openai" -> "OpenAI (GPT / DALL-E)", alias "serp" -> "Google SERP".
-      - API Endpoints: show the actual API paths from the data, formatted as inline code `GET /path`.
-        Show ALL paths, one per line within the cell (use <br/> for line breaks).
-        Base URL is `https://api.acedata.cloud`.
-      - Stage: show the stage badge. Use emoji: Production -> \U0001f7e2, Beta -> \U0001f7e1, Alpha -> \U0001f534
-        If all APIs in a service share the same stage, show it once. Otherwise show per-API.
-      Sort services within each category by rank (ascending = higher priority first).
+3. **## \U0001f4e1 Service Catalog** — THIS IS THE MAIN SHOWCASE.  Group by the `category`
+   field from the data.  For each category use a sub-heading (### with a fitting emoji)
+   and a Markdown table with columns:
+   - **Service** — use `display_name` from the data; keep proper brand casing.
+   - **API Endpoints** — list each API's `path`. Use `<br/>` for multiple paths in one cell.
+   - **Stage** — map: Production \u2192 \U0001f7e2, Beta \u2192 \U0001f7e1, Alpha \u2192 \U0001f534, empty \u2192 \u2014.
+     Show one dot per endpoint, matching order.
 
-   c) "## \U0001f50c MCP Servers (Model Context Protocol)" - intro line + Markdown TABLE.
-      Columns: Server | PyPI | Description.
-      Server column: link to GitHub repo [DirName](https://github.com/AceDataCloud/{dir_name})
-      PyPI column: badge [![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/)
-      Description: clean short desc (remove "MCP Server for" and "via AceDataCloud API" prefixes/suffixes).
-      After table: pip install command with all package names.
+   Category order: AI Chat \u2192 AI Image \u2192 AI Video \u2192 AI Audio \u2192 Web & Data.
+   SKIP categories: CAPTCHA, Proxy, Identity.
+   SKIP services of type Dataset, Deployment, Proxy, Introduction, Agent.
+   SKIP the service with alias "aichat" (internal, not a product).
+   Include ALL other non-private services from the data.
 
-   d) "## \U0001f4da API Documentation Repos" - intro line + inline dot-separated links.
-      Include ONLY repos whose name ends with "API" (e.g. "SunoAPI", "FluxAPI").
-      Exclude repos like "Docs", "Nexior", "StatusPage", "Roadmap", ".github" - only *API suffix repos.
-      Format: [Display Name](https://github.com/AceDataCloud/{name})
-      Display name: split CamelCase, e.g. "MidjourneyAPI" -> "Midjourney API".
+4. **## \U0001f50c MCP Servers (Model Context Protocol)** — Short intro, then table:
+   Server (GitHub link) | PyPI badge | Description (clean, no boilerplate prefix).
+   After table: `pip install` one-liner with all packages.
 
-   e) "## \U0001f310 Live Services" - Markdown TABLE.
-      Must include these rows exactly:
-      Developer Platform | platform.acedata.cloud | API keys, docs, billing, analytics
-      API Gateway | api.acedata.cloud | OpenAI-compatible REST API endpoint
-      Nexior | hub.acedata.cloud | Consumer app - chat, generate images/video/music
-      Documentation | docs.acedata.cloud | Quickstart guides and API references
-      Dify AI | dify.acedata.cloud | Visual AI workflow builder
-      Status | status.acedata.cloud | Real-time service health monitoring
-      Roadmap | roadmap.acedata.cloud | Public feature roadmap
+5. **## \U0001f4da API Documentation Repos** — Intro line + dot-separated inline links.
+   Include ONLY repos whose name ends with "API".
+   Display name: split CamelCase \u2192 "Midjourney API".
 
-   f) "## \u26a1 Quick Start" - curl example to /v1/chat/completions with Bearer YOUR_API_KEY, model gpt-4o.
-      Then "Get your API key at [platform.acedata.cloud](...) - free tier available."
+6. **## \U0001f310 Live Services** — Table of live URLs:
+   Developer Platform \u2192 platform.acedata.cloud, API Gateway \u2192 api.acedata.cloud,
+   Nexior \u2192 hub.acedata.cloud, Documentation \u2192 docs.acedata.cloud,
+   Dify AI \u2192 dify.acedata.cloud, Status \u2192 status.acedata.cloud,
+   Roadmap \u2192 roadmap.acedata.cloud.
 
-   g) "## \U0001f4b0 $ACE Token" - brief paragraph.
-      Link: https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump
+7. **## \u26a1 Quick Start** — curl example to `/v1/chat/completions`, Bearer YOUR_API_KEY, model gpt-4o.
+   Then: "Get your API key at platform.acedata.cloud \u2014 free tier available."
 
-   h) "## \U0001f4ec Connect" - bullet list:
-      Website (platform.acedata.cloud), Documentation (docs.acedata.cloud),
-      Twitter/X (x.com/AceDataCloud), Discord (discord.gg/aedatacloud)
+8. **## \U0001f4b0 $ACE Token** — Brief paragraph.
+   Link: https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump
+
+9. **## \U0001f4ec Connect** — Bullet list: Website, Documentation, Twitter/X, Discord.
 
 CRITICAL RULES:
-- Use ONLY data I provide. Do NOT invent model names, versions, or API paths.
-- Show ALL API endpoints from the data for each service. Do not truncate or omit any.
-- For service names, use the `display_name` field from the data.
-- Keep it professional but rich in detail — this is the org's public profile.
-- No trailing whitespace on lines.
-- End with a single newline.
+- Use ONLY data I provide. Do NOT invent services, endpoints, or model names.
+- Service names: use `display_name` from the data; capitalize properly.
+- Keep it professional but NOT bland. Show real numbers, real endpoints.
+- No trailing whitespace. End with a single newline.
 """
 
 
@@ -325,9 +320,8 @@ def main() -> None:
     services = load_service_mapping(workspace_root)
     print(f"  Found {len(services)} public services", file=sys.stderr)
     for svc in services:
-        api_paths = [a['path'] for a in svc.get('apis', [])]
         print(
-            f"    - {svc['alias']} ({svc['type']}, cat={svc.get('category','')}, display={svc.get('display_name','')}, apis={len(api_paths)}, tags={svc.get('tags', [])}, paths={api_paths})",
+            f"    - {svc['alias']} ({svc['type']}, display_name={svc.get('display_name','')}, category={svc.get('category','')}, apis={len(svc.get('apis', []))}, tags={svc.get('tags', [])})",
             file=sys.stderr,
         )
 
