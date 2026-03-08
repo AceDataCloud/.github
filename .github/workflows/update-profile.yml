@@ -24,7 +24,8 @@ jobs:
             "https://x-access-token:${BOT_TOKEN}@github.com/AceDataCloud/Index.git" /tmp/index
           cd /tmp/index
           git sparse-checkout init --cone
-          git sparse-checkout set PlatformBackend/cost MCP*/pyproject.toml
+          git sparse-checkout set PlatformBackend MCPLuma MCPMidjourney MCPNanoBanana MCPSerp MCPSora MCPSuno MCPVeo
+          git checkout
           git submodule update --init --depth 1 PlatformBackend
           for dir in MCP*; do
             git submodule update --init --depth 1 "$dir" 2>/dev/null || true
