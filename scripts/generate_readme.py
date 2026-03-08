@@ -1,61 +1,38 @@
 """Generate the organization profile README from live GitHub/PyPI data."""
 
-import json
-import urllib.request
 from pathlib import Path
 
 ORG = "AceDataCloud"
 
-# MCP servers: (repo_name, pypi_package, short_description)
+# MCP servers: (repo_name, pypi_package, short_description) — sorted alphabetically
 MCP_SERVERS = [
-    ("MCPSuno", "mcp-suno", "AI music generation with Suno"),
-    ("MCPMidjourney", "mcp-midjourney", "AI image generation with Midjourney"),
-    ("MCPSerp", "mcp-serp", "Google search (web, images, news)"),
-    ("MCPLuma", "mcp-luma", "AI video generation with Luma"),
-    ("MCPSora", "mcp-sora", "AI video generation with Sora"),
-    ("MCPVeo", "mcp-veo", "AI video generation with Veo"),
-    ("MCPNanoBanana", "mcp-nanobanana-pro", "AI image generation & editing"),
+    ("MCPLuma", "mcp-luma", "Luma AI Video Generation"),
+    ("MCPMidjourney", "mcp-midjourney", "Midjourney AI Image Generation"),
+    ("MCPNanoBanana", "mcp-nanobanana-pro", "NanoBanana AI Image Generation"),
+    ("MCPSerp", "mcp-serp", "Google SERP Search"),
+    ("MCPSora", "mcp-sora", "Sora AI Video Generation"),
+    ("MCPSuno", "mcp-suno", "Suno AI Music Generation"),
+    ("MCPVeo", "mcp-veo", "Veo AI Video Generation"),
 ]
 
-# API documentation repos
+# API documentation repos — sorted alphabetically
 API_DOC_REPOS = [
-    ("MidjourneyAPI", "Midjourney API"),
-    ("SunoAPI", "Suno API"),
-    ("LumaAPI", "Luma API"),
     ("DeepSeekAPI", "DeepSeek API"),
-    ("GoogleSerpAPI", "Google SERP API"),
     ("FluxAPI", "Flux API"),
     ("GPT4oImageAPI", "GPT4o Image API"),
-    ("KlingAPI", "Kling API"),
+    ("GoogleSerpAPI", "Google SERP API"),
     ("HailuoAPI", "Hailuo API"),
+    ("KlingAPI", "Kling API"),
+    ("LumaAPI", "Luma API"),
+    ("MidjourneyAPI", "Midjourney API"),
+    ("NanoBananaAPI", "NanoBanana API"),
+    ("OpenAIAPI", "OpenAI API"),
     ("PikaAPI", "Pika API"),
+    ("PixverseAPI", "Pixverse API"),
+    ("SoraAPI", "Sora API"),
+    ("SunoAPI", "Suno API"),
+    ("VeoAPI", "Veo API"),
 ]
-
-
-def fetch_json(url: str):
-    """Fetch JSON from a URL, return None on error."""
-    try:
-        req = urllib.request.Request(url, headers={"Accept": "application/json"})
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            return json.loads(resp.read())
-    except Exception:
-        return None
-
-
-def get_pypi_version(package: str):
-    """Get latest PyPI version for a package."""
-    data = fetch_json(f"https://pypi.org/pypi/{package}/json")
-    if data:
-        return data.get("info", {}).get("version")
-    return None
-
-
-def get_github_stars(repo: str):
-    """Get star count for a GitHub repo."""
-    data = fetch_json(f"https://api.github.com/repos/{ORG}/{repo}")
-    if data:
-        return data.get("stargazers_count")
-    return None
 
 
 def generate_mcp_table() -> str:
@@ -95,13 +72,13 @@ def generate_readme() -> str:
 
     return f"""<div align="center">
 
-<img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
+<img src="https://cdn.acedata.cloud/acedatacloud.png" alt="Ace Data Cloud" width="120" />
 
 # Ace Data Cloud
 
 **Unified AI API Platform — One Key, Hundreds of AI Models**
 
-Access GPT-4o, Claude, Gemini, Grok, DeepSeek, Midjourney, Suno, Luma, Sora, and 100+ more AI services through a single, OpenAI-compatible API.
+Access GPT, Claude, Gemini, Grok, DeepSeek, Midjourney, Suno, Luma, Sora, and 100+ more AI services through a single, OpenAI-compatible API.
 
 [![Platform](https://img.shields.io/badge/Platform-platform.acedata.cloud-blue?style=flat-square)](https://platform.acedata.cloud)
 [![API Docs](https://img.shields.io/badge/API_Docs-docs.acedata.cloud-green?style=flat-square)](https://docs.acedata.cloud)
@@ -118,12 +95,11 @@ Ace Data Cloud provides a **unified API gateway** to access the world's leading 
 
 | Category | Services |
 |----------|----------|
-| **LLM Chat** | GPT-4o, Claude 4, Gemini 2.5, Grok, DeepSeek, Kimi, Qwen, and more |
-| **Image Generation** | Midjourney, Flux, Seedream, DALL·E, Stable Diffusion |
-| **Video Generation** | Sora, Luma Dream Machine, Veo, Kling, Hailuo, Pika, Seedance |
-| **Music Generation** | Suno AI (generate, extend, cover, remix) |
-| **Web Search** | Google SERP API (web, images, news, shopping, scholar) |
-| **More** | QR Art, AI Headshots, NanoBanana, and growing |
+| **LLM Chat** | Gemini 2.5 Pro / Flash, Kimi (Moonshot), Claude 4 / 3.5 Sonnet, DeepSeek R1 / V3, Grok 3, GPT-4o / o1 / o3 |
+| **Image Generation** | Seedream, NanoBanana, Flux, Midjourney, QR Art |
+| **Video Generation** | Seedance, Sora, Veo, Kling, Wan (Alibaba), Luma Dream Machine, Hailuo (MiniMax) |
+| **Music & Audio** | Suno AI, Fish Audio (TTS), Producer |
+| **Web Search** | Google SERP API |
 
 ## 🔌 MCP Servers (Model Context Protocol)
 
@@ -177,8 +153,6 @@ The [$ACE token](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKp
 - 📖 [Documentation](https://docs.acedata.cloud)
 - 🐦 [Twitter / X](https://x.com/AceDataCloud)
 - 💬 [Discord](https://discord.gg/aedatacloud)
-
-</div>
 """
 
 
