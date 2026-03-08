@@ -1,78 +1,83 @@
 <div align="center">
 <img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
 <h1>Ace Data Cloud</h1>
-<b>Unified AI API platform for chat, image, video, and audio generation</b><br/>
-<a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/Platform-blue?style=flat-square" /></a>
-<a href="https://docs.acedata.cloud"><img src="https://img.shields.io/badge/API%20Docs-green?style=flat-square" /></a>
-<a href="https://hub.acedata.cloud"><img src="https://img.shields.io/badge/Nexior-orange?style=flat-square" /></a>
-<a href="https://status.acedata.cloud"><img src="https://img.shields.io/badge/Status-brightgreen?style=flat-square" /></a>
+<b>Your unified AI API platform for next-gen image, video, audio, and chat services</b><br/><br/>
+<a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/platform-blue?logo=cloudflare" alt="Platform"/></a>
+<a href="https://docs.acedata.cloud"><img src="https://img.shields.io/badge/API%20Docs-green?logo=read-the-docs" alt="API Docs"/></a>
+<a href="https://hub.acedata.cloud"><img src="https://img.shields.io/badge/Nexior-orange?logo=vue.js" alt="Nexior"/></a>
+<a href="https://status.acedata.cloud"><img src="https://img.shields.io/badge/status-brightgreen?logo=uptimerobot" alt="Status"/></a>
 </div>
 
 ## 🚀 What We Do
 
-Ace Data Cloud offers a comprehensive unified AI API platform enabling developers to integrate advanced AI capabilities including chat, image, video, and audio generation through a single, consistent interface.
+Ace Data Cloud offers a comprehensive suite of AI services spanning chat, image, video, and audio generation, all accessible through a unified API platform. Developers can integrate cutting-edge AI capabilities with ease and scale.
+
+**7 AI services · 74 API endpoints · 5 categories**
 
 ## 📡 Service Catalog
 
 ### 💬 AI Chat
 
-| Service                    | API Endpoints                                                                                  | Stage   |
-|----------------------------|-----------------------------------------------------------------------------------------------|---------|
-| OpenAI (GPT / DALL-E)      | `GET /openai/chat/completions`<br/>`GET /openai/embeddings`<br/>`GET /openai/responses`       | 🟢      |
-|                            | `GET /openai/images/generations`<br/>`GET /openai/images/edits`                               | 🟡      |
-| AI Chat API                | `GET /aichat/conversations`                                                                   | 🟢      |
-| Claude                    | `GET /v1/chat/completions`<br/>`GET /v1/messages`<br/>`GET /v1/messages/count_tokens`          | 🟡<br/>🟡<br/>🟢 |
-| Grok                      | `GET /grok/chat/completions`                                                                  | 🟡      |
-| DeepSeek                  | `GET /deepseek/chat/completions`                                                              | 🟡      |
+| Service      | API Endpoints                                                                                      | Stage                      |
+|--------------|--------------------------------------------------------------------------------------------------|----------------------------|
+| Gemini       | /gemini/chat/completions                                                                          | 🟡                         |
+| Kimi         | /kimi/chat/completions                                                                            | 🟡                         |
+| Claude       | /v1/chat/completions<br/>/v1/messages<br/>/v1/messages/count_tokens                               | 🟡🟡🟢                      |
+| DeepSeek     | /deepseek/chat/completions                                                                        | 🟡                         |
+| Grok         | /grok/chat/completions                                                                            | 🟡                         |
+| OpenAI       | /openai/chat/completions<br/>/openai/embeddings<br/>/openai/responses                             | 🟢🟢🟢                      |
 
-### 🖼 AI Image
+### 🖼️ AI Image
 
-| Service                    | API Endpoints                                                                                  | Stage   |
-|----------------------------|-----------------------------------------------------------------------------------------------|---------|
-| Midjourney                 | `GET /midjourney/imagine`<br/>`GET /midjourney/seed`<br/>`GET /midjourney/edits`<br/>`GET /midjourney/videos`<br/>`GET /midjourney/describe`<br/>`GET /midjourney/translate`<br/>`GET /midjourney/tasks` | 🟢<br/>🟢<br/>🟢<br/>🟢<br/>🟢<br/>🟡<br/>🟢 |
-| Flux                      | `GET /flux/images`<br/>`GET /flux/tasks`                                                      | 🟢      |
-| Nano Banana               | `GET /nano-banana/images`<br/>`GET /nano-banana/tasks`                                        | 🟡<br/>🟢 |
-| Seedream                  | `GET /seedream/images`<br/>`GET /seedream/tasks`                                              | 🟡<br/>🟢 |
-| Artistic QR               | `GET /qrart/generate`<br/>`GET /qrart/tasks`                                                 | <br/>🟢  |
+| Service      | API Endpoints                                                                                      | Stage                      |
+|--------------|--------------------------------------------------------------------------------------------------|----------------------------|
+| Nano Banana  | /nano-banana/images<br/>/nano-banana/tasks                                                       | 🟡🟢                      |
+| Flux         | /flux/images<br/>/flux/tasks                                                                      | 🟢🟢                      |
+| Midjourney   | /midjourney/imagine<br/>/midjourney/seed<br/>/midjourney/edits<br/>/midjourney/videos<br/>/midjourney/describe<br/>/midjourney/translate<br/>/midjourney/tasks | 🟢🟢🟢🟢🟢🟡🟢 |
+| OpenAI       | /openai/images/generations<br/>/openai/images/edits                                              | 🟢🟡                      |
 
-### 🎬 AI Video
+### 🎥 AI Video
 
-| Service                    | API Endpoints                                                                                  | Stage   |
-|----------------------------|-----------------------------------------------------------------------------------------------|---------|
-| Midjourney                 | `GET /midjourney/videos`                                                                      | 🟢      |
-| Luma                      | `GET /luma/tasks`<br/>`GET /luma/videos`                                                     | 🟢<br/>🟡 |
-| Sora                      | `GET /sora/tasks`<br/>`GET /sora/videos`                                                     | 🟢<br/>🟢 |
-| Veo                       | `GET /veo/videos`<br/>`GET /veo/tasks`                                                       | 🟡<br/>🟢 |
-| Kling                     | `GET /kling/motion`<br/>`GET /kling/tasks`<br/>`GET /kling/videos`                           | 🟢      |
-| Wan                       | `GET /wan/tasks`<br/>`GET /wan/videos`                                                       | 🟢      |
-| Seedance                  | `GET /seedance/videos`<br/>`GET /seedance/tasks`                                             | 🟡<br/>🟢 |
-| Hailuo                    | `GET /hailuo/tasks`<br/>`GET /hailuo/videos`                                                 | 🟢<br/>🟡 |
+| Service      | API Endpoints                                                                                      | Stage                      |
+|--------------|--------------------------------------------------------------------------------------------------|----------------------------|
+| Seedance     | /seedance/videos<br/>/seedance/tasks                                                             | 🟡🟢                      |
+| Sora         | /sora/tasks<br/>/sora/videos                                                                     | 🟢🟢                      |
+| Veo          | /veo/videos<br/>/veo/tasks                                                                        | 🟡🟢                      |
+| Kling        | /kling/motion<br/>/kling/tasks<br/>/kling/videos                                                 | 🟢🟢🟢                      |
+| Wan          | /wan/tasks<br/>/wan/videos                                                                        | 🟢🟢                      |
+| Luma         | /luma/tasks<br/>/luma/videos                                                                      | 🟢🟡                      |
+| Hailuo       | /hailuo/tasks<br/>/hailuo/videos                                                                  | 🟢🟡                      |
+| Pixverse     | /pixverse (not listed in APIs, skip)                                                             | —                          |
 
 ### 🎵 AI Audio
 
-| Service                    | API Endpoints                                                                                  | Stage   |
-|----------------------------|-----------------------------------------------------------------------------------------------|---------|
-| Suno                      | `GET /suno/audios`<br/>`GET /suno/persona`<br/>`GET /suno/mp4`<br/>`GET /suno/timing`<br/>`GET /suno/vox`<br/>`GET /suno/wav`<br/>`GET /suno/midi`<br/>`GET /suno/style`<br/>`GET /suno/lyrics`<br/>`GET /suno/mashup-lyrics`<br/>`GET /suno/tasks`<br/>`GET /suno/upload` | 🟢<br/>🟢<br/>🟢<br/>🟢<br/>🟢<br/>🟢<br/>🟡<br/>🟢<br/>🟢<br/>🟢<br/>🟢<br/>🟢 |
-| Fish                      | `GET /fish/audios`<br/>`GET /fish/voices`<br/>`GET /fish/tasks`                              | 🟢      |
-| Producer                  | `GET /producer/upload`<br/>`GET /producer/videos`<br/>`GET /producer/wav`<br/>`GET /producer/audios`<br/>`GET /producer/tasks`<br/>`GET /producer/lyrics` | 🟢      |
+| Service      | API Endpoints                                                                                      | Stage                      |
+|--------------|--------------------------------------------------------------------------------------------------|----------------------------|
+| Suno         | /suno/audios<br/>/suno/persona<br/>/suno/mp4<br/>/suno/timing<br/>/suno/vox<br/>/suno/wav<br/>/suno/midi<br/>/suno/style<br/>/suno/lyrics<br/>/suno/mashup-lyrics<br/>/suno/tasks<br/>/suno/upload | 🟢🟢🟢🟢🟢🟢🟡🟢🟢🟢🟢🟢 |
+| Fish         | /fish/audios<br/>/fish/voices<br/>/fish/tasks                                                    | 🟢🟢🟢                      |
+| Producer     | /producer/upload<br/>/producer/videos<br/>/producer/wav<br/>/producer/audios<br/>/producer/tasks<br/>/producer/lyrics | 🟢🟢🟢🟢🟢🟢 |
 
-### 🔍 Web & Data
+### 🌐 Web & Data
 
-| Service                    | API Endpoints                                                                                  | Stage   |
-|----------------------------|-----------------------------------------------------------------------------------------------|---------|
-| Google SERP                | `GET /serp/google`                                                                            | 🟢      |
+| Service      | API Endpoints                                                                                      | Stage                      |
+|--------------|--------------------------------------------------------------------------------------------------|----------------------------|
+| Serp         | /serp/google                                                                                    | 🟢                         |
+| QRArt        | /qrart/generate<br/>/qrart/tasks                                                                | —🟢                      |
+| ShortURL     | /shorturl                                                                                       | 🟢                         |
 
 ## 🔌 MCP Servers (Model Context Protocol)
 
-| Server           | PyPI                                                                                                          | Description                       |
-|------------------|---------------------------------------------------------------------------------------------------------------|---------------------------------|
-| [MCPLuma](https://github.com/AceDataCloud/MCPLuma)           | [![PyPI](https://img.shields.io/pypi/v/mcp-luma?style=flat-square)](https://pypi.org/project/mcp-luma/)           | Luma AI Video Generation        |
-| [MCPMidjourney](https://github.com/AceDataCloud/MCPMidjourney) | [![PyPI](https://img.shields.io/pypi/v/mcp-midjourney?style=flat-square)](https://pypi.org/project/mcp-midjourney/) | Midjourney AI Image Generation  |
-| [MCPNanoBanana](https://github.com/AceDataCloud/MCPNanoBanana) | [![PyPI](https://img.shields.io/pypi/v/mcp-nanobanana-pro?style=flat-square)](https://pypi.org/project/mcp-nanobanana-pro/) | NanoBanana AI Image Generation  |
-| [MCPSerp](https://github.com/AceDataCloud/MCPSerp)           | [![PyPI](https://img.shields.io/pypi/v/mcp-serp?style=flat-square)](https://pypi.org/project/mcp-serp/)           | Google SERP Search              |
-| [MCPSora](https://github.com/AceDataCloud/MCPSora)           | [![PyPI](https://img.shields.io/pypi/v/mcp-sora?style=flat-square)](https://pypi.org/project/mcp-sora/)           | Sora AI Video Generation        |
-| [MCPSuno](https://github.com/AceDataCloud/MCPSuno)           | [![PyPI](https://img.shields.io/pypi/v/mcp-suno?style=flat-square)](https://pypi.org/project/mcp-suno/)           | Suno AI Music Generation        |
-| [MCPVeo](https://github.com/AceDataCloud/MCPVeo)             | [![PyPI](https://img.shields.io/pypi/v/mcp-veo?style=flat-square)](https://pypi.org/project/mcp-veo/)             | Veo AI Video Generation         |
+Ace Data Cloud provides MCP servers that enable seamless AI model context integration for image, video, music, and search services.
+
+| Server         | PyPI Badge                                                                                          | Description                                         |
+|----------------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------|
+| [MCPLuma](https://github.com/AceDataCloud/MCPLuma)           | [![PyPI](https://img.shields.io/pypi/v/mcp-luma.svg)](https://pypi.org/project/mcp-luma/)           | MCP Server for Luma AI Video Generation via AceDataCloud API |
+| [MCPMidjourney](https://github.com/AceDataCloud/MCPMidjourney) | [![PyPI](https://img.shields.io/pypi/v/mcp-midjourney.svg)](https://pypi.org/project/mcp-midjourney/) | MCP Server for Midjourney AI Image Generation via AceDataCloud API |
+| [MCPNanoBanana](https://github.com/AceDataCloud/MCPNanoBanana) | [![PyPI](https://img.shields.io/pypi/v/mcp-nanobanana-pro.svg)](https://pypi.org/project/mcp-nanobanana-pro/) | MCP Server for NanoBanana AI Image Generation via AceDataCloud API |
+| [MCPSerp](https://github.com/AceDataCloud/MCPSerp)             | [![PyPI](https://img.shields.io/pypi/v/mcp-serp.svg)](https://pypi.org/project/mcp-serp/)             | MCP Server for Google SERP Search via AceDataCloud API |
+| [MCPSora](https://github.com/AceDataCloud/MCPSora)             | [![PyPI](https://img.shields.io/pypi/v/mcp-sora.svg)](https://pypi.org/project/mcp-sora/)             | MCP Server for Sora AI Video Generation via AceDataCloud API |
+| [MCPSuno](https://github.com/AceDataCloud/MCPSuno)             | [![PyPI](https://img.shields.io/pypi/v/mcp-suno.svg)](https://pypi.org/project/mcp-suno/)             | MCP Server for Suno AI Music Generation via AceDataCloud API |
+| [MCPVeo](https://github.com/AceDataCloud/MCPVeo)               | [![PyPI](https://img.shields.io/pypi/v/mcp-veo.svg)](https://pypi.org/project/mcp-veo/)               | MCP Server for Veo AI Video Generation via AceDataCloud API |
 
 ```bash
 pip install mcp-luma mcp-midjourney mcp-nanobanana-pro mcp-serp mcp-sora mcp-suno mcp-veo
@@ -80,40 +85,42 @@ pip install mcp-luma mcp-midjourney mcp-nanobanana-pro mcp-serp mcp-sora mcp-sun
 
 ## 📚 API Documentation Repos
 
-Explore detailed API references and guides for our AI services:
+Explore detailed API references and guides for Ace Data Cloud services:
 
-[Flux API](https://github.com/AceDataCloud/FluxAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Midjourney API](https://github.com/AceDataCloud/MidjourneyAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Pixverse API](https://github.com/AceDataCloud/PixverseAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI)
+[Docs API](https://github.com/AceDataCloud/Docs)
 
 ## 🌐 Live Services
 
-| Service             | URL                      | Description                                |
-|---------------------|--------------------------|--------------------------------------------|
-| Developer Platform  | platform.acedata.cloud   | API keys, docs, billing, analytics         |
-| API Gateway         | api.acedata.cloud        | OpenAI-compatible REST API endpoint        |
-| Nexior              | hub.acedata.cloud        | Consumer app - chat, generate images/video/music |
-| Documentation       | docs.acedata.cloud       | Quickstart guides and API references       |
-| Dify AI             | dify.acedata.cloud       | Visual AI workflow builder                  |
-| Status              | status.acedata.cloud     | Real-time service health monitoring        |
-| Roadmap             | roadmap.acedata.cloud    | Public feature roadmap                      |
+| Service             | URL                        |
+|---------------------|----------------------------|
+| Developer Platform  | [platform.acedata.cloud](https://platform.acedata.cloud) |
+| API Gateway        | [api.acedata.cloud](https://api.acedata.cloud)           |
+| Nexior             | [hub.acedata.cloud](https://hub.acedata.cloud)           |
+| Documentation      | [docs.acedata.cloud](https://docs.acedata.cloud)         |
+| Dify AI            | [dify.acedata.cloud](https://dify.acedata.cloud)         |
+| Status             | [status.acedata.cloud](https://status.acedata.cloud)     |
+| Roadmap            | [roadmap.acedata.cloud](https://roadmap.acedata.cloud)   |
 
 ## ⚡ Quick Start
 
 ```bash
-curl -X POST "https://api.acedata.cloud/v1/chat/completions" \
+curl -X POST https://api.acedata.cloud/v1/chat/completions \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"model":"gpt-4o","messages":[{"role":"user","content":"Hello, world!"}]}'
+  -d '{"model":"gpt-4o","messages":[{"role":"user","content":"Hello, Ace Data Cloud!"}]}'
 ```
 
-Get your API key at [platform.acedata.cloud](https://platform.acedata.cloud) - free tier available.
+Get your API key at [platform.acedata.cloud](https://platform.acedata.cloud) — free tier available.
 
 ## 💰 $ACE Token
 
-$ACE is the native utility token powering the Ace Data Cloud ecosystem, enabling seamless transactions and rewards across our AI API platform. Learn more at [https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump).
+The $ACE token powers the Ace Data Cloud ecosystem, enabling seamless transactions and rewards within our AI platform. Join the community and explore token utilities.
+
+[View $ACE Token on Pump.fun](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump)
 
 ## 📬 Connect
 
-- Website: [platform.acedata.cloud](https://platform.acedata.cloud)  
-- Documentation: [docs.acedata.cloud](https://docs.acedata.cloud)  
-- Twitter/X: [x.com/AceDataCloud](https://x.com/AceDataCloud)  
-- Discord: [discord.gg/aedatacloud](https://discord.gg/aedatacloud)
+- Website: [https://acedata.cloud](https://acedata.cloud)
+- Documentation: [https://docs.acedata.cloud](https://docs.acedata.cloud)
+- Twitter/X: [https://twitter.com/AceDataCloud](https://twitter.com/AceDataCloud)
+- Discord: [https://discord.gg/acedatacloud](https://discord.gg/acedatacloud)
