@@ -68,8 +68,16 @@ def fetch_github_repos(token: str) -> list[dict]:
     return sorted(all_repos, key=lambda r: r["name"])
 
 
+SKIP_ALIASES = {"aichat"}
+SKIP_CATEGORIES = {"CAPTCHA", "Proxy", "Identity"}
+SKIP_TYPES = {"Dataset", "Deployment", "Proxy", "Introduction", "Agent"}
+
+
 def load_service_mapping(workspace_root: Path) -> list[dict]:
-    """Load the public service catalog from service_api_mapping.json."""
+    """Load the public service catalog from service_api_mapping.json.
+
+    Pre-filters to only include user-facing AI/data services with APIs.
+    """
     mapping_path = (
         workspace_root / "PlatformBackend" / "cost" / "service_api_mapping.json"
     )
@@ -82,8 +90,18 @@ def load_service_mapping(workspace_root: Path) -> list[dict]:
     for svc in services:
         if svc.get("private"):
             continue
+        if svc.get("type", "") in SKIP_TYPES:
+            continue
+        if svc.get("alias", "") in SKIP_ALIASES:
+            continue
+        category = svc.get("category", "")
+        if category in SKIP_CATEGORIES:
+            continue
+        raw_apis = svc.get("apis", [])
+        if not raw_apis:
+            continue
         apis = []
-        for a in svc.get("apis", []):
+        for a in raw_apis:
             apis.append(
                 {
                     "name": a.get("name", ""),
@@ -96,11 +114,8 @@ def load_service_mapping(workspace_root: Path) -> list[dict]:
                 "alias": svc.get("alias", ""),
                 "display_name": svc.get("display_name", ""),
                 "type": svc.get("type", ""),
-                "unit": svc.get("unit", ""),
                 "tags": svc.get("tags") or [],
-                "category": svc.get("category", ""),
-                "category_icon": svc.get("category_icon", ""),
-                "rank": svc.get("rank", 0),
+                "category": category,
                 "apis": apis,
             }
         )
@@ -133,6 +148,15 @@ def discover_mcp_servers(workspace_root: Path) -> list[dict]:
         desc = project.get("description", "")
         if not pkg_name:
             continue
+        # Strip common boilerplate from descriptions
+        for prefix in ("MCP Server for ", "MCP Server of "):
+            if desc.startswith(prefix):
+                desc = desc[len(prefix):]
+                break
+        for suffix in (" via AceDataCloud API", " via Ace Data Cloud API"):
+            if desc.endswith(suffix):
+                desc = desc[: -len(suffix)]
+                break
         servers.append(
             {
                 "dir_name": mcp_dir.name,
@@ -214,65 +238,74 @@ You are a technical writer generating a GitHub organization profile README for \
 Ace Data Cloud (AceDataCloud). Output ONLY the raw Markdown — no ```markdown fences, \
 no explanations, no preamble.
 
-GOAL: Make the profile informative, data-rich, and visually engaging — like a \
-landing page that helps developers quickly understand what Ace Data Cloud offers \
-and how to start using it.  Show off the breadth of services with real data.
+GOAL: Informative, data-rich, visually engaging landing page that helps \
+developers quickly see what Ace Data Cloud offers.
 
-STRUCTURE (keep this order, but write naturally — not like a rigid template):
+STRUCTURE (keep this exact order):
 
 1. **Header** (<div align="center">):
-   - Logo: <img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
-   - <h1>Ace Data Cloud</h1> (HTML h1, not Markdown #, since it is inside a div)
-   - <b>Catchy one-liner about the unified AI API platform</b> (HTML bold)
-   - Badges as HTML <a><img> (Markdown images don't render inside div):
-     Platform (blue, platform.acedata.cloud), API Docs (green, docs.acedata.cloud),
-     Nexior (orange, hub.acedata.cloud), Status (brightgreen, status.acedata.cloud)
-   - Close </div>, blank line, NO --- rule
+   - <img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
+   - <h1>Ace Data Cloud</h1>
+   - <b>One unified API for dozens of AI models — images, video, music, chat, search & more</b>
+   - Badges (HTML <a><img>, shields.io style=flat-square):
+     Platform (blue → platform.acedata.cloud), Docs (green → docs.acedata.cloud),
+     Nexior (orange → hub.acedata.cloud), Status (brightgreen → status.acedata.cloud)
+   - Close </div> then a blank line. NO --- horizontal rule.
 
-2. **## \U0001f680 What We Do** — Engaging intro paragraph (2-3 sentences), then a summary
-   stat line like "**X AI services \u00b7 Y API endpoints \u00b7 Z categories**" derived from
-   the real data counts I provide.
+2. **## 🚀 What We Do** — 2-3 sentence intro, then a bold stat line using the \
+   EXACT numbers I provide in `summary_stats` (services, endpoints, categories). \
+   Do NOT re-count yourself — just use my numbers.
 
-3. **## \U0001f4e1 Service Catalog** — THIS IS THE MAIN SHOWCASE.  Group by the `category`
-   field from the data.  For each category use a sub-heading (### with a fitting emoji)
-   and a Markdown table with columns:
-   - **Service** — use `display_name` from the data; keep proper brand casing.
-   - **API Endpoints** — list each API's `path`. Use `<br/>` for multiple paths in one cell.
-   - **Stage** — map: Production \u2192 \U0001f7e2, Beta \u2192 \U0001f7e1, Alpha \u2192 \U0001f534, empty \u2192 \u2014.
-     Show one dot per endpoint, matching order.
+3. **## 📡 Service Catalog** — THE MAIN SHOWCASE. \
+   Group by `category` from the data. For each category: ### with emoji, then a \
+   Markdown table:
+   | Service | Endpoints | Stage |
+   - **Service**: `display_name` from data — keep original casing.
+   - **Endpoints**: each API's `path`, use `<br/>` for multiple.
+   - **Stage**: Production→🟢, Beta→🟡, Alpha→🔴, empty→—. One dot per endpoint.
 
-   Category order: AI Chat \u2192 AI Image \u2192 AI Video \u2192 AI Audio \u2192 Web & Data.
-   SKIP categories: CAPTCHA, Proxy, Identity.
-   SKIP services of type Dataset, Deployment, Proxy, Introduction, Agent.
-   SKIP the service with alias "aichat" (internal, not a product).
-   Include ALL other non-private services from the data.
+   Category display order: AI Chat → AI Image → AI Video → AI Audio → Web & Data.
+   Include ALL services in the data — I have already pre-filtered.
 
-4. **## \U0001f50c MCP Servers (Model Context Protocol)** — Short intro, then table:
-   Server (GitHub link) | PyPI badge | Description (clean, no boilerplate prefix).
-   After table: `pip install` one-liner with all packages.
+   IMPORTANT: If a service appears in the data once, show it ONCE under its \
+   listed category. Do NOT duplicate a service across categories.
 
-5. **## \U0001f4da API Documentation Repos** — Intro line + dot-separated inline links.
-   Include ONLY repos whose name ends with "API".
-   Display name: split CamelCase \u2192 "Midjourney API".
+4. **## 🔌 MCP Servers** — Short intro, then table:
+   | Server | Install | Description |
+   - Server: link to `github.com/AceDataCloud/{dir_name}`
+   - Install: `pip install {package_name}` in inline code
+   - Description: use `description` from the data as is (already cleaned)
 
-6. **## \U0001f310 Live Services** — Table of live URLs:
-   Developer Platform \u2192 platform.acedata.cloud, API Gateway \u2192 api.acedata.cloud,
-   Nexior \u2192 hub.acedata.cloud, Documentation \u2192 docs.acedata.cloud,
-   Dify AI \u2192 dify.acedata.cloud, Status \u2192 status.acedata.cloud,
-   Roadmap \u2192 roadmap.acedata.cloud.
+5. **## 📚 API Documentation Repos** — Inline dot-separated links. \
+   Include ONLY repos whose name literally ends with the 3 letters "API" \
+   (e.g. FluxAPI, SunoAPI, MidjourneyAPI). \
+   Do NOT include repos like "Docs" or "Dify". \
+   Display: split CamelCase → "Flux API".
 
-7. **## \u26a1 Quick Start** — curl example to `/v1/chat/completions`, Bearer YOUR_API_KEY, model gpt-4o.
-   Then: "Get your API key at platform.acedata.cloud \u2014 free tier available."
+6. **## 🌐 Live Services** — Table with columns: Service | URL | Description.
+   Rows (use these EXACT URLs):
+   - Developer Platform | platform.acedata.cloud | API keys, billing, service management
+   - API Gateway | api.acedata.cloud | Unified endpoint for all services
+   - Nexior | hub.acedata.cloud | Consumer AI app (chat, images, video, music)
+   - Documentation | docs.acedata.cloud | API reference & guides
+   - Dify AI | dify.acedata.cloud | AI workflow builder
+   - Status | status.acedata.cloud | Uptime monitoring
+   - Roadmap | roadmap.acedata.cloud | Public product roadmap
 
-8. **## \U0001f4b0 $ACE Token** — Brief paragraph.
-   Link: https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump
+7. **## ⚡ Quick Start** — curl to `/v1/chat/completions`, Bearer YOUR_API_KEY, \
+   model gpt-4o. Then: "Get your free API key → [platform.acedata.cloud](https://platform.acedata.cloud)"
 
-9. **## \U0001f4ec Connect** — Bullet list: Website, Documentation, Twitter/X, Discord.
+8. **## 💰 $ACE Token** — Brief paragraph with link: \
+   https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump
 
-CRITICAL RULES:
-- Use ONLY data I provide. Do NOT invent services, endpoints, or model names.
-- Service names: use `display_name` from the data; capitalize properly.
-- Keep it professional but NOT bland. Show real numbers, real endpoints.
+9. **## 📬 Connect** — Bullet list with EXACTLY these URLs:
+   - 🌐 Website: [platform.acedata.cloud](https://platform.acedata.cloud)
+   - 📖 Documentation: [docs.acedata.cloud](https://docs.acedata.cloud)
+   - 🐦 Twitter / X: [x.com/AceDataCloud](https://x.com/AceDataCloud)
+   - 💬 Discord: [discord.gg/aedatacloud](https://discord.gg/aedatacloud)
+
+RULES:
+- Use ONLY data I provide. NEVER invent services, endpoints, or descriptions.
 - No trailing whitespace. End with a single newline.
 """
 
@@ -337,12 +370,21 @@ def main() -> None:
     # Build user prompt with all collected data
     user_prompt = "Generate the organization profile README using this real data:\n\n"
 
+    # Pre-compute summary stats for the LLM
+    if services:
+        total_endpoints = sum(len(s.get("apis", [])) for s in services)
+        categories = sorted(set(s.get("category", "Other") for s in services))
+        user_prompt += "## Summary Stats (use these exact numbers)\n"
+        user_prompt += f"- Total services: {len(services)}\n"
+        user_prompt += f"- Total API endpoints: {total_endpoints}\n"
+        user_prompt += f"- Categories ({len(categories)}): {', '.join(categories)}\n\n"
+
     if repos:
         user_prompt += "## GitHub Repositories (public, non-archived, non-fork)\n"
         user_prompt += json.dumps(repos, indent=2) + "\n\n"
 
     if services:
-        user_prompt += "## Service Catalog (from platform database, sorted by rank)\n"
+        user_prompt += "## Service Catalog (pre-filtered, sorted by rank)\n"
         user_prompt += json.dumps(services, indent=2) + "\n\n"
 
     if mcp_servers:
