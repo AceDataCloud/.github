@@ -289,10 +289,33 @@ STRUCTURE (keep this exact order):
 2. **## What We Do** — 2-3 sentences, confident and concise. \
    Then a single Markdown TABLE with 2 columns: Category | Services. \
    Rows: LLM Chat, Image Generation, Video Generation, Music & Audio, Web Search. \
-   In the "Services" column, list the brand names from the data separated by commas. \
-   Use proper brand names (derive from display_name in the data). \
+   In the "Services" column, list CLEAN BRAND NAMES separated by commas. \
+   MANDATORY brand name cleanup (apply these rules to display_name from data):
+   - "OpenAI generation" → "GPT / DALL·E / Sora"
+   - "Gemini AI" → "Gemini"
+   - "Claude AI" → "Claude"
+   - "DeepSeek AI" → "DeepSeek"
+   - "ByteDance Seedream Image Generation" → "Seedream"
+   - "ByteDance Seedance Video Generation" → "Seedance"
+   - "Nano Banana Image Generation" → "NanoBanana"
+   - "Flux Image Generation" → "Flux"
+   - "Midjourney generation" → "Midjourney"
+   - "Art QR Code Generation" → "QR Art"
+   - "Face Transformation" → "Face Transform"
+   - "Sora Video Generation" → "Sora"
+   - "Veo Video Generation" → "Veo"
+   - "Kling video generation" → "Kling"
+   - "Tongyi Wansiang Video Generation" → "Wan (Alibaba)"
+   - "Luma Video Generation" → "Luma"
+   - "Hailuo Video Generation" → "Hailuo"
+   - "Pixverse AI video generation" → "Pixverse"
+   - "Suno Music Generation" → "Suno"
+   - "Fish music generation" → "Fish Audio"
+   - "Producer Music Generation" → "Producer"
+   - "Search Engine" → "Google SERP"
+   - For anything else, strip "Generation", "AI", trailing noise — keep just the brand.
    Keep it clean — just brand names, no endpoints, no stages, no emojis in cells. \
-   After the table, a line: "Browse all services → [platform.acedata.cloud](https://platform.acedata.cloud)"
+   After the table: "**Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)"
 
 3. **## MCP Servers** — One intro sentence about MCP (Model Context Protocol) \
    letting AI assistants use these APIs as tools. Then a table:
