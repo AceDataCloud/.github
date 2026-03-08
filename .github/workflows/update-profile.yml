@@ -2,8 +2,7 @@ name: Update Profile README
 
 on:
   schedule:
-    # Run daily at 00:00 UTC
-    - cron: '0 0 * * *'
+    - cron: "0 8 * * *"
   repository_dispatch:
     types: [update-profile]
   workflow_dispatch:
@@ -17,19 +16,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Clone Index submodules (sparse)
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: |
+          git clone --no-checkout --depth 1 \
+            "https://x-access-token:${BOT_TOKEN}@github.com/AceDataCloud/Index.git" /tmp/index
+          cd /tmp/index
+          git sparse-checkout init --cone
+          git sparse-checkout set PlatformBackend/cost MCP*/pyproject.toml
+          git submodule update --init --depth 1 PlatformBackend
+          for dir in MCP*; do
+            git submodule update --init --depth 1 "$dir" 2>/dev/null || true
+          done
+
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
-      - name: Generate README
+      - name: Generate profile README
         env:
           ACEDATACLOUD_OPENAI_KEY: ${{ secrets.ACEDATACLOUD_OPENAI_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python generate.py
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: python generate.py --workspace /tmp/index
 
       - name: Commit and push if changed
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Ace Data Cloud Dev"
+          git config user.email "dev@acedata.cloud"
           git add profile/README.md
-          git diff --staged --quiet || (git commit -m "Auto-update profile README" && git push)
+          git diff --staged --quiet || (git commit -m "chore: auto-update organization profile" && git push)

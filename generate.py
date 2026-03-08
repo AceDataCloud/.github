@@ -26,7 +26,6 @@ from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 OUTPUT_PATH = SCRIPT_DIR / "profile" / "README.md"
-WORKSPACE_ROOT = SCRIPT_DIR.parent  # parent monorepo (AceDataCloud/)
 
 OPENAI_BASE_URL = "https://api.acedata.cloud/v1"
 OPENAI_MODEL = "gpt-4.1-mini"
