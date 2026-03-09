@@ -2,31 +2,32 @@
 <img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
 <h1>Ace Data Cloud</h1>
 <b>Unified AI API Platform — One Key, Hundreds of AI Models</b>
-<p>Your gateway to seamless AI integration across chat, image, video, audio, and web search services.</p>
-<a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/platform-blue?style=flat-square" alt="Platform"/></a>
-<a href="https://docs.acedata.cloud"><img src="https://img.shields.io/badge/API%20Docs-green?style=flat-square" alt="API Docs"/></a>
-<a href="https://hub.acedata.cloud"><img src="https://img.shields.io/badge/Nexior%20App-orange?style=flat-square" alt="Nexior App"/></a>
-<a href="https://status.acedata.cloud"><img src="https://img.shields.io/badge/Status-brightgreen?style=flat-square" alt="Status"/></a>
+<p>Access a comprehensive suite of AI services including chat, image, video, music, and web search APIs through a single platform.</p>
+<a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/platform-blue?style=flat-square" alt="Platform" /></a>
+<a href="https://docs.acedata.cloud"><img src="https://img.shields.io/badge/api_docs-green?style=flat-square" alt="API Docs" /></a>
+<a href="https://hub.acedata.cloud"><img src="https://img.shields.io/badge/nexior_app-orange?style=flat-square" alt="Nexior App" /></a>
+<a href="https://status.acedata.cloud"><img src="https://img.shields.io/badge/status-brightgreen?style=flat-square" alt="Status" /></a>
 </div>
+
 ---
 
 ## What We Do
 
-Ace Data Cloud provides a unified platform to access a wide range of AI models via a single API key. Our services span conversational AI, image and video generation, music creation, and web search, enabling developers to build powerful AI applications effortlessly.
+Ace Data Cloud delivers a unified API platform that simplifies access to hundreds of AI models across multiple categories. Developers can integrate powerful AI capabilities for chat, image, video, audio, and web search with ease and scalability.
 
-| Category      | Services                                   |
-|---------------|--------------------------------------------|
-| LLM Chat      | Gemini, Kimi, Claude, DeepSeek, Grok, GPT / DALL·E / Sora |
-| Image Generation | Seedream, NanoBanana, Flux, Midjourney, QR Art           |
+| Category      | Services                                         |
+|---------------|-------------------------------------------------|
+| LLM Chat      | Gemini, Kimi, Claude, DeepSeek, Grok, OpenAI, AI Chat |
+| Image Generation | Seedream, NanoBanana, Flux, Midjourney, QR Art |
 | Video Generation | Seedance, Sora, Veo, Kling, Wan (Alibaba), Luma, Hailuo, Pixverse |
-| Music & Audio | Suno, Fish Audio, Producer                   |
-| Web Search    | Google SERP                                  |
+| Music & Audio | Suno, Fish, Producer                             |
+| Web Search    | Google SERP                                     |
 
 **Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)
 
 ## MCP Servers
 
-Model Context Protocol (MCP) servers let AI assistants use these APIs as tools for enhanced interaction and integration.
+Model Context Protocol (MCP) servers enable AI assistants to use these APIs as tools, providing seamless integration and extended capabilities.
 
 | Server | PyPI | Description |
 |--------|------|-------------|
@@ -48,9 +49,9 @@ pip install mcp-flux-pro mcp-luma mcp-midjourney mcp-nanobanana-pro mcp-seedance
 
 ## API Documentation
 
-Explore detailed API references and guides for our AI services:
+Explore detailed API references and integration guides for our AI services:
 
-[Flux API](https://github.com/AceDataCloud/FluxAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Midjourney API](https://github.com/AceDataCloud/MidjourneyAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [Open AI API](https://github.com/AceDataCloud/OpenAIAPI) · [Pixverse API](https://github.com/AceDataCloud/PixverseAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Full Documentation](https://docs.acedata.cloud)
+[Flux API](https://github.com/AceDataCloud/FluxAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Midjourney API](https://github.com/AceDataCloud/MidjourneyAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Pixverse API](https://github.com/AceDataCloud/PixverseAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Full Documentation](https://docs.acedata.cloud)
 
 ## Live Services
 
