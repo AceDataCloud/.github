@@ -2,31 +2,32 @@
 <img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
 <h1>Ace Data Cloud</h1>
 <b>Unified AI API Platform — One Key, Hundreds of AI Models</b>
-<p>Access a broad range of AI services through a single platform, simplifying integration and accelerating innovation.</p>
-<a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/platform-blue?style=flat-square" alt="Platform" /></a>
-<a href="https://docs.acedata.cloud"><img src="https://img.shields.io/badge/API%20Docs-green?style=flat-square" alt="API Docs" /></a>
-<a href="https://hub.acedata.cloud"><img src="https://img.shields.io/badge/Nexior%20App-orange?style=flat-square" alt="Nexior App" /></a>
-<a href="https://status.acedata.cloud"><img src="https://img.shields.io/badge/Status-brightgreen?style=flat-square" alt="Status" /></a>
+<p>Access and integrate diverse AI models for chat, image, video, audio, and web search with a single API key.</p>
+<a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/platform-blue?style=flat-square" alt="Platform"/></a>
+<a href="https://docs.acedata.cloud"><img src="https://img.shields.io/badge/API%20Docs-green?style=flat-square" alt="API Docs"/></a>
+<a href="https://hub.acedata.cloud"><img src="https://img.shields.io/badge/Nexior%20App-orange?style=flat-square" alt="Nexior App"/></a>
+<a href="https://status.acedata.cloud"><img src="https://img.shields.io/badge/Status-brightgreen?style=flat-square" alt="Status"/></a>
 </div>
+
 ---
 
 ## What We Do
 
-Ace Data Cloud offers seamless access to a wide variety of AI models and services, enabling developers and businesses to build intelligent applications quickly. Our platform unifies hundreds of AI APIs under one key, covering chat, image, video, audio, and web search.
+Ace Data Cloud offers a comprehensive AI API platform that unifies access to hundreds of AI services across multiple categories. Developers can seamlessly integrate powerful AI models for chat, image, video, music, and web search in one place.
 
-| Category       | Services                                         |
-|----------------|-------------------------------------------------|
-| LLM Chat       | Gemini, Kimi, Claude, DeepSeek, Grok, GPT       |
-| Image Generation | Seedream, NanoBanana, Flux, Midjourney, QR Art  |
-| Video Generation | Seedance, Sora, Veo, Kling, Wan (Alibaba), Luma, Hailuo, Pixverse |
-| Music & Audio  | Suno, Fish Audio, Producer                        |
-| Web Search     | Google SERP                                      |
+| Category       | Services                                    |
+| -------------- | -------------------------------------------|
+| LLM Chat       | GPT / DALL·E / Sora, Gemini, Claude, DeepSeek, Kimi, Grok, AI Chat |
+| Image Generation | Seedream, NanoBanana, Flux, Midjourney, QR Art, Artistic QR |
+| Video Generation | Seedance, Sora, Veo, Kling, Wan (Alibaba), Luma, Hailuo, Pixverse, Producer |
+| Music & Audio  | Suno, Fish Audio, Producer                  |
+| Web Search     | Google SERP                                 |
 
 **Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)
 
 ## MCP Servers
 
-Model Context Protocol (MCP) servers enable AI assistants to use these APIs as tools, providing seamless integration and context-aware interactions.
+Our MCP (Model Context Protocol) servers enable AI assistants to use these APIs as tools for enhanced interaction and automation.
 
 | Server | PyPI | Description |
 |--------|------|-------------|
@@ -77,7 +78,7 @@ Get your API key at [platform.acedata.cloud](https://platform.acedata.cloud) —
 
 ## $ACE Token
 
-The $ACE token powers the Ace Data Cloud ecosystem, enabling governance and rewards. Learn more at [pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump).
+The $ACE token powers the Ace Data Cloud ecosystem and enables access to premium AI services. Learn more at [pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump).
 
 ## Connect
 
