@@ -2,32 +2,32 @@
 <img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
 <h1>Ace Data Cloud</h1>
 <b>Unified AI API Platform — One Key, Hundreds of AI Models</b>
-<p>Access a broad range of AI services from chat and image generation to video and music, all through a single, unified API platform.</p>
+<p>Access a broad ecosystem of AI services for chat, image, video, music, and web search through a single API platform.</p>
 <a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/platform-blue?style=flat-square" alt="Platform"/></a>
 <a href="https://docs.acedata.cloud"><img src="https://img.shields.io/badge/API%20Docs-green?style=flat-square" alt="API Docs"/></a>
 <a href="https://hub.acedata.cloud"><img src="https://img.shields.io/badge/Nexior%20App-orange?style=flat-square" alt="Nexior App"/></a>
-<a href="https://status.acedata.cloud"><img src="https://img.shields.io/badge/status-brightgreen?style=flat-square" alt="Status"/></a>
+<a href="https://status.acedata.cloud"><img src="https://img.shields.io/badge/Status-brightgreen?style=flat-square" alt="Status"/></a>
 </div>
 
 ---
 
 ## What We Do
 
-Ace Data Cloud offers a comprehensive AI API platform that simplifies access to hundreds of AI models across multiple categories. Developers and businesses can integrate advanced AI capabilities with ease, from natural language chat to multimedia generation and web search.
+Ace Data Cloud provides a unified API platform that connects developers to hundreds of AI models across multiple categories. Our services enable powerful AI-driven chat, image and video generation, music creation, and web search capabilities all accessible with one API key.
 
-| Category    | Services                                  |
-|-------------|-------------------------------------------|
-| LLM Chat    | GPT / DALL·E / Sora, Gemini, Claude, DeepSeek, Grok, Kimi |
-| Image Generation | Midjourney, Flux, Seedream, NanoBanana, QR Art |
+| Category      | Services                                   |
+|---------------|--------------------------------------------|
+| LLM Chat      | GPT / DALL·E / Sora, Gemini, Claude, DeepSeek, Grok, Kimi |
+| Image Generation | Midjourney, Flux, NanoBanana, Seedream, QR Art          |
 | Video Generation | Seedance, Sora, Veo, Kling, Wan (Alibaba), Luma, Hailuo, Pixverse |
-| Music & Audio | Suno, Fish Audio, Producer |
-| Web Search  | Google SERP |
+| Music & Audio | Suno, Fish Audio, Producer                    |
+| Web Search    | Google SERP                                  |
 
 **Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)
 
 ## MCP Servers
 
-MCP (Model Context Protocol) servers enable AI assistants to use these APIs as tools, providing seamless integration and enhanced functionality.
+Our MCP (Model Context Protocol) servers let AI assistants seamlessly use these APIs as tools to enhance their capabilities.
 
 | Server | PyPI | Description |
 |--------|------|-------------|
@@ -49,7 +49,7 @@ pip install mcp-flux-pro mcp-luma mcp-midjourney mcp-nanobanana-pro mcp-seedance
 
 ## API Documentation
 
-Explore detailed API references and guides for our services:
+Explore detailed API docs for our services to get started quickly:
 
 [Flux API](https://github.com/AceDataCloud/FluxAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Midjourney API](https://github.com/AceDataCloud/MidjourneyAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Pixverse API](https://github.com/AceDataCloud/PixverseAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Full Documentation](https://docs.acedata.cloud)
 
@@ -78,7 +78,7 @@ Get your API key at [platform.acedata.cloud](https://platform.acedata.cloud) —
 
 ## $ACE Token
 
-The $ACE token powers the Ace Data Cloud ecosystem, enabling governance and rewards. Learn more at [pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump).
+The $ACE token powers the Ace Data Cloud ecosystem and enables seamless transactions. Learn more at [pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump).
 
 ## Connect
 
