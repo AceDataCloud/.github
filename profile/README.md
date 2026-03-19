@@ -1,36 +1,59 @@
-<div align="center">
-<img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="120" />
-<h1>Ace Data Cloud</h1>
-<b>Unified AI API Platform — One Key, Hundreds of AI Models</b>
-<p>Access a broad ecosystem of AI models for chat, image, video, music, and search through a single API platform.</p>
-<a href="https://platform.acedata.cloud"><img src="https://img.shields.io/badge/platform-blue?style=flat-square" alt="Platform"/></a>
-<a href="https://docs.acedata.cloud"><img src="https://img.shields.io/badge/API%20Docs-green?style=flat-square" alt="API Docs"/></a>
-<a href="https://hub.acedata.cloud"><img src="https://img.shields.io/badge/Nexior%20App-orange?style=flat-square" alt="Nexior App"/></a>
-<a href="https://status.acedata.cloud"><img src="https://img.shields.io/badge/Status-brightgreen?style=flat-square" alt="Status"/></a>
-</div>
+# Ace Data Cloud
+
+![Ace Data Cloud](https://cdn.acedata.cloud/logo.png/thumb_450x_)
+
+[![Platform](https://img.shields.io/badge/platform-blue?style=flat-square)](https://platform.acedata.cloud)
+[![API Docs](https://img.shields.io/badge/API%20Docs-green?style=flat-square)](https://docs.acedata.cloud)
+[![Nexior App](https://img.shields.io/badge/Nexior%20App-orange?style=flat-square)](https://hub.acedata.cloud)
+[![Status](https://img.shields.io/badge/Status-brightgreen?style=flat-square)](https://status.acedata.cloud)
+
+Unified AI API Platform for Developers, AI Agents, and MCP Tools.
+
+Ship chat, image, video, music, search, and automation workflows globally through one API key, one billing system, and one developer platform.
 
 ---
 
 ## What We Do
 
-Ace Data Cloud offers a unified API platform connecting you to hundreds of AI models across multiple categories. Quickly integrate chatbots, image and video generation, music creation, and web search into your applications with one API key.
+Ace Data Cloud is a developer-first AI infrastructure platform. We make it practical to integrate leading AI APIs, MCP servers, and open workflows without juggling separate vendors, fragmented billing, or per-service auth.
 
-| Category    | Services                                      |
-|-------------|-----------------------------------------------|
-| LLM Chat    | Gemini, Kimi, Claude, DeepSeek, Grok, GPT / DALL·E / Sora |
+## Why Developers Use Ace Data Cloud
+
+- One API key for multiple AI providers and model families
+- OpenAI-compatible API gateway for fast integration
+- Production-ready APIs for image generation, video generation, music generation, chat, search, and automation
+- 18-language documentation and global-ready developer onboarding
+- MCP servers for Copilot, Claude, Cursor, VS Code, and other AI assistants
+- Billing, usage tracking, and developer tooling in one place
+
+| Category | Services |
+| --- | --- |
+| LLM Chat | Gemini, Kimi, Claude, DeepSeek, Grok, GPT / DALL·E / Sora |
 | Image Generation | Seedream, NanoBanana, Flux, Midjourney, QR Art, Face Transform |
 | Video Generation | Seedance, Sora, Veo, Kling, Wan (Alibaba), Luma, Hailuo, Pixverse |
-| Music & Audio | Suno, Fish Audio, Producer                     |
-| Web Search  | Google SERP                                   |
+| Music & Audio | Suno, Fish Audio, Producer |
+| Web Search | Google SERP |
 
 **Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)
+
+## Featured Repositories
+
+| Repository | Purpose |
+| --- | --- |
+| [Docs](https://github.com/AceDataCloud/Docs) | Global API documentation, guides, quickstart, and OpenAPI references |
+| [PlatformBackend](https://github.com/AceDataCloud/PlatformBackend) | Core Django backend for services, billing, docs, and developer platform APIs |
+| [PlatformFrontend](https://github.com/AceDataCloud/PlatformFrontend) | Vue-based developer portal for API docs, credentials, billing, and service discovery |
+| [Nexior](https://github.com/AceDataCloud/Nexior) | Consumer-facing AI application for chat, image, video, and music workflows |
+| [VSCodeMCP](https://github.com/AceDataCloud/VSCodeMCP) | VS Code extension bundling Ace Data Cloud MCP servers |
+| [Dify](https://github.com/AceDataCloud/Dify) | AceDataCloud Dify fork with OAuth SSO and custom AI plugins |
+| [FacilitatorX402](https://github.com/AceDataCloud/FacilitatorX402) | X402 payment protocol facilitator for AI API billing |
 
 ## MCP Servers
 
 Our MCP (Model Context Protocol) servers enable AI assistants to use these APIs as powerful tools.
 
 | Server | PyPI | Description |
-|--------|------|-------------|
+| --- | --- | --- |
 | [MCPFlux](https://github.com/AceDataCloud/MCPFlux) | [![PyPI](https://img.shields.io/pypi/v/mcp-flux-pro?style=flat-square)](https://pypi.org/project/mcp-flux-pro/) | Flux AI Image Generation |
 | [MCPLuma](https://github.com/AceDataCloud/MCPLuma) | [![PyPI](https://img.shields.io/pypi/v/mcp-luma?style=flat-square)](https://pypi.org/project/mcp-luma/) | Luma AI Video Generation |
 | [MCPMidjourney](https://github.com/AceDataCloud/MCPMidjourney) | [![PyPI](https://img.shields.io/pypi/v/mcp-midjourney?style=flat-square)](https://pypi.org/project/mcp-midjourney/) | Midjourney AI Image Generation |
@@ -47,6 +70,8 @@ Our MCP (Model Context Protocol) servers enable AI assistants to use these APIs 
 pip install mcp-flux-pro mcp-luma mcp-midjourney mcp-nanobanana-pro mcp-seedance mcp-seedream-pro mcp-serp mcp-shorturl mcp-sora mcp-suno mcp-veo
 ```
 
+Use our MCP servers with GitHub Copilot, Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients.
+
 ## API Documentation
 
 Explore detailed API references for our services:
@@ -56,7 +81,7 @@ Explore detailed API references for our services:
 ## Live Services
 
 | Service | Description |
-|---------|-------------|
+| --- | --- |
 | [Developer Platform](https://platform.acedata.cloud) | API keys, docs, billing, analytics |
 | [API Gateway](https://api.acedata.cloud) | OpenAI-compatible REST API endpoint |
 | [Nexior](https://hub.acedata.cloud) | Consumer app — chat, generate images, video, music |
@@ -64,6 +89,13 @@ Explore detailed API references for our services:
 | [Dify AI](https://dify.acedata.cloud) | Visual AI workflow builder |
 | [Status](https://status.acedata.cloud) | Real-time service health monitoring |
 | [Roadmap](https://roadmap.acedata.cloud) | Public feature roadmap |
+
+## Build Globally
+
+- Public docs and guides for global developers
+- MCP registry presence across Smithery, Glama, and community directories
+- API docs repositories for search discovery and long-tail developer traffic
+- Automation infrastructure for multi-platform technical content distribution
 
 ## Quick Start
 
