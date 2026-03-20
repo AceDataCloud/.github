@@ -2,12 +2,9 @@
 
 ![Ace Data Cloud](https://cdn.acedata.cloud/logo.png/thumb_450x_)
 
-[![Platform](https://img.shields.io/badge/platform-blue?style=flat-square)](https://platform.acedata.cloud)
-[![API Docs](https://img.shields.io/badge/API%20Docs-green?style=flat-square)](https://docs.acedata.cloud)
-[![Nexior App](https://img.shields.io/badge/Nexior%20App-orange?style=flat-square)](https://hub.acedata.cloud)
-[![Status](https://img.shields.io/badge/Status-brightgreen?style=flat-square)](https://status.acedata.cloud)
+[![Platform](https://img.shields.io/badge/platform-blue?style=flat-square)](https://platform.acedata.cloud) [![API Docs](https://img.shields.io/badge/API%20Docs-green?style=flat-square)](https://docs.acedata.cloud) [![Nexior App](https://img.shields.io/badge/Nexior%20App-orange?style=flat-square)](https://hub.acedata.cloud) [![Status](https://img.shields.io/badge/Status-brightgreen?style=flat-square)](https://status.acedata.cloud)
 
-Unified AI API Platform for Developers, AI Agents, and MCP Tools.
+**Unified AI API Platform for Developers, AI Agents, and MCP Tools.**
 
 Ship chat, image, video, music, search, and automation workflows globally through one API key, one billing system, and one developer platform.
 
@@ -29,8 +26,8 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 | Category | Services |
 | --- | --- |
 | LLM Chat | Gemini, Kimi, Claude, DeepSeek, Grok, GPT / DALL·E / Sora |
-| Image Generation | Seedream, NanoBanana, Flux, Midjourney, QR Art, Face Transform |
-| Video Generation | Seedance, Sora, Veo, Kling, Wan (Alibaba), Luma, Hailuo, Pixverse |
+| Image Generation | Seedream, NanoBanana, Flux, Midjourney, Face Transform, QR Art |
+| Video Generation | Seedance, Sora, Veo, Kling, Wan (Alibaba), Luma, Hailuo |
 | Music & Audio | Suno, Fish Audio, Producer |
 | Web Search | Google SERP |
 
@@ -40,17 +37,15 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 
 | Repository | Purpose |
 | --- | --- |
-| [Docs](https://github.com/AceDataCloud/Docs) | Global API documentation, guides, quickstart, and OpenAPI references |
-| [PlatformBackend](https://github.com/AceDataCloud/PlatformBackend) | Core Django backend for services, billing, docs, and developer platform APIs |
-| [PlatformFrontend](https://github.com/AceDataCloud/PlatformFrontend) | Vue-based developer portal for API docs, credentials, billing, and service discovery |
-| [Nexior](https://github.com/AceDataCloud/Nexior) | Consumer-facing AI application for chat, image, video, and music workflows |
-| [VSCodeMCP](https://github.com/AceDataCloud/VSCodeMCP) | VS Code extension bundling Ace Data Cloud MCP servers |
-| [Dify](https://github.com/AceDataCloud/Dify) | AceDataCloud Dify fork with OAuth SSO and custom AI plugins |
-| [FacilitatorX402](https://github.com/AceDataCloud/FacilitatorX402) | X402 payment protocol facilitator for AI API billing |
+| [.github](https://github.com/AceDataCloud/.github) | Organization profile and GitHub entry point for Ace Data Cloud's AI API and MCP ecosystem |
+| [Docs](https://github.com/AceDataCloud/Docs) | Global API documentation, quickstart guides, and OpenAPI references for Ace Data Cloud services |
+| [VSCodeMCP](https://github.com/AceDataCloud/VSCodeMCP) | VS Code extension that bundles Ace Data Cloud MCP servers for developer workflows |
+| [Nexior](https://github.com/AceDataCloud/Nexior) | Consumer AI application for chat, image generation, video generation, and music creation |
+| [FacilitatorX402](https://github.com/AceDataCloud/FacilitatorX402) | X402 payment facilitator for AI API billing with Solana USDC and Base USDC support |
 
 ## MCP Servers
 
-Our MCP (Model Context Protocol) servers enable AI assistants to use these APIs as powerful tools.
+Our MCP (Model Context Protocol) servers let AI assistants use these APIs as powerful tools.
 
 | Server | PyPI | Description |
 | --- | --- | --- |
@@ -84,7 +79,7 @@ Explore detailed API references for our services:
 | --- | --- |
 | [Developer Platform](https://platform.acedata.cloud) | API keys, docs, billing, analytics |
 | [API Gateway](https://api.acedata.cloud) | OpenAI-compatible REST API endpoint |
-| [Nexior](https://hub.acedata.cloud) | Consumer app — chat, generate images, video, music |
+| [Nexior](https://hub.acedata.cloud) | Consumer app - chat, generate images, video, music |
 | [Documentation](https://docs.acedata.cloud) | Quickstart guides and API references |
 | [Dify AI](https://dify.acedata.cloud) | Visual AI workflow builder |
 | [Status](https://status.acedata.cloud) | Real-time service health monitoring |
@@ -93,7 +88,7 @@ Explore detailed API references for our services:
 ## Build Globally
 
 - Public docs and guides for global developers
-- MCP registry presence across Smithery, Glama, and community directories
+- MCP ecosystem distribution across registries and community directories
 - API docs repositories for search discovery and long-tail developer traffic
 - Automation infrastructure for multi-platform technical content distribution
 
@@ -101,16 +96,19 @@ Explore detailed API references for our services:
 
 ```bash
 curl https://api.acedata.cloud/v1/chat/completions \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"model":"gpt-4o","messages":[{"role":"user","content":"Hello, world!"}]}'
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model": "gpt-4o",
+    "messages": [{"role": "user", "content": "Hello from Ace Data Cloud"}]
+  }'
 ```
 
-Get your API key at [platform.acedata.cloud](https://platform.acedata.cloud) — free tier available.
+Get your API key at [platform.acedata.cloud](https://platform.acedata.cloud) - free tier available.
 
 ## $ACE Token
 
-The $ACE token powers the Ace Data Cloud ecosystem. Learn more and trade at [pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump).
+The [$ACE token](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKpump) connects the Ace Data Cloud ecosystem with community growth, incentives, and broader developer discovery.
 
 ## Connect
 
