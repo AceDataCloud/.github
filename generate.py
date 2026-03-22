@@ -302,15 +302,21 @@ FEATURED_REPO_ORDER = [
     ".github",
     "Docs",
     "VSCodeMCP",
+    "Skills",
     "Nexior",
+    "Dify",
     "FacilitatorX402",
 ]
 
 FEATURED_REPO_PURPOSE = {
     ".github": "Organization profile and GitHub entry point for Ace Data Cloud's AI API and MCP ecosystem",
     "Docs": "Global API documentation, quickstart guides, and OpenAPI references for Ace Data Cloud services",
+    "Skills": "Agent Skills repository for Claude Code, GitHub Copilot, Gemini CLI, OpenHands, Roo Code, and other coding agents",
     "VSCodeMCP": "VS Code extension that bundles Ace Data Cloud MCP servers for developer workflows",
+    "PlatformBackend": "Core backend for service catalog, billing, applications, credentials, orders, and platform APIs",
+    "PlatformFrontend": "Developer portal for API docs, pricing, credentials, and service management",
     "Nexior": "Consumer AI application for chat, image generation, video generation, and music creation",
+    "Dify": "Ace Data Cloud fork of Dify with OAuth login, model auto-provisioning, and plugin integration",
     "FacilitatorX402": "X402 payment facilitator for AI API billing with Solana USDC and Base USDC support",
 }
 
@@ -324,6 +330,18 @@ LIVE_SERVICES = [
     ("Roadmap", "https://roadmap.acedata.cloud", "Public feature roadmap"),
 ]
 
+AGENT_SURFACES = [
+    (
+        "Agent Skills",
+        "https://github.com/AceDataCloud/Skills",
+        "18 reusable skills for 15+ coding agents including Claude Code, GitHub Copilot, Gemini CLI, OpenHands, Roo Code, and TRAE",
+    ),
+    (
+        "VS Code MCP Extension",
+        "https://github.com/AceDataCloud/VSCodeMCP",
+        "Marketplace-ready VS Code extension bundling 11 hosted and local MCP server integrations for Copilot Chat",
+    ),
+]
 
 def clean_brand_name(display_name: str) -> str:
     """Normalize service names for the public category table."""
@@ -475,6 +493,21 @@ def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dic
 
     for repo in build_featured_repos(repos):
         lines.append(f"| [{repo['name']}]({repo['url']}) | {repo['purpose']} |")
+
+    lines.extend(
+        [
+            "",
+            "## Agent Surfaces",
+            "",
+            "Ace Data Cloud ships both reusable agent knowledge and executable MCP tooling for modern coding assistants.",
+            "",
+            "| Surface | Purpose |",
+            "| --- | --- |",
+        ]
+    )
+
+    for name, url, purpose in AGENT_SURFACES:
+        lines.append(f"| [{name}]({url}) | {purpose} |")
 
     lines.extend(
         [
