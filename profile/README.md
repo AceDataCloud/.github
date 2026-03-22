@@ -40,8 +40,18 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 | [.github](https://github.com/AceDataCloud/.github) | Organization profile and GitHub entry point for Ace Data Cloud's AI API and MCP ecosystem |
 | [Docs](https://github.com/AceDataCloud/Docs) | Global API documentation, quickstart guides, and OpenAPI references for Ace Data Cloud services |
 | [VSCodeMCP](https://github.com/AceDataCloud/VSCodeMCP) | VS Code extension that bundles Ace Data Cloud MCP servers for developer workflows |
+| [Skills](https://github.com/AceDataCloud/Skills) | Agent Skills repository for Claude Code, GitHub Copilot, Gemini CLI, OpenHands, Roo Code, and other coding agents |
 | [Nexior](https://github.com/AceDataCloud/Nexior) | Consumer AI application for chat, image generation, video generation, and music creation |
 | [FacilitatorX402](https://github.com/AceDataCloud/FacilitatorX402) | X402 payment facilitator for AI API billing with Solana USDC and Base USDC support |
+
+## Agent Surfaces
+
+Ace Data Cloud ships both reusable agent knowledge and executable MCP tooling for modern coding assistants.
+
+| Surface | Purpose |
+| --- | --- |
+| [Agent Skills](https://github.com/AceDataCloud/Skills) | 18 reusable skills for 15+ coding agents including Claude Code, GitHub Copilot, Gemini CLI, OpenHands, Roo Code, and TRAE |
+| [VS Code MCP Extension](https://github.com/AceDataCloud/VSCodeMCP) | Marketplace-ready VS Code extension bundling 11 hosted and local MCP server integrations for Copilot Chat |
 
 ## MCP Servers
 
