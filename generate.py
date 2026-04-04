@@ -621,31 +621,8 @@ def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dic
         [
             "",
             "**Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)",
-            "",
-            "## Featured Repositories",
-            "",
-            "| Repository | Purpose |",
-            "| --- | --- |",
         ]
     )
-
-    for repo in build_featured_repos(repos):
-        lines.append(f"| [{repo['name']}]({repo['url']}) | {repo['purpose']} |")
-
-    lines.extend(
-        [
-            "",
-            "## Agent Surfaces",
-            "",
-            "Ace Data Cloud ships both reusable agent knowledge and executable MCP tooling for modern coding assistants.",
-            "",
-            "| Surface | Purpose |",
-            "| --- | --- |",
-        ]
-    )
-
-    for name, url, purpose in AGENT_SURFACES:
-        lines.append(f"| [{name}]({url}) | {purpose} |")
 
     lines.extend(
         [
@@ -667,15 +644,8 @@ def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dic
             f"[![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/) | "
             f"{server['description']} |"
         )
-
-    install_packages = " ".join(server["package_name"] for server in mcp_servers)
     lines.extend(
         [
-            "",
-            "```bash",
-            f"pip install {install_packages}",
-            "```",
-            "",
             "Use our MCP servers with GitHub Copilot, Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients.",
         ]
     )
@@ -702,15 +672,6 @@ def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dic
                 f"[![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/) | "
                 f"{tool['description']} |"
             )
-        install_cli_packages = " ".join(tool["package_name"] for tool in effective_cli_tools)
-        lines.extend(
-            [
-                "",
-                "```bash",
-                f"pip install {install_cli_packages}",
-                "```",
-            ]
-        )
 
     lines.extend(
         [
@@ -735,13 +696,13 @@ def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dic
             "",
             "## Live Services",
             "",
-            "| Service | Description |",
-            "| --- | --- |",
+            "| Service | Description | Link |",
+            "| --- | --- | --- |",
         ]
     )
 
     for name, url, description in LIVE_SERVICES:
-        lines.append(f"| [{name}]({url}) | {description} |")
+        lines.append(f"| {name} | {description} | [{url.removeprefix('https://')}]({url}) |")
 
     lines.extend(
         [
@@ -842,34 +803,35 @@ STRUCTURE (keep this exact order):
    Keep it clean — just brand names, no endpoints, no stages, no emojis in cells. \
    After the table: "**Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)"
 
-3. **## Featured Repositories** — Add a 2-column table `Repository | Purpose` using real repos \
-    from the provided GitHub data. Include these when present: Docs, PlatformBackend, PlatformFrontend, \
-    Nexior, VSCodeMCP, Dify, FacilitatorX402. Purpose text must be concise, keyword-rich, and based on real \
-    descriptions or obvious repo roles from names. No inventions.
-
-4. **## MCP Servers** — One intro sentence about MCP (Model Context Protocol) \
+3. **## MCP Servers** — One intro sentence about MCP (Model Context Protocol) \
    letting AI assistants use these APIs as tools. Then a table:
    | Server | PyPI | Description |
    - Server: link to `github.com/AceDataCloud/{dir_name}`
    - PyPI: badge [![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/)
    - Description: from the data as-is
-   After table: ```pip install {all package names}```
     Then one short sentence: use these MCP servers with GitHub Copilot, Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients.
+
+4. **## CLI Tools** — One intro sentence and a table:
+    | Tool | PyPI | Description |
+    - Tool: link to `github.com/AceDataCloud/{dir_name}`
+    - PyPI: badge [![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/)
+    - Description: from the data as-is
+    - Do NOT add install command blocks.
 
 5. **## API Documentation** — One intro sentence, then inline dot-separated links. \
    Include ONLY GitHub repos whose name ends with "API" \
    (e.g. FluxAPI, SunoAPI). Display: split CamelCase → "Flux API". \
    Also link to [Full Documentation](https://docs.acedata.cloud) at the end.
 
-6. **## Live Services** — Table with columns: Service | Description. \
-   The Service column MUST be a Markdown link: [Name](https://url). Rows:
-   - [Developer Platform](https://platform.acedata.cloud) | API keys, docs, billing, analytics
-   - [API Gateway](https://api.acedata.cloud) | OpenAI-compatible REST API endpoint
-   - [Nexior](https://hub.acedata.cloud) | Consumer app — chat, generate images, video, music
-   - [Documentation](https://docs.acedata.cloud) | Quickstart guides and API references
-   - [Dify AI](https://dify.acedata.cloud) | Visual AI workflow builder
-   - [Status](https://status.acedata.cloud) | Real-time service health monitoring
-   - [Roadmap](https://roadmap.acedata.cloud) | Public feature roadmap
+6. **## Live Services** — Table with columns: Service | Description | Link. \
+    Service column is plain text name; Link column contains markdown links. Rows:
+    - Developer Platform | API keys, docs, billing, analytics | [platform.acedata.cloud](https://platform.acedata.cloud)
+    - API Gateway | OpenAI-compatible REST API endpoint | [api.acedata.cloud](https://api.acedata.cloud)
+    - Nexior | Consumer app — chat, generate images, video, music | [hub.acedata.cloud](https://hub.acedata.cloud)
+    - Documentation | Quickstart guides and API references | [docs.acedata.cloud](https://docs.acedata.cloud)
+    - Dify AI | Visual AI workflow builder | [dify.acedata.cloud](https://dify.acedata.cloud)
+    - Status | Real-time service health monitoring | [status.acedata.cloud](https://status.acedata.cloud)
+    - Roadmap | Public feature roadmap | [roadmap.acedata.cloud](https://roadmap.acedata.cloud)
 
 7. **## Build Globally** — exactly 4 bullets covering:
     - public docs and guides for global developers
