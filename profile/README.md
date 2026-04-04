@@ -33,20 +33,6 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 
 **Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)
 
-## Featured Repositories
-
-| Repository | Purpose |
-| --- | --- |
-
-## Agent Surfaces
-
-Ace Data Cloud ships both reusable agent knowledge and executable MCP tooling for modern coding assistants.
-
-| Surface | Purpose |
-| --- | --- |
-| [Agent Skills](https://github.com/AceDataCloud/Skills) | 18 reusable skills for 15+ coding agents including Claude Code, GitHub Copilot, Gemini CLI, OpenHands, Roo Code, and TRAE |
-| [VS Code MCP Extension](https://github.com/AceDataCloud/VSCodeMCP) | Marketplace-ready VS Code extension bundling 11 hosted and local MCP server integrations for Copilot Chat |
-
 ## MCP Servers
 
 Our MCP (Model Context Protocol) servers let AI assistants use these APIs as powerful tools.
@@ -64,11 +50,6 @@ Our MCP (Model Context Protocol) servers let AI assistants use these APIs as pow
 | [SoraMCP](https://github.com/AceDataCloud/SoraMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-sora?style=flat-square)](https://pypi.org/project/mcp-sora/) | Sora AI Video Generation |
 | [SunoMCP](https://github.com/AceDataCloud/SunoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-suno?style=flat-square)](https://pypi.org/project/mcp-suno/) | Suno AI Music Generation |
 | [VeoMCP](https://github.com/AceDataCloud/VeoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-veo?style=flat-square)](https://pypi.org/project/mcp-veo/) | Veo AI Video Generation |
-
-```bash
-pip install mcp-flux-pro mcp-luma mcp-midjourney mcp-nanobanana-pro mcp-seedance mcp-seedream-pro mcp-serp mcp-shorturl mcp-sora mcp-suno mcp-veo
-```
-
 Use our MCP servers with GitHub Copilot, Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients.
 
 ## CLI Tools
@@ -85,10 +66,6 @@ Generate images, videos, and music directly from your terminal.
 | [SunoCli](https://github.com/AceDataCloud/SunoCli) | [![PyPI](https://img.shields.io/pypi/v/suno-cli?style=flat-square)](https://pypi.org/project/suno-cli/) | Suno AI Music Generation |
 | [VeoCli](https://github.com/AceDataCloud/VeoCli) | [![PyPI](https://img.shields.io/pypi/v/veo-cli?style=flat-square)](https://pypi.org/project/veo-cli/) | Google Veo AI Video Generation |
 
-```bash
-pip install luma-pro-cli nano-banana-pro-cli seedance-cli seedream-cli sora-pro-cli suno-cli veo-cli
-```
-
 ## API Documentation
 
 Explore detailed API references for our services:
@@ -97,15 +74,15 @@ Explore detailed API references for our services:
 
 ## Live Services
 
-| Service | Description |
-| --- | --- |
-| [Developer Platform](https://platform.acedata.cloud) | API keys, docs, billing, analytics |
-| [API Gateway](https://api.acedata.cloud) | OpenAI-compatible REST API endpoint |
-| [Nexior](https://hub.acedata.cloud) | Consumer app - chat, generate images, video, music |
-| [Documentation](https://docs.acedata.cloud) | Quickstart guides and API references |
-| [Dify AI](https://dify.acedata.cloud) | Visual AI workflow builder |
-| [Status](https://status.acedata.cloud) | Real-time service health monitoring |
-| [Roadmap](https://roadmap.acedata.cloud) | Public feature roadmap |
+| Service | Description | Link |
+| --- | --- | --- |
+| Developer Platform | API keys, docs, billing, analytics | [platform.acedata.cloud](https://platform.acedata.cloud) |
+| API Gateway | OpenAI-compatible REST API endpoint | [api.acedata.cloud](https://api.acedata.cloud) |
+| Nexior | Consumer app - chat, generate images, video, music | [hub.acedata.cloud](https://hub.acedata.cloud) |
+| Documentation | Quickstart guides and API references | [docs.acedata.cloud](https://docs.acedata.cloud) |
+| Dify AI | Visual AI workflow builder | [dify.acedata.cloud](https://dify.acedata.cloud) |
+| Status | Real-time service health monitoring | [status.acedata.cloud](https://status.acedata.cloud) |
+| Roadmap | Public feature roadmap | [roadmap.acedata.cloud](https://roadmap.acedata.cloud) |
 
 ## Build Globally
 
