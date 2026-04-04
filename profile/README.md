@@ -37,12 +37,6 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 
 | Repository | Purpose |
 | --- | --- |
-| [.github](https://github.com/AceDataCloud/.github) | Organization profile and GitHub entry point for Ace Data Cloud's AI API and MCP ecosystem |
-| [Docs](https://github.com/AceDataCloud/Docs) | Global API documentation, quickstart guides, and OpenAPI references for Ace Data Cloud services |
-| [VSCodeMCP](https://github.com/AceDataCloud/VSCodeMCP) | VS Code extension that bundles Ace Data Cloud MCP servers for developer workflows |
-| [Skills](https://github.com/AceDataCloud/Skills) | Agent Skills repository for Claude Code, GitHub Copilot, Gemini CLI, OpenHands, Roo Code, and other coding agents |
-| [Nexior](https://github.com/AceDataCloud/Nexior) | Consumer AI application for chat, image generation, video generation, and music creation |
-| [FacilitatorX402](https://github.com/AceDataCloud/FacilitatorX402) | X402 payment facilitator for AI API billing with Solana USDC and Base USDC support |
 
 ## Agent Surfaces
 
@@ -59,23 +53,41 @@ Our MCP (Model Context Protocol) servers let AI assistants use these APIs as pow
 
 | Server | PyPI | Description |
 | --- | --- | --- |
-| [MCPFlux](https://github.com/AceDataCloud/MCPFlux) | [![PyPI](https://img.shields.io/pypi/v/mcp-flux-pro?style=flat-square)](https://pypi.org/project/mcp-flux-pro/) | Flux AI Image Generation |
-| [MCPLuma](https://github.com/AceDataCloud/MCPLuma) | [![PyPI](https://img.shields.io/pypi/v/mcp-luma?style=flat-square)](https://pypi.org/project/mcp-luma/) | Luma AI Video Generation |
-| [MCPMidjourney](https://github.com/AceDataCloud/MCPMidjourney) | [![PyPI](https://img.shields.io/pypi/v/mcp-midjourney?style=flat-square)](https://pypi.org/project/mcp-midjourney/) | Midjourney AI Image Generation |
-| [MCPNanoBanana](https://github.com/AceDataCloud/MCPNanoBanana) | [![PyPI](https://img.shields.io/pypi/v/mcp-nanobanana-pro?style=flat-square)](https://pypi.org/project/mcp-nanobanana-pro/) | NanoBanana AI Image Generation |
-| [MCPSeedance](https://github.com/AceDataCloud/MCPSeedance) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedance?style=flat-square)](https://pypi.org/project/mcp-seedance/) | ByteDance Seedance AI Video Generation |
-| [MCPSeedream](https://github.com/AceDataCloud/MCPSeedream) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedream-pro?style=flat-square)](https://pypi.org/project/mcp-seedream-pro/) | ByteDance Seedream AI Image Generation |
-| [MCPSerp](https://github.com/AceDataCloud/MCPSerp) | [![PyPI](https://img.shields.io/pypi/v/mcp-serp?style=flat-square)](https://pypi.org/project/mcp-serp/) | Google SERP Search |
-| [MCPShortURL](https://github.com/AceDataCloud/MCPShortURL) | [![PyPI](https://img.shields.io/pypi/v/mcp-shorturl?style=flat-square)](https://pypi.org/project/mcp-shorturl/) | URL Shortening |
-| [MCPSora](https://github.com/AceDataCloud/MCPSora) | [![PyPI](https://img.shields.io/pypi/v/mcp-sora?style=flat-square)](https://pypi.org/project/mcp-sora/) | Sora AI Video Generation |
-| [MCPSuno](https://github.com/AceDataCloud/MCPSuno) | [![PyPI](https://img.shields.io/pypi/v/mcp-suno?style=flat-square)](https://pypi.org/project/mcp-suno/) | Suno AI Music Generation |
-| [MCPVeo](https://github.com/AceDataCloud/MCPVeo) | [![PyPI](https://img.shields.io/pypi/v/mcp-veo?style=flat-square)](https://pypi.org/project/mcp-veo/) | Veo AI Video Generation |
+| [FluxMCP](https://github.com/AceDataCloud/FluxMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-flux-pro?style=flat-square)](https://pypi.org/project/mcp-flux-pro/) | Flux AI Image Generation |
+| [LumaMCP](https://github.com/AceDataCloud/LumaMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-luma?style=flat-square)](https://pypi.org/project/mcp-luma/) | Luma AI Video Generation |
+| [MidjourneyMCP](https://github.com/AceDataCloud/MidjourneyMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-midjourney?style=flat-square)](https://pypi.org/project/mcp-midjourney/) | Midjourney AI Image Generation |
+| [NanoBananaMCP](https://github.com/AceDataCloud/NanoBananaMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-nanobanana-pro?style=flat-square)](https://pypi.org/project/mcp-nanobanana-pro/) | NanoBanana AI Image Generation |
+| [SeedanceMCP](https://github.com/AceDataCloud/SeedanceMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedance?style=flat-square)](https://pypi.org/project/mcp-seedance/) | ByteDance Seedance AI Video Generation |
+| [SeedreamMCP](https://github.com/AceDataCloud/SeedreamMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedream-pro?style=flat-square)](https://pypi.org/project/mcp-seedream-pro/) | ByteDance Seedream AI Image Generation |
+| [SerpMCP](https://github.com/AceDataCloud/SerpMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-serp?style=flat-square)](https://pypi.org/project/mcp-serp/) | Google SERP Search |
+| [ShortURLMCP](https://github.com/AceDataCloud/ShortURLMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-shorturl?style=flat-square)](https://pypi.org/project/mcp-shorturl/) | URL Shortening |
+| [SoraMCP](https://github.com/AceDataCloud/SoraMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-sora?style=flat-square)](https://pypi.org/project/mcp-sora/) | Sora AI Video Generation |
+| [SunoMCP](https://github.com/AceDataCloud/SunoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-suno?style=flat-square)](https://pypi.org/project/mcp-suno/) | Suno AI Music Generation |
+| [VeoMCP](https://github.com/AceDataCloud/VeoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-veo?style=flat-square)](https://pypi.org/project/mcp-veo/) | Veo AI Video Generation |
 
 ```bash
 pip install mcp-flux-pro mcp-luma mcp-midjourney mcp-nanobanana-pro mcp-seedance mcp-seedream-pro mcp-serp mcp-shorturl mcp-sora mcp-suno mcp-veo
 ```
 
 Use our MCP servers with GitHub Copilot, Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients.
+
+## CLI Tools
+
+Generate images, videos, and music directly from your terminal.
+
+| Tool | PyPI | Description |
+| --- | --- | --- |
+| [LumaCli](https://github.com/AceDataCloud/LumaCli) | [![PyPI](https://img.shields.io/pypi/v/luma-pro-cli?style=flat-square)](https://pypi.org/project/luma-pro-cli/) | Luma Dream Machine AI Video Generation |
+| [NanoBananaCli](https://github.com/AceDataCloud/NanoBananaCli) | [![PyPI](https://img.shields.io/pypi/v/nano-banana-pro-cli?style=flat-square)](https://pypi.org/project/nano-banana-pro-cli/) | NanoBanana AI Image Generation |
+| [SeedanceCli](https://github.com/AceDataCloud/SeedanceCli) | [![PyPI](https://img.shields.io/pypi/v/seedance-cli?style=flat-square)](https://pypi.org/project/seedance-cli/) | Seedance AI Video Generation |
+| [SeedreamCli](https://github.com/AceDataCloud/SeedreamCli) | [![PyPI](https://img.shields.io/pypi/v/seedream-cli?style=flat-square)](https://pypi.org/project/seedream-cli/) | Seedream AI Image Generation |
+| [SoraCli](https://github.com/AceDataCloud/SoraCli) | [![PyPI](https://img.shields.io/pypi/v/sora-pro-cli?style=flat-square)](https://pypi.org/project/sora-pro-cli/) | Sora AI Video Generation |
+| [SunoCli](https://github.com/AceDataCloud/SunoCli) | [![PyPI](https://img.shields.io/pypi/v/suno-cli?style=flat-square)](https://pypi.org/project/suno-cli/) | Suno AI Music Generation |
+| [VeoCli](https://github.com/AceDataCloud/VeoCli) | [![PyPI](https://img.shields.io/pypi/v/veo-cli?style=flat-square)](https://pypi.org/project/veo-cli/) | Google Veo AI Video Generation |
+
+```bash
+pip install luma-pro-cli nano-banana-pro-cli seedance-cli seedream-cli sora-pro-cli suno-cli veo-cli
+```
 
 ## API Documentation
 
