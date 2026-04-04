@@ -24,15 +24,10 @@ jobs:
           git clone --no-checkout --depth 1 \
             "https://github.com/AceDataCloud/Index.git" /tmp/index
           cd /tmp/index
-          # Dynamically discover all MCP submodules from .gitmodules
-          MCP_DIRS=$(git config -f .gitmodules --get-regexp 'submodule\.MCP.*\.path' | awk '{print $2}' | tr '\n' ' ')
           git sparse-checkout init --cone
-          git sparse-checkout set PlatformBackend $MCP_DIRS
+          git sparse-checkout set PlatformBackend MCPs Clis APIs
           git checkout
-          git submodule update --init --depth 1 --remote PlatformBackend
-          for dir in MCP*; do
-            git submodule update --init --depth 1 "$dir" 2>/dev/null || true
-          done
+          git submodule update --init --depth 1 --remote PlatformBackend MCPs Clis APIs
 
       - uses: actions/setup-python@v5
         with:

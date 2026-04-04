@@ -171,21 +171,94 @@ def load_service_mapping(workspace_root: Path) -> list[dict]:
     return sorted(result, key=lambda s: s.get("rank", 0))
 
 
-def discover_mcp_servers(workspace_root: Path) -> list[dict]:
-    """Discover MCP servers from MCP*/pyproject.toml files."""
+def _load_sync_yaml(monorepo_dir: Path) -> dict[str, str]:
+    """Load sync.yaml from a monorepo dir, returning {subdir: github_repo_name}."""
+    sync_path = monorepo_dir / "sync.yaml"
+    if not sync_path.exists():
+        return {}
+    try:
+        import yaml
+    except ImportError:
+        # Fallback: parse simple YAML manually
+        mapping: dict[str, str] = {}
+        current_key = ""
+        with open(sync_path) as f:
+            for line in f:
+                stripped = line.strip()
+                if stripped.startswith("repo:"):
+                    repo_full = stripped.split(":", 1)[1].strip()
+                    mapping[current_key] = repo_full.split("/")[-1]
+                elif not stripped.startswith("-") and stripped.endswith(":") and not stripped.startswith("mappings"):
+                    current_key = stripped.rstrip(":")
+        return mapping
+
+    with open(sync_path) as f:
+        data = yaml.safe_load(f)
+    mappings = data.get("mappings", {})
+    return {subdir: info["repo"].split("/")[-1] for subdir, info in mappings.items()}
+
+
+def _load_tomllib():
+    """Import tomllib (3.11+) or tomli fallback."""
     try:
         if sys.version_info >= (3, 11):
             import tomllib
-        else:
-            try:
-                import tomllib  # type: ignore[import]
-            except ImportError:
-                import tomli as tomllib  # type: ignore[import,no-redef]
+            return tomllib
+        try:
+            import tomllib  # type: ignore[import]
+            return tomllib
+        except ImportError:
+            import tomli as tomllib  # type: ignore[import,no-redef]
+            return tomllib
     except ImportError:
+        return None
+
+
+def discover_mcp_servers(workspace_root: Path) -> list[dict]:
+    """Discover MCP servers from MCPs/*/pyproject.toml (monorepo) or MCP*/pyproject.toml (legacy)."""
+    tomllib = _load_tomllib()
+    if tomllib is None:
         print("Warning: tomllib/tomli not available", file=sys.stderr)
         return []
 
     servers = []
+
+    # New monorepo layout: MCPs/<name>/pyproject.toml
+    mcps_dir = workspace_root / "MCPs"
+    if mcps_dir.is_dir():
+        repo_names = _load_sync_yaml(mcps_dir)
+        for subdir in sorted(mcps_dir.iterdir()):
+            pyproject = subdir / "pyproject.toml"
+            if not subdir.is_dir() or not pyproject.exists():
+                continue
+            with open(pyproject, "rb") as f:
+                data = tomllib.load(f)
+            project = data.get("project", {})
+            pkg_name = project.get("name", "")
+            desc = project.get("description", "")
+            if not pkg_name:
+                continue
+            for prefix in ("MCP Server for ", "MCP Server of "):
+                if desc.startswith(prefix):
+                    desc = desc[len(prefix) :]
+                    break
+            for suffix in (" via AceDataCloud API", " via Ace Data Cloud API"):
+                if desc.endswith(suffix):
+                    desc = desc[: -len(suffix)]
+                    break
+            # Use sync.yaml mapping for GitHub repo name, fallback to subdir name
+            github_repo = repo_names.get(subdir.name, subdir.name)
+            servers.append(
+                {
+                    "dir_name": github_repo,
+                    "package_name": pkg_name,
+                    "description": desc,
+                }
+            )
+        if servers:
+            return servers
+
+    # Legacy layout: MCP<Name>/pyproject.toml (individual submodules)
     for mcp_dir in sorted(workspace_root.glob("MCP*")):
         pyproject = mcp_dir / "pyproject.toml"
         if not pyproject.exists():
@@ -197,7 +270,6 @@ def discover_mcp_servers(workspace_root: Path) -> list[dict]:
         desc = project.get("description", "")
         if not pkg_name:
             continue
-        # Strip common boilerplate from descriptions
         for prefix in ("MCP Server for ", "MCP Server of "):
             if desc.startswith(prefix):
                 desc = desc[len(prefix) :]
@@ -214,6 +286,71 @@ def discover_mcp_servers(workspace_root: Path) -> list[dict]:
             }
         )
     return servers
+
+
+def discover_cli_tools(workspace_root: Path) -> list[dict]:
+    """Discover CLI tools from Clis/*/pyproject.toml (monorepo)."""
+    tomllib = _load_tomllib()
+    if tomllib is None:
+        return []
+
+    clis_dir = workspace_root / "Clis"
+    if not clis_dir.is_dir():
+        return []
+
+    repo_names = _load_sync_yaml(clis_dir)
+    tools = []
+    for subdir in sorted(clis_dir.iterdir()):
+        pyproject = subdir / "pyproject.toml"
+        if not subdir.is_dir() or not pyproject.exists():
+            continue
+        with open(pyproject, "rb") as f:
+            data = tomllib.load(f)
+        project = data.get("project", {})
+        pkg_name = project.get("name", "")
+        desc = project.get("description", "")
+        if not pkg_name:
+            continue
+        for prefix in ("CLI tool for ", "CLI for "):
+            if desc.startswith(prefix):
+                desc = desc[len(prefix) :]
+                break
+        for suffix in (" via AceDataCloud API", " via Ace Data Cloud API"):
+            if desc.endswith(suffix):
+                desc = desc[: -len(suffix)]
+                break
+        github_repo = repo_names.get(subdir.name, subdir.name)
+        tools.append(
+            {
+                "dir_name": github_repo,
+                "package_name": pkg_name,
+                "description": desc,
+            }
+        )
+    return tools
+
+
+def discover_api_repos(workspace_root: Path) -> list[dict]:
+    """Discover API doc repos from APIs/*/README.md (monorepo)."""
+    apis_dir = workspace_root / "APIs"
+    if not apis_dir.is_dir():
+        return []
+
+    repo_names = _load_sync_yaml(apis_dir)
+    repos = []
+    for subdir in sorted(apis_dir.iterdir()):
+        if not subdir.is_dir() or not (subdir / "README.md").exists():
+            continue
+        github_repo = repo_names.get(subdir.name, subdir.name)
+        label = split_camel_case(github_repo)
+        repos.append(
+            {
+                "dir_name": github_repo,
+                "label": label,
+                "url": f"https://github.com/AceDataCloud/{github_repo}",
+            }
+        )
+    return repos
 
 
 def call_llm(system_prompt: str, user_prompt: str, api_key: str) -> str:
@@ -301,22 +438,22 @@ SERVICE_CATEGORY_LABELS = {
 FEATURED_REPO_ORDER = [
     ".github",
     "Docs",
-    "VSCodeMCP",
+    "MCPs",
+    "Clis",
+    "APIs",
     "Skills",
     "Nexior",
-    "Dify",
     "FacilitatorX402",
 ]
 
 FEATURED_REPO_PURPOSE = {
     ".github": "Organization profile and GitHub entry point for Ace Data Cloud's AI API and MCP ecosystem",
     "Docs": "Global API documentation, quickstart guides, and OpenAPI references for Ace Data Cloud services",
+    "MCPs": "Monorepo for all MCP (Model Context Protocol) servers — image, video, music, search, and more",
+    "Clis": "Monorepo for all CLI tools — generate images, videos, and music from the terminal",
+    "APIs": "Monorepo for all API documentation repositories",
     "Skills": "Agent Skills repository for Claude Code, GitHub Copilot, Gemini CLI, OpenHands, Roo Code, and other coding agents",
-    "VSCodeMCP": "VS Code extension that bundles Ace Data Cloud MCP servers for developer workflows",
-    "PlatformBackend": "Core backend for service catalog, billing, applications, credentials, orders, and platform APIs",
-    "PlatformFrontend": "Developer portal for API docs, pricing, credentials, and service management",
     "Nexior": "Consumer AI application for chat, image generation, video generation, and music creation",
-    "Dify": "Ace Data Cloud fork of Dify with OAuth login, model auto-provisioning, and plugin integration",
     "FacilitatorX402": "X402 payment facilitator for AI API billing with Solana USDC and Base USDC support",
 }
 
@@ -444,7 +581,8 @@ def build_api_doc_links(repos: list[dict]) -> list[str]:
     return links
 
 
-def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dict]) -> str:
+def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dict],
+                   cli_tools: list[dict] | None = None, api_repos: list[dict] | None = None) -> str:
     """Render the organization profile README deterministically."""
     lines = [
         "# Ace Data Cloud",
@@ -539,17 +677,59 @@ def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dic
             "```",
             "",
             "Use our MCP servers with GitHub Copilot, Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients.",
+        ]
+    )
+
+    # CLI Tools section
+    effective_cli_tools = cli_tools or []
+    if effective_cli_tools:
+        lines.extend(
+            [
+                "",
+                "## CLI Tools",
+                "",
+                "Generate images, videos, and music directly from your terminal.",
+                "",
+                "| Tool | PyPI | Description |",
+                "| --- | --- | --- |",
+            ]
+        )
+        for tool in effective_cli_tools:
+            package_name = tool["package_name"]
+            lines.append(
+                "| "
+                f"[{tool['dir_name']}](https://github.com/AceDataCloud/{tool['dir_name']}) | "
+                f"[![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/) | "
+                f"{tool['description']} |"
+            )
+        install_cli_packages = " ".join(tool["package_name"] for tool in effective_cli_tools)
+        lines.extend(
+            [
+                "",
+                "```bash",
+                f"pip install {install_cli_packages}",
+                "```",
+            ]
+        )
+
+    lines.extend(
+        [
             "",
             "## API Documentation",
             "",
         ]
     )
 
-    api_links = build_api_doc_links(repos)
-    api_links.append("[Full Documentation](https://docs.acedata.cloud)")
+    # Prefer monorepo-discovered API repos, fall back to GitHub API repos
+    effective_api_repos = api_repos or []
+    if effective_api_repos:
+        doc_links = [f"[{r['label']}]({r['url']})" for r in effective_api_repos]
+    else:
+        doc_links = build_api_doc_links(repos)
+    doc_links.append("[Full Documentation](https://docs.acedata.cloud)")
     lines.append("Explore detailed API references for our services:")
     lines.append("")
-    lines.append(" · ".join(api_links))
+    lines.append(" · ".join(doc_links))
     lines.extend(
         [
             "",
@@ -746,7 +926,7 @@ def main() -> None:
     print(f"\nWorkspace root: {workspace_root}", file=sys.stderr)
     print(f"Output path:    {OUTPUT_PATH}", file=sys.stderr)
 
-    print("\n[1/3] Collecting GitHub repos...", file=sys.stderr)
+    print("\n[1/5] Collecting GitHub repos...", file=sys.stderr)
     repos: list[dict] = []
     if github_token:
         try:
@@ -763,7 +943,7 @@ def main() -> None:
     else:
         print("  GITHUB_TOKEN not set, skipping repo discovery", file=sys.stderr)
 
-    print("\n[2/3] Loading service catalog...", file=sys.stderr)
+    print("\n[2/5] Loading service catalog...", file=sys.stderr)
     services = load_service_mapping(workspace_root)
     print(f"  Found {len(services)} public services", file=sys.stderr)
     for svc in services:
@@ -772,7 +952,7 @@ def main() -> None:
             file=sys.stderr,
         )
 
-    print("\n[3/3] Discovering MCP servers...", file=sys.stderr)
+    print("\n[3/5] Discovering MCP servers...", file=sys.stderr)
     mcp_servers = discover_mcp_servers(workspace_root)
     print(f"  Found {len(mcp_servers)} MCP servers", file=sys.stderr)
     for s in mcp_servers:
@@ -780,6 +960,21 @@ def main() -> None:
             f"    - {s['dir_name']}: {s['package_name']} — {s['description']}",
             file=sys.stderr,
         )
+
+    print("\n[4/5] Discovering CLI tools...", file=sys.stderr)
+    cli_tools = discover_cli_tools(workspace_root)
+    print(f"  Found {len(cli_tools)} CLI tools", file=sys.stderr)
+    for t in cli_tools:
+        print(
+            f"    - {t['dir_name']}: {t['package_name']} — {t['description']}",
+            file=sys.stderr,
+        )
+
+    print("\n[5/5] Discovering API doc repos...", file=sys.stderr)
+    api_repos = discover_api_repos(workspace_root)
+    print(f"  Found {len(api_repos)} API doc repos", file=sys.stderr)
+    for r in api_repos:
+        print(f"    - {r['dir_name']}: {r['label']}", file=sys.stderr)
 
     # Build user prompt with all collected data
     user_prompt = "Generate the organization profile README using this real data:\n\n"
@@ -805,6 +1000,10 @@ def main() -> None:
         user_prompt += "## MCP Servers (from pyproject.toml files)\n"
         user_prompt += json.dumps(mcp_servers, indent=2) + "\n\n"
 
+    if cli_tools:
+        user_prompt += "## CLI Tools (from pyproject.toml files)\n"
+        user_prompt += json.dumps(cli_tools, indent=2) + "\n\n"
+
     if args.use_llm:
         print("Calling LLM to generate README...", file=sys.stderr)
         readme = call_llm(SYSTEM_PROMPT, user_prompt, api_key)
@@ -821,7 +1020,7 @@ def main() -> None:
             readme += "\n"
     else:
         print("Rendering README with deterministic template...", file=sys.stderr)
-        readme = render_readme(repos, services, mcp_servers)
+        readme = render_readme(repos, services, mcp_servers, cli_tools, api_repos)
 
     # Write output
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
