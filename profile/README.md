@@ -50,7 +50,6 @@ Our MCP (Model Context Protocol) servers let AI assistants use these APIs as pow
 | [SoraMCP](https://github.com/AceDataCloud/SoraMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-sora?style=flat-square)](https://pypi.org/project/mcp-sora/) | Sora AI Video Generation |
 | [SunoMCP](https://github.com/AceDataCloud/SunoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-suno?style=flat-square)](https://pypi.org/project/mcp-suno/) | Suno AI Music Generation |
 | [VeoMCP](https://github.com/AceDataCloud/VeoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-veo?style=flat-square)](https://pypi.org/project/mcp-veo/) | Veo AI Video Generation |
-Use our MCP servers with GitHub Copilot, Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients.
 
 ## CLI Tools
 
