@@ -188,7 +188,11 @@ def _load_sync_yaml(monorepo_dir: Path) -> dict[str, str]:
                 if stripped.startswith("repo:"):
                     repo_full = stripped.split(":", 1)[1].strip()
                     mapping[current_key] = repo_full.split("/")[-1]
-                elif not stripped.startswith("-") and stripped.endswith(":") and not stripped.startswith("mappings"):
+                elif (
+                    not stripped.startswith("-")
+                    and stripped.endswith(":")
+                    and not stripped.startswith("mappings")
+                ):
                     current_key = stripped.rstrip(":")
         return mapping
 
@@ -203,12 +207,15 @@ def _load_tomllib():
     try:
         if sys.version_info >= (3, 11):
             import tomllib
+
             return tomllib
         try:
             import tomllib  # type: ignore[import]
+
             return tomllib
         except ImportError:
             import tomli as tomllib  # type: ignore[import,no-redef]
+
             return tomllib
     except ImportError:
         return None
@@ -458,10 +465,22 @@ FEATURED_REPO_PURPOSE = {
 }
 
 LIVE_SERVICES = [
-    ("Developer Platform", "https://platform.acedata.cloud", "API keys, docs, billing, analytics"),
+    (
+        "Developer Platform",
+        "https://platform.acedata.cloud",
+        "API keys, docs, billing, analytics",
+    ),
     ("API Gateway", "https://api.acedata.cloud", "OpenAI-compatible REST API endpoint"),
-    ("Nexior", "https://hub.acedata.cloud", "Consumer app - chat, generate images, video, music"),
-    ("Documentation", "https://docs.acedata.cloud", "Quickstart guides and API references"),
+    (
+        "Nexior",
+        "https://hub.acedata.cloud",
+        "Consumer app - chat, generate images, video, music",
+    ),
+    (
+        "Documentation",
+        "https://docs.acedata.cloud",
+        "Quickstart guides and API references",
+    ),
     ("Dify AI", "https://dify.acedata.cloud", "Visual AI workflow builder"),
     ("Status", "https://status.acedata.cloud", "Real-time service health monitoring"),
     ("Roadmap", "https://roadmap.acedata.cloud", "Public feature roadmap"),
@@ -479,6 +498,7 @@ AGENT_SURFACES = [
         "Marketplace-ready VS Code extension bundling 11 hosted and local MCP server integrations for Copilot Chat",
     ),
 ]
+
 
 def clean_brand_name(display_name: str) -> str:
     """Normalize service names for the public category table."""
@@ -581,8 +601,13 @@ def build_api_doc_links(repos: list[dict]) -> list[str]:
     return links
 
 
-def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dict],
-                   cli_tools: list[dict] | None = None, api_repos: list[dict] | None = None) -> str:
+def render_readme(
+    repos: list[dict],
+    services: list[dict],
+    mcp_servers: list[dict],
+    cli_tools: list[dict] | None = None,
+    api_repos: list[dict] | None = None,
+) -> str:
     """Render the organization profile README deterministically."""
     lines = [
         "# Ace Data Cloud",
@@ -696,7 +721,9 @@ def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dic
     )
 
     for name, url, description in LIVE_SERVICES:
-        lines.append(f"| {name} | {description} | [{url.removeprefix('https://')}]({url}) |")
+        lines.append(
+            f"| {name} | {description} | [{url.removeprefix('https://')}]({url}) |"
+        )
 
     lines.extend(
         [
