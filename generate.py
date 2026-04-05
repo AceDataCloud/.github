@@ -644,12 +644,6 @@ def render_readme(repos: list[dict], services: list[dict], mcp_servers: list[dic
             f"[![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/) | "
             f"{server['description']} |"
         )
-    lines.extend(
-        [
-            "Use our MCP servers with GitHub Copilot, Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients.",
-        ]
-    )
-
     # CLI Tools section
     effective_cli_tools = cli_tools or []
     if effective_cli_tools:
