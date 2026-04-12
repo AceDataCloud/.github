@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          token: ${{ secrets.BOT_TOKEN }}
 
       - name: Clone Index submodules (sparse)
         env:
