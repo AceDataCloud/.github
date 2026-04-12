@@ -21,6 +21,7 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
           git config --global url."https://x-access-token:${BOT_TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${BOT_TOKEN}@github.com/".insteadOf "git@github.com:"
           git clone --no-checkout --depth 1 \
             "https://github.com/AceDataCloud/Index.git" /tmp/index
           cd /tmp/index
