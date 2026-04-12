@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.BOT_TOKEN }}
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
 
       - name: Clone Index submodules (sparse)
         env:
@@ -25,7 +25,7 @@ jobs:
           git config --global url."https://x-access-token:${BOT_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
           git config --global url."https://x-access-token:${BOT_GITHUB_TOKEN}@github.com/".insteadOf "git@github.com:"
           git clone --no-checkout --depth 1 \
-            "https://x-access-token:${BOT_TOKEN}@github.com/AceDataCloud/Index.git" /tmp/index
+            "https://x-access-token:${BOT_GITHUB_TOKEN}@github.com/AceDataCloud/Index.git" /tmp/index
           cd /tmp/index
           git sparse-checkout init --cone
           git sparse-checkout set PlatformBackend MCPs Clis APIs
