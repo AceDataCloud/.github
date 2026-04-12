@@ -18,10 +18,10 @@ jobs:
 
       - name: Clone Index submodules (sparse)
         env:
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          BOT_GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
         run: |
-          git config --global url."https://x-access-token:${BOT_TOKEN}@github.com/".insteadOf "https://github.com/"
-          git config --global url."https://x-access-token:${BOT_TOKEN}@github.com/".insteadOf "git@github.com:"
+          git config --global url."https://x-access-token:${BOT_GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${BOT_GITHUB_TOKEN}@github.com/".insteadOf "git@github.com:"
           git clone --no-checkout --depth 1 \
             "https://github.com/AceDataCloud/Index.git" /tmp/index
           cd /tmp/index
@@ -37,7 +37,7 @@ jobs:
       - name: Generate profile README
         env:
           ACEDATACLOUD_OPENAI_KEY: ${{ secrets.ACEDATACLOUD_OPENAI_KEY }}
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
         run: python generate.py --workspace /tmp/index
 
       - name: Commit and push if changed
