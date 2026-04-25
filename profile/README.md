@@ -39,12 +39,14 @@ Our MCP (Model Context Protocol) servers let AI assistants use these APIs as pow
 
 | Server | PyPI | Description |
 | --- | --- | --- |
+| [AiChatMCP](https://github.com/AceDataCloud/AiChatMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-aichat?style=flat-square)](https://pypi.org/project/mcp-aichat/) | AI Dialogue |
 | [FluxMCP](https://github.com/AceDataCloud/FluxMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-flux-pro?style=flat-square)](https://pypi.org/project/mcp-flux-pro/) | Flux AI Image Generation |
 | [HailuoMCP](https://github.com/AceDataCloud/HailuoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-hailuo?style=flat-square)](https://pypi.org/project/mcp-hailuo/) | Hailuo (MiniMax) AI Video Generation |
 | [KlingMCP](https://github.com/AceDataCloud/KlingMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-kling?style=flat-square)](https://pypi.org/project/mcp-kling/) | Kling AI Video Generation |
 | [LumaMCP](https://github.com/AceDataCloud/LumaMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-luma?style=flat-square)](https://pypi.org/project/mcp-luma/) | Luma AI Video Generation |
 | [MidjourneyMCP](https://github.com/AceDataCloud/MidjourneyMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-midjourney?style=flat-square)](https://pypi.org/project/mcp-midjourney/) | Midjourney AI Image Generation |
 | [NanoBananaMCP](https://github.com/AceDataCloud/NanoBananaMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-nanobanana-pro?style=flat-square)](https://pypi.org/project/mcp-nanobanana-pro/) | NanoBanana AI Image Generation |
+| [OpenAIMCP](https://github.com/AceDataCloud/OpenAIMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-openai?style=flat-square)](https://pypi.org/project/mcp-openai/) | OpenAI API via AceDataCloud |
 | [ProducerMCP](https://github.com/AceDataCloud/ProducerMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-producer?style=flat-square)](https://pypi.org/project/mcp-producer/) | Producer AI Music Generation |
 | [SeedanceMCP](https://github.com/AceDataCloud/SeedanceMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedance?style=flat-square)](https://pypi.org/project/mcp-seedance/) | ByteDance Seedance AI Video Generation |
 | [SeedreamMCP](https://github.com/AceDataCloud/SeedreamMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedream-pro?style=flat-square)](https://pypi.org/project/mcp-seedream-pro/) | ByteDance Seedream AI Image Generation |
@@ -62,10 +64,12 @@ Generate images, videos, and music directly from your terminal.
 | Tool | PyPI | Description |
 | --- | --- | --- |
 | [AdcCli](https://github.com/AceDataCloud/AdcCli) | [![PyPI](https://img.shields.io/pypi/v/acedatacloud-cli?style=flat-square)](https://pypi.org/project/acedatacloud-cli/) | Unified CLI for AceDataCloud AI services - images, videos, music, search, and chat |
+| [aichat](https://github.com/AceDataCloud/aichat) | [![PyPI](https://img.shields.io/pypi/v/aichat-cli?style=flat-square)](https://pypi.org/project/aichat-cli/) | AI Dialogue (aichat) |
 | [FluxCli](https://github.com/AceDataCloud/FluxCli) | [![PyPI](https://img.shields.io/pypi/v/flux-pro-cli?style=flat-square)](https://pypi.org/project/flux-pro-cli/) | Flux AI Image Generation |
 | [LumaCli](https://github.com/AceDataCloud/LumaCli) | [![PyPI](https://img.shields.io/pypi/v/luma-pro-cli?style=flat-square)](https://pypi.org/project/luma-pro-cli/) | Luma Dream Machine AI Video Generation |
 | [MidjourneyCli](https://github.com/AceDataCloud/MidjourneyCli) | [![PyPI](https://img.shields.io/pypi/v/midjourney-pro-cli?style=flat-square)](https://pypi.org/project/midjourney-pro-cli/) | Midjourney AI Image & Video Generation |
 | [NanoBananaCli](https://github.com/AceDataCloud/NanoBananaCli) | [![PyPI](https://img.shields.io/pypi/v/nano-banana-pro-cli?style=flat-square)](https://pypi.org/project/nano-banana-pro-cli/) | NanoBanana AI Image Generation |
+| [openai](https://github.com/AceDataCloud/openai) | [![PyPI](https://img.shields.io/pypi/v/openai-cli?style=flat-square)](https://pypi.org/project/openai-cli/) | OpenAI-compatible APIs via AceDataCloud |
 | [SeedanceCli](https://github.com/AceDataCloud/SeedanceCli) | [![PyPI](https://img.shields.io/pypi/v/seedance-cli?style=flat-square)](https://pypi.org/project/seedance-cli/) | Seedance AI Video Generation |
 | [SeedreamCli](https://github.com/AceDataCloud/SeedreamCli) | [![PyPI](https://img.shields.io/pypi/v/seedream-cli?style=flat-square)](https://pypi.org/project/seedream-cli/) | Seedream AI Image Generation |
 | [SerpCli](https://github.com/AceDataCloud/SerpCli) | [![PyPI](https://img.shields.io/pypi/v/serp-cli?style=flat-square)](https://pypi.org/project/serp-cli/) | Google SERP (Search Engine Results) |
@@ -78,7 +82,7 @@ Generate images, videos, and music directly from your terminal.
 
 Explore detailed API references for our services:
 
-[Flux API](https://github.com/AceDataCloud/FluxAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Midjourney API](https://github.com/AceDataCloud/MidjourneyAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Pixverse API](https://github.com/AceDataCloud/PixverseAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Wan API](https://github.com/AceDataCloud/WanAPI) · [Full Documentation](https://docs.acedata.cloud)
+[aichat](https://github.com/AceDataCloud/aichat) · [Flux API](https://github.com/AceDataCloud/FluxAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Midjourney API](https://github.com/AceDataCloud/MidjourneyAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Pixverse API](https://github.com/AceDataCloud/PixverseAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Wan API](https://github.com/AceDataCloud/WanAPI) · [Full Documentation](https://docs.acedata.cloud)
 
 ## Live Services
 
