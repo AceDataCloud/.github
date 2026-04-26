@@ -337,6 +337,59 @@ def discover_cli_tools(workspace_root: Path) -> list[dict]:
     return tools
 
 
+def pypi_package_exists(name: str, cache: dict[str, bool]) -> bool:
+    """Return True if a PyPI package exists. Cached. Network failures default to True
+    so we don't accidentally drop valid rows when offline."""
+    if not name:
+        return False
+    if name in cache:
+        return cache[name]
+    url = f"https://pypi.org/pypi/{name}/json"
+    headers = {"User-Agent": "AceDataCloud-Profile-Generator"}
+    try:
+        req = urllib.request.Request(url, headers=headers, method="HEAD")
+        with urllib.request.urlopen(req, timeout=15, context=SSL_CONTEXT) as resp:
+            exists = 200 <= resp.status < 300
+    except urllib.error.HTTPError as e:
+        exists = e.code != 404
+    except Exception as e:
+        print(f"  Warning: PyPI check failed for {name}: {e}", file=sys.stderr)
+        exists = True
+    cache[name] = exists
+    return exists
+
+
+def filter_existing(
+    items: list[dict],
+    repo_names: set[str],
+    repo_key: str,
+    pypi_key: str | None,
+    label: str,
+    pypi_cache: dict[str, bool],
+) -> list[dict]:
+    """Drop items whose target GitHub repo (and optional PyPI package) does not exist.
+    If repo_names is empty (no GitHub data fetched), no GitHub-side filtering happens."""
+    kept: list[dict] = []
+    for item in items:
+        name = item.get(repo_key, "")
+        if repo_names and name not in repo_names:
+            print(
+                f"  Skipping {label}: GitHub repo AceDataCloud/{name} not found",
+                file=sys.stderr,
+            )
+            continue
+        if pypi_key:
+            pkg = item.get(pypi_key, "")
+            if pkg and not pypi_package_exists(pkg, pypi_cache):
+                print(
+                    f"  Skipping {label}: PyPI package {pkg} not found",
+                    file=sys.stderr,
+                )
+                continue
+        kept.append(item)
+    return kept
+
+
 def discover_api_repos(workspace_root: Path) -> list[dict]:
     """Discover API doc repos from APIs/*/README.md (monorepo)."""
     apis_dir = workspace_root / "APIs"
@@ -958,6 +1011,27 @@ def main() -> None:
     print(f"  Found {len(api_repos)} API doc repos", file=sys.stderr)
     for r in api_repos:
         print(f"    - {r['dir_name']}: {r['label']}", file=sys.stderr)
+
+    # Drop entries whose target GitHub repo / PyPI package does not exist so we
+    # never link to 404s on the public org profile page.
+    repo_names = {r["name"] for r in repos}
+    pypi_cache: dict[str, bool] = {}
+    if repo_names or repos == []:
+        before_mcp = len(mcp_servers)
+        before_cli = len(cli_tools)
+        before_api = len(api_repos)
+        mcp_servers = filter_existing(
+            mcp_servers, repo_names, "dir_name", "package_name", "MCP", pypi_cache
+        )
+        cli_tools = filter_existing(
+            cli_tools, repo_names, "dir_name", "package_name", "CLI", pypi_cache
+        )
+        api_repos = filter_existing(api_repos, repo_names, "dir_name", None, "API", pypi_cache)
+        print(
+            f"\n  After existence-filter: MCP {before_mcp}->{len(mcp_servers)}, "
+            f"CLI {before_cli}->{len(cli_tools)}, API {before_api}->{len(api_repos)}",
+            file=sys.stderr,
+        )
 
     # Build user prompt with all collected data
     user_prompt = "Generate the organization profile README using this real data:\n\n"
