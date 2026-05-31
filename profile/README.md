@@ -39,6 +39,8 @@ Our MCP (Model Context Protocol) servers let AI assistants use these APIs as pow
 
 | Server | PyPI | Description |
 | --- | --- | --- |
+| [FaceTransformMCP](https://github.com/AceDataCloud/FaceTransformMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-face-transform?style=flat-square)](https://pypi.org/project/mcp-face-transform/) | MCP server for the AceDataCloud Face Transform API (keypoints, beautify, age/gender, swap, cartoon, liveness) |
+| [FishMCP](https://github.com/AceDataCloud/FishMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-fish?style=flat-square)](https://pypi.org/project/mcp-fish/) | Fish TTS (Text-to-Speech) |
 | [FluxMCP](https://github.com/AceDataCloud/FluxMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-flux-pro?style=flat-square)](https://pypi.org/project/mcp-flux-pro/) | Flux AI Image Generation |
 | [HailuoMCP](https://github.com/AceDataCloud/HailuoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-hailuo?style=flat-square)](https://pypi.org/project/mcp-hailuo/) | Hailuo (MiniMax) AI Video Generation |
 | [KlingMCP](https://github.com/AceDataCloud/KlingMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-kling?style=flat-square)](https://pypi.org/project/mcp-kling/) | Kling AI Video Generation |
