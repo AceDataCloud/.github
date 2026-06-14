@@ -25,11 +25,11 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 
 | Category | Services |
 | --- | --- |
-| LLM Chat | Gemini, GLM, Kimi, Claude, DeepSeek, Grok, GPT / DALL·E / Sora |
-| Image Generation | Seedream, NanoBanana, Flux, Midjourney, Face Transform |
-| Video Generation | Seedance, Veo, Kling, Wan (Alibaba), Luma, Hailuo |
-| Music & Audio | Suno, Fish Audio, Producer |
-| Web Search | Google SERP, Publisher Cross-Platform Automatic Publishing, WebExtrator Web Render & Extract |
+| LLM Chat | Gemini, GLM, Kimi, Claude, Grok, GPT / DALL·E / Sora |
+| Image Generation | Seedream, NanoBanana, Flux, Face Transform |
+| Video Generation | Seedance, Veo, Kling, Wan (Alibaba), Luma, Grok Video, Hailuo |
+| Music & Audio | Suno, Fish Audio, Producer, Open Text-to-Speech |
+| Web Search | Google SERP, WebExtrator Web Render & Extract, Dreamina, Publisher Cross-Platform Automatic Publishing |
 
 **Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)
 
