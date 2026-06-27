@@ -84,10 +84,14 @@ def fetch_github_repos(token: str) -> list[dict]:
     return sorted(all_repos, key=lambda r: r["name"])
 
 
-SKIP_ALIASES = {"aichat", "shorturl", "localization"}
+SKIP_ALIASES = {"aichat", "shorturl", "localization", "midjourney"}
 SKIP_CATEGORIES = {"CAPTCHA", "Proxy", "Identity"}
 SKIP_TYPES = {"Dataset", "Deployment", "Proxy", "Introduction", "Agent"}
 SKIP_TAGS = {"captcha", "proxy", "identity"}
+
+# Aliases that must never surface on the public org profile (e.g. retired or
+# hidden services whose repos are private). Filtered in the discover_* helpers.
+EXCLUDE_ALIASES = {"midjourney"}
 
 # Map tag values to canonical category names
 TAG_TO_CATEGORY = {
@@ -238,6 +242,8 @@ def discover_mcp_servers(workspace_root: Path) -> list[dict]:
             pyproject = subdir / "pyproject.toml"
             if not subdir.is_dir() or not pyproject.exists():
                 continue
+            if subdir.name in EXCLUDE_ALIASES:
+                continue
             with open(pyproject, "rb") as f:
                 data = tomllib.load(f)
             project = data.get("project", {})
@@ -310,6 +316,8 @@ def discover_cli_tools(workspace_root: Path) -> list[dict]:
     for subdir in sorted(clis_dir.iterdir()):
         pyproject = subdir / "pyproject.toml"
         if not subdir.is_dir() or not pyproject.exists():
+            continue
+        if subdir.name in EXCLUDE_ALIASES:
             continue
         with open(pyproject, "rb") as f:
             data = tomllib.load(f)
@@ -400,6 +408,8 @@ def discover_api_repos(workspace_root: Path) -> list[dict]:
     repos = []
     for subdir in sorted(apis_dir.iterdir()):
         if not subdir.is_dir() or not (subdir / "README.md").exists():
+            continue
+        if subdir.name in EXCLUDE_ALIASES:
             continue
         github_repo = repo_names.get(subdir.name, subdir.name)
         label = split_camel_case(github_repo)
@@ -564,7 +574,6 @@ def clean_brand_name(display_name: str) -> str:
         "ByteDance Seedance Video Generation": "Seedance",
         "Nano Banana Image Generation": "NanoBanana",
         "Flux Image Generation": "Flux",
-        "Midjourney generation": "Midjourney",
         "Art QR Code Generation": "QR Art",
         "Face Transformation": "Face Transform",
         "Sora Video Generation": "Sora",
@@ -859,7 +868,6 @@ STRUCTURE (keep this exact order):
    - "ByteDance Seedance Video Generation" → "Seedance"
    - "Nano Banana Image Generation" → "NanoBanana"
    - "Flux Image Generation" → "Flux"
-   - "Midjourney generation" → "Midjourney"
    - "Art QR Code Generation" → "QR Art"
    - "Face Transformation" → "Face Transform"
    - "Sora Video Generation" → "Sora"
