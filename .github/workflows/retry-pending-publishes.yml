@@ -1,0 +1,50 @@
+name: Retry pending PyPI publishes
+
+# Temporary self-terminating helper. Four brand-new packages (mcp-aichat,
+# hailuo-cli, kling-pro-cli, webextrator-cli) are blocked by PyPI's new-project
+# creation rate limit. This re-dispatches their publish workflows hourly until
+# each lands on PyPI, then triggers a homepage regen and disables itself.
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  retry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Re-dispatch publishes for packages still missing on PyPI
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
+        run: |
+          set -u
+          # repo<TAB>pypi-package
+          MAP="AiChatMCP	mcp-aichat
+          HailuoCli	hailuo-cli
+          KlingCli	kling-pro-cli
+          WebExtratorCli	webextrator-cli"
+
+          remaining=0
+          while IFS=$'\t' read -r repo pkg; do
+            repo=$(echo "$repo" | xargs); pkg=$(echo "$pkg" | xargs)
+            [ -z "$repo" ] && continue
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://pypi.org/pypi/${pkg}/json" || echo 000)
+            if [ "$code" = "404" ]; then
+              echo "::notice::${pkg} not on PyPI yet -> dispatching publish for AceDataCloud/${repo}"
+              gh workflow run "Publish to PyPI" --repo "AceDataCloud/${repo}" --ref main || true
+              remaining=$((remaining+1))
+            else
+              echo "${pkg} already published (HTTP ${code})"
+            fi
+          done <<< "$MAP"
+
+          echo "Packages still pending: ${remaining}"
+          if [ "$remaining" -eq 0 ]; then
+            echo "::notice::All pending packages are published. Triggering homepage regen and disabling this workflow."
+            gh workflow run "update-profile.yml" --repo AceDataCloud/.github --ref main || true
+            gh workflow disable "Retry pending PyPI publishes" --repo AceDataCloud/.github || true
+          fi
