@@ -67,10 +67,11 @@ Generate images, videos, and music directly from your terminal.
 
 | Tool | PyPI | Description |
 | --- | --- | --- |
-| [AdcCli](https://github.com/AceDataCloud/AdcCli) | [![PyPI](https://img.shields.io/pypi/v/acedatacloud-cli?style=flat-square)](https://pypi.org/project/acedatacloud-cli/) | Unified CLI for AceDataCloud AI services - images, videos, music, search, and chat |
+| [AceDataCloudCli](https://github.com/AceDataCloud/AceDataCloudCli) | [![PyPI](https://img.shields.io/pypi/v/acedatacloud-cli?style=flat-square)](https://pypi.org/project/acedatacloud-cli/) | Unified CLI for AceDataCloud AI services - images, videos, music, search, and chat |
 | [AiChatCli](https://github.com/AceDataCloud/AiChatCli) | [![PyPI](https://img.shields.io/pypi/v/aichat-cli?style=flat-square)](https://pypi.org/project/aichat-cli/) | AI Dialogue (aichat) |
 | [FluxCli](https://github.com/AceDataCloud/FluxCli) | [![PyPI](https://img.shields.io/pypi/v/flux-pro-cli?style=flat-square)](https://pypi.org/project/flux-pro-cli/) | Flux AI Image Generation |
 | [GlmCli](https://github.com/AceDataCloud/GlmCli) | [![PyPI](https://img.shields.io/pypi/v/glm-cli?style=flat-square)](https://pypi.org/project/glm-cli/) | GLM Chat Completions via AceDataCloud |
+| [KlingCli](https://github.com/AceDataCloud/KlingCli) | [![PyPI](https://img.shields.io/pypi/v/kling-pro-cli?style=flat-square)](https://pypi.org/project/kling-pro-cli/) | Kling AI Video Generation |
 | [LumaCli](https://github.com/AceDataCloud/LumaCli) | [![PyPI](https://img.shields.io/pypi/v/luma-pro-cli?style=flat-square)](https://pypi.org/project/luma-pro-cli/) | Luma Dream Machine AI Video Generation |
 | [NanoBananaCli](https://github.com/AceDataCloud/NanoBananaCli) | [![PyPI](https://img.shields.io/pypi/v/nano-banana-pro-cli?style=flat-square)](https://pypi.org/project/nano-banana-pro-cli/) | NanoBanana AI Image Generation |
 | [OpenAICli](https://github.com/AceDataCloud/OpenAICli) | [![PyPI](https://img.shields.io/pypi/v/openai-cli?style=flat-square)](https://pypi.org/project/openai-cli/) | OpenAI-compatible APIs via AceDataCloud |
@@ -86,7 +87,7 @@ Generate images, videos, and music directly from your terminal.
 
 Explore detailed API references for our services:
 
-[Flux API](https://github.com/AceDataCloud/FluxAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Producer API](https://github.com/AceDataCloud/ProducerAPI) · [Seedance API](https://github.com/AceDataCloud/SeedanceAPI) · [Seedream API](https://github.com/AceDataCloud/SeedreamAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Short URLAPI](https://github.com/AceDataCloud/ShortURLAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Full Documentation](https://docs.acedata.cloud)
+[Claude API](https://github.com/AceDataCloud/ClaudeAPI) · [Flux API](https://github.com/AceDataCloud/FluxAPI) · [Gemini API](https://github.com/AceDataCloud/GeminiAPI) · [Hailuo API](https://github.com/AceDataCloud/HailuoAPI) · [Kling API](https://github.com/AceDataCloud/KlingAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Producer API](https://github.com/AceDataCloud/ProducerAPI) · [Seedance API](https://github.com/AceDataCloud/SeedanceAPI) · [Seedream API](https://github.com/AceDataCloud/SeedreamAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Short URLAPI](https://github.com/AceDataCloud/ShortURLAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Web Extrator API](https://github.com/AceDataCloud/WebExtratorAPI) · [Full Documentation](https://docs.acedata.cloud)
 
 ## Live Services
 
