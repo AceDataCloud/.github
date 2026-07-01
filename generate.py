@@ -225,6 +225,26 @@ def _load_tomllib():
         return None
 
 
+def _read_hosted_url(mcp_dir: Path) -> str:
+    """Return the hosted streamable-http MCP URL from server.json, or "" if absent."""
+    server_json = mcp_dir / "server.json"
+    if not server_json.exists():
+        return ""
+    try:
+        with open(server_json, encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, ValueError):
+        return ""
+    remotes = data.get("remotes", [])
+    for remote in remotes:
+        if remote.get("type") == "streamable-http" and remote.get("url"):
+            return remote["url"]
+    for remote in remotes:
+        if remote.get("url"):
+            return remote["url"]
+    return ""
+
+
 def discover_mcp_servers(workspace_root: Path) -> list[dict]:
     """Discover MCP servers from MCPs/*/pyproject.toml (monorepo) or MCP*/pyproject.toml (legacy)."""
     tomllib = _load_tomllib()
@@ -266,6 +286,7 @@ def discover_mcp_servers(workspace_root: Path) -> list[dict]:
                     "dir_name": github_repo,
                     "package_name": pkg_name,
                     "description": desc,
+                    "url": _read_hosted_url(subdir),
                 }
             )
         if servers:
@@ -296,6 +317,7 @@ def discover_mcp_servers(workspace_root: Path) -> list[dict]:
                 "dir_name": mcp_dir.name,
                 "package_name": pkg_name,
                 "description": desc,
+                "url": _read_hosted_url(mcp_dir),
             }
         )
     return servers
@@ -718,17 +740,20 @@ def render_readme(
             "",
             "Our MCP (Model Context Protocol) servers let AI assistants use these APIs as powerful tools.",
             "",
-            "| Server | PyPI | Description |",
-            "| --- | --- | --- |",
+            "| Server | PyPI | URL | Description |",
+            "| --- | --- | --- | --- |",
         ]
     )
 
     for server in mcp_servers:
         package_name = server["package_name"]
+        url = server.get("url", "")
+        url_cell = f"[{url.removeprefix('https://')}]({url})" if url else "—"
         lines.append(
             "| "
             f"[{server['dir_name']}](https://github.com/AceDataCloud/{server['dir_name']}) | "
             f"[![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/) | "
+            f"{url_cell} | "
             f"{server['description']} |"
         )
     # CLI Tools section
@@ -887,9 +912,10 @@ STRUCTURE (keep this exact order):
 
 3. **## MCP Servers** — One intro sentence about MCP (Model Context Protocol) \
    letting AI assistants use these APIs as tools. Then a table:
-   | Server | PyPI | Description |
+   | Server | PyPI | URL | Description |
    - Server: link to `github.com/AceDataCloud/{dir_name}`
    - PyPI: badge [![PyPI](https://img.shields.io/pypi/v/{package_name}?style=flat-square)](https://pypi.org/project/{package_name}/)
+   - URL: hosted endpoint from the data `url` field, rendered as a link (strip `https://` for the label); use `—` if empty
    - Description: from the data as-is
     Then one short sentence: use these MCP servers with GitHub Copilot, Claude Desktop, Cursor, Windsurf, and other MCP-compatible clients.
 

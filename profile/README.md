@@ -37,29 +37,29 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 
 Our MCP (Model Context Protocol) servers let AI assistants use these APIs as powerful tools.
 
-| Server | PyPI | Description |
-| --- | --- | --- |
-| [AceDataCloudMCP](https://github.com/AceDataCloud/AceDataCloudMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-acedatacloud?style=flat-square)](https://pypi.org/project/mcp-acedatacloud/) | managing your AceDataCloud account (balances, usage, API keys, orders, announcements) |
-| [FaceTransformMCP](https://github.com/AceDataCloud/FaceTransformMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-face-transform?style=flat-square)](https://pypi.org/project/mcp-face-transform/) | MCP server for the AceDataCloud Face Transform API (keypoints, beautify, age/gender, swap, cartoon, liveness) |
-| [FishMCP](https://github.com/AceDataCloud/FishMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-fish?style=flat-square)](https://pypi.org/project/mcp-fish/) | Fish TTS (Text-to-Speech) |
-| [FluxMCP](https://github.com/AceDataCloud/FluxMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-flux-pro?style=flat-square)](https://pypi.org/project/mcp-flux-pro/) | Flux AI Image Generation |
-| [GlmMCP](https://github.com/AceDataCloud/GlmMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-glm?style=flat-square)](https://pypi.org/project/mcp-glm/) | GLM |
-| [GrokMCP](https://github.com/AceDataCloud/GrokMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-grok?style=flat-square)](https://pypi.org/project/mcp-grok/) | Grok Imagine AI Video Generation |
-| [HailuoMCP](https://github.com/AceDataCloud/HailuoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-hailuo?style=flat-square)](https://pypi.org/project/mcp-hailuo/) | Hailuo (MiniMax) AI Video Generation |
-| [KlingMCP](https://github.com/AceDataCloud/KlingMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-kling?style=flat-square)](https://pypi.org/project/mcp-kling/) | Kling AI Video Generation |
-| [LumaMCP](https://github.com/AceDataCloud/LumaMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-luma?style=flat-square)](https://pypi.org/project/mcp-luma/) | Luma AI Video Generation |
-| [NanoBananaMCP](https://github.com/AceDataCloud/NanoBananaMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-nanobanana-pro?style=flat-square)](https://pypi.org/project/mcp-nanobanana-pro/) | NanoBanana AI Image Generation |
-| [OpenAIMCP](https://github.com/AceDataCloud/OpenAIMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-openai?style=flat-square)](https://pypi.org/project/mcp-openai/) | OpenAI API via AceDataCloud |
-| [ProducerMCP](https://github.com/AceDataCloud/ProducerMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-producer?style=flat-square)](https://pypi.org/project/mcp-producer/) | Producer AI Music Generation |
-| [SeedanceMCP](https://github.com/AceDataCloud/SeedanceMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedance?style=flat-square)](https://pypi.org/project/mcp-seedance/) | ByteDance Seedance AI Video Generation |
-| [SeedreamMCP](https://github.com/AceDataCloud/SeedreamMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedream-pro?style=flat-square)](https://pypi.org/project/mcp-seedream-pro/) | ByteDance Seedream AI Image Generation |
-| [SerpMCP](https://github.com/AceDataCloud/SerpMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-serp?style=flat-square)](https://pypi.org/project/mcp-serp/) | Google SERP Search |
-| [ShortURLMCP](https://github.com/AceDataCloud/ShortURLMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-shorturl?style=flat-square)](https://pypi.org/project/mcp-shorturl/) | URL Shortening |
-| [SoraMCP](https://github.com/AceDataCloud/SoraMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-sora?style=flat-square)](https://pypi.org/project/mcp-sora/) | Sora AI Video Generation |
-| [SunoMCP](https://github.com/AceDataCloud/SunoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-suno?style=flat-square)](https://pypi.org/project/mcp-suno/) | Suno AI Music Generation |
-| [VeoMCP](https://github.com/AceDataCloud/VeoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-veo?style=flat-square)](https://pypi.org/project/mcp-veo/) | Veo AI Video Generation |
-| [WanMCP](https://github.com/AceDataCloud/WanMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-wan?style=flat-square)](https://pypi.org/project/mcp-wan/) | Wan AI Video Generation |
-| [WebExtratorMCP](https://github.com/AceDataCloud/WebExtratorMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-webextrator?style=flat-square)](https://pypi.org/project/mcp-webextrator/) | WebExtrator Web Render & Extract |
+| Server | PyPI | URL | Description |
+| --- | --- | --- | --- |
+| [AceDataCloudMCP](https://github.com/AceDataCloud/AceDataCloudMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-acedatacloud?style=flat-square)](https://pypi.org/project/mcp-acedatacloud/) | [mcp.acedata.cloud/mcp](https://mcp.acedata.cloud/mcp) | managing your AceDataCloud account (balances, usage, API keys, orders, announcements) |
+| [FaceTransformMCP](https://github.com/AceDataCloud/FaceTransformMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-face-transform?style=flat-square)](https://pypi.org/project/mcp-face-transform/) | [face.mcp.acedata.cloud/mcp](https://face.mcp.acedata.cloud/mcp) | MCP server for the AceDataCloud Face Transform API (keypoints, beautify, age/gender, swap, cartoon, liveness) |
+| [FishMCP](https://github.com/AceDataCloud/FishMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-fish?style=flat-square)](https://pypi.org/project/mcp-fish/) | [fish.mcp.acedata.cloud/mcp](https://fish.mcp.acedata.cloud/mcp) | Fish TTS (Text-to-Speech) |
+| [FluxMCP](https://github.com/AceDataCloud/FluxMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-flux-pro?style=flat-square)](https://pypi.org/project/mcp-flux-pro/) | [flux.mcp.acedata.cloud/mcp](https://flux.mcp.acedata.cloud/mcp) | Flux AI Image Generation |
+| [GlmMCP](https://github.com/AceDataCloud/GlmMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-glm?style=flat-square)](https://pypi.org/project/mcp-glm/) | [glm.mcp.acedata.cloud/mcp](https://glm.mcp.acedata.cloud/mcp) | GLM |
+| [GrokMCP](https://github.com/AceDataCloud/GrokMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-grok?style=flat-square)](https://pypi.org/project/mcp-grok/) | [grok.mcp.acedata.cloud/mcp](https://grok.mcp.acedata.cloud/mcp) | Grok Imagine AI Video Generation |
+| [HailuoMCP](https://github.com/AceDataCloud/HailuoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-hailuo?style=flat-square)](https://pypi.org/project/mcp-hailuo/) | [hailuo.mcp.acedata.cloud/mcp](https://hailuo.mcp.acedata.cloud/mcp) | Hailuo (MiniMax) AI Video Generation |
+| [KlingMCP](https://github.com/AceDataCloud/KlingMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-kling?style=flat-square)](https://pypi.org/project/mcp-kling/) | [kling.mcp.acedata.cloud/mcp](https://kling.mcp.acedata.cloud/mcp) | Kling AI Video Generation |
+| [LumaMCP](https://github.com/AceDataCloud/LumaMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-luma?style=flat-square)](https://pypi.org/project/mcp-luma/) | [luma.mcp.acedata.cloud/mcp](https://luma.mcp.acedata.cloud/mcp) | Luma AI Video Generation |
+| [NanoBananaMCP](https://github.com/AceDataCloud/NanoBananaMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-nanobanana-pro?style=flat-square)](https://pypi.org/project/mcp-nanobanana-pro/) | [nanobanana.mcp.acedata.cloud/mcp](https://nanobanana.mcp.acedata.cloud/mcp) | NanoBanana AI Image Generation |
+| [OpenAIMCP](https://github.com/AceDataCloud/OpenAIMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-openai?style=flat-square)](https://pypi.org/project/mcp-openai/) | [openai.mcp.acedata.cloud/mcp](https://openai.mcp.acedata.cloud/mcp) | OpenAI API via AceDataCloud |
+| [ProducerMCP](https://github.com/AceDataCloud/ProducerMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-producer?style=flat-square)](https://pypi.org/project/mcp-producer/) | [producer.mcp.acedata.cloud/mcp](https://producer.mcp.acedata.cloud/mcp) | Producer AI Music Generation |
+| [SeedanceMCP](https://github.com/AceDataCloud/SeedanceMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedance?style=flat-square)](https://pypi.org/project/mcp-seedance/) | [seedance.mcp.acedata.cloud/mcp](https://seedance.mcp.acedata.cloud/mcp) | ByteDance Seedance AI Video Generation |
+| [SeedreamMCP](https://github.com/AceDataCloud/SeedreamMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-seedream-pro?style=flat-square)](https://pypi.org/project/mcp-seedream-pro/) | [seedream.mcp.acedata.cloud/mcp](https://seedream.mcp.acedata.cloud/mcp) | ByteDance Seedream AI Image Generation |
+| [SerpMCP](https://github.com/AceDataCloud/SerpMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-serp?style=flat-square)](https://pypi.org/project/mcp-serp/) | [serp.mcp.acedata.cloud/mcp](https://serp.mcp.acedata.cloud/mcp) | Google SERP Search |
+| [ShortURLMCP](https://github.com/AceDataCloud/ShortURLMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-shorturl?style=flat-square)](https://pypi.org/project/mcp-shorturl/) | [shorturl.mcp.acedata.cloud/mcp](https://shorturl.mcp.acedata.cloud/mcp) | URL Shortening |
+| [SoraMCP](https://github.com/AceDataCloud/SoraMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-sora?style=flat-square)](https://pypi.org/project/mcp-sora/) | [sora.mcp.acedata.cloud/mcp](https://sora.mcp.acedata.cloud/mcp) | Sora AI Video Generation |
+| [SunoMCP](https://github.com/AceDataCloud/SunoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-suno?style=flat-square)](https://pypi.org/project/mcp-suno/) | [suno.mcp.acedata.cloud/mcp](https://suno.mcp.acedata.cloud/mcp) | Suno AI Music Generation |
+| [VeoMCP](https://github.com/AceDataCloud/VeoMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-veo?style=flat-square)](https://pypi.org/project/mcp-veo/) | [veo.mcp.acedata.cloud/mcp](https://veo.mcp.acedata.cloud/mcp) | Veo AI Video Generation |
+| [WanMCP](https://github.com/AceDataCloud/WanMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-wan?style=flat-square)](https://pypi.org/project/mcp-wan/) | [wan.mcp.acedata.cloud/mcp](https://wan.mcp.acedata.cloud/mcp) | Wan AI Video Generation |
+| [WebExtratorMCP](https://github.com/AceDataCloud/WebExtratorMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-webextrator?style=flat-square)](https://pypi.org/project/mcp-webextrator/) | [webextrator.mcp.acedata.cloud/mcp](https://webextrator.mcp.acedata.cloud/mcp) | WebExtrator Web Render & Extract |
 
 ## CLI Tools
 
