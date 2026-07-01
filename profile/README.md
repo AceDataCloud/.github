@@ -1,6 +1,6 @@
 # Ace Data Cloud
 
-<img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="300" />
+<img src="https://cdn.acedata.cloud/logo.png/thumb_450x_" alt="Ace Data Cloud" width="220" />
 
 [![Platform](https://img.shields.io/badge/platform-blue?style=flat-square)](https://platform.acedata.cloud) [![API Docs](https://img.shields.io/badge/API%20Docs-green?style=flat-square)](https://docs.acedata.cloud) [![Nexior App](https://img.shields.io/badge/Nexior%20App-orange?style=flat-square)](https://hub.acedata.cloud) [![Status](https://img.shields.io/badge/Status-brightgreen?style=flat-square)](https://status.acedata.cloud)
 
