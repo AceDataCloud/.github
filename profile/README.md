@@ -40,6 +40,7 @@ Our MCP (Model Context Protocol) servers let AI assistants use these APIs as pow
 | Server | PyPI | URL | Description |
 | --- | --- | --- | --- |
 | [AceDataCloudMCP](https://github.com/AceDataCloud/AceDataCloudMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-acedatacloud?style=flat-square)](https://pypi.org/project/mcp-acedatacloud/) | [mcp.acedata.cloud/mcp](https://mcp.acedata.cloud/mcp) | managing your AceDataCloud account (balances, usage, API keys, orders, announcements) |
+| [AiChatMCP](https://github.com/AceDataCloud/AiChatMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-aichat?style=flat-square)](https://pypi.org/project/mcp-aichat/) | [aichat.mcp.acedata.cloud/mcp](https://aichat.mcp.acedata.cloud/mcp) | AI Dialogue |
 | [FaceTransformMCP](https://github.com/AceDataCloud/FaceTransformMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-face-transform?style=flat-square)](https://pypi.org/project/mcp-face-transform/) | [face.mcp.acedata.cloud/mcp](https://face.mcp.acedata.cloud/mcp) | MCP server for the AceDataCloud Face Transform API (keypoints, beautify, age/gender, swap, cartoon, liveness) |
 | [FishMCP](https://github.com/AceDataCloud/FishMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-fish?style=flat-square)](https://pypi.org/project/mcp-fish/) | [fish.mcp.acedata.cloud/mcp](https://fish.mcp.acedata.cloud/mcp) | Fish TTS (Text-to-Speech) |
 | [FluxMCP](https://github.com/AceDataCloud/FluxMCP) | [![PyPI](https://img.shields.io/pypi/v/mcp-flux-pro?style=flat-square)](https://pypi.org/project/mcp-flux-pro/) | [flux.mcp.acedata.cloud/mcp](https://flux.mcp.acedata.cloud/mcp) | Flux AI Image Generation |
@@ -82,6 +83,7 @@ Generate images, videos, and music directly from your terminal.
 | [SunoCli](https://github.com/AceDataCloud/SunoCli) | [![PyPI](https://img.shields.io/pypi/v/suno-cli?style=flat-square)](https://pypi.org/project/suno-cli/) | Suno AI Music Generation |
 | [VeoCli](https://github.com/AceDataCloud/VeoCli) | [![PyPI](https://img.shields.io/pypi/v/veo-cli?style=flat-square)](https://pypi.org/project/veo-cli/) | Google Veo AI Video Generation |
 | [WanCli](https://github.com/AceDataCloud/WanCli) | [![PyPI](https://img.shields.io/pypi/v/wan-cli?style=flat-square)](https://pypi.org/project/wan-cli/) | Tongyi Wansiang AI Video Generation |
+| [WebExtratorCli](https://github.com/AceDataCloud/WebExtratorCli) | [![PyPI](https://img.shields.io/pypi/v/webextrator-cli?style=flat-square)](https://pypi.org/project/webextrator-cli/) | WebExtrator Web Render & Extract via AceDataCloud |
 
 ## API Documentation
 
