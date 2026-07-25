@@ -27,7 +27,7 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 | --- | --- |
 | LLM Chat | Gemini, GLM, Kimi, Claude, Grok, GPT / DALL·E / Sora |
 | Image Generation | Seedream, NanoBanana, Flux, Face Transform |
-| Video Generation | Seedance, Veo, Kling, Wan (Alibaba), Luma, Hailuo, HappyHorse Video |
+| Video Generation | Seedance, Veo, Kling, Wan (Alibaba), Luma, Hailuo, HappyHorse Video, Kickart E-commerce Video |
 | Music & Audio | Suno, Fish Audio, Open Text-to-Speech, Producer |
 | Web Search | Google SERP, WebExtrator Web Render & Extract, Dreamina, Publisher Cross-Platform Automatic Publishing |
 
