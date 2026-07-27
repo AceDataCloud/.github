@@ -25,11 +25,11 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 
 | Category | Services |
 | --- | --- |
-| LLM Chat | Gemini, GLM, Kimi, Claude, Grok, GPT / DALL·E / Sora |
-| Image Generation | Seedream, NanoBanana, Flux, Face Transform |
-| Video Generation | Seedance, Veo, Kling, Wan (Alibaba), Luma, Hailuo, HappyHorse Video, Kickart E-commerce Video |
-| Music & Audio | Suno, Fish Audio, Open Text-to-Speech, Producer |
-| Web Search | Google SERP, WebExtrator Web Render & Extract, Dreamina, Publisher Cross-Platform Automatic Publishing |
+| LLM Chat | Gemini, GLM, GPT / DALL·E / Sora, Claude, Grok, Kimi |
+| Image Generation | Seedream, NanoBanana, Flux |
+| Video Generation | Maestro Video Studio, Seedance, Veo, Kling, Wan (Alibaba), Luma, Digital Human, Hailuo, HappyHorse Video |
+| Music & Audio | Fish voice, Suno, Producer |
+| Web Search | Google SERP, WebExtrator Web Render & Extract, Dreamina |
 
 **Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)
 
@@ -91,7 +91,7 @@ Generate images, videos, and music directly from your terminal.
 
 Explore detailed API references for our services:
 
-[Claude API](https://github.com/AceDataCloud/ClaudeAPI) · [Flux API](https://github.com/AceDataCloud/FluxAPI) · [Gemini API](https://github.com/AceDataCloud/GeminiAPI) · [Hailuo API](https://github.com/AceDataCloud/HailuoAPI) · [Happy Horse API](https://github.com/AceDataCloud/HappyHorseAPI) · [Kling API](https://github.com/AceDataCloud/KlingAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Maestro API](https://github.com/AceDataCloud/MaestroAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Producer API](https://github.com/AceDataCloud/ProducerAPI) · [Seedance API](https://github.com/AceDataCloud/SeedanceAPI) · [Seedream API](https://github.com/AceDataCloud/SeedreamAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Short URLAPI](https://github.com/AceDataCloud/ShortURLAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Web Extrator API](https://github.com/AceDataCloud/WebExtratorAPI) · [Full Documentation](https://docs.acedata.cloud)
+[Ai Chat API](https://github.com/AceDataCloud/AiChatAPI) · [Claude API](https://github.com/AceDataCloud/ClaudeAPI) · [Coze API](https://github.com/AceDataCloud/CozeAPI) · [Face API](https://github.com/AceDataCloud/FaceAPI) · [Fish API](https://github.com/AceDataCloud/FishAPI) · [Flux API](https://github.com/AceDataCloud/FluxAPI) · [Gemini API](https://github.com/AceDataCloud/GeminiAPI) · [Glm API](https://github.com/AceDataCloud/GlmAPI) · [Grok API](https://github.com/AceDataCloud/GrokAPI) · [Hailuo API](https://github.com/AceDataCloud/HailuoAPI) · [Happy Horse API](https://github.com/AceDataCloud/HappyHorseAPI) · [Kimi API](https://github.com/AceDataCloud/KimiAPI) · [Kling API](https://github.com/AceDataCloud/KlingAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Maestro API](https://github.com/AceDataCloud/MaestroAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Producer API](https://github.com/AceDataCloud/ProducerAPI) · [Seedance API](https://github.com/AceDataCloud/SeedanceAPI) · [Seedream API](https://github.com/AceDataCloud/SeedreamAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Short URLAPI](https://github.com/AceDataCloud/ShortURLAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Wan API](https://github.com/AceDataCloud/WanAPI) · [Web Extrator API](https://github.com/AceDataCloud/WebExtratorAPI) · [Full Documentation](https://docs.acedata.cloud)
 
 ## Live Services
 
