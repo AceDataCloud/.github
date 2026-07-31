@@ -74,6 +74,7 @@ Generate images, videos, and music directly from your terminal.
 | [AiChatCli](https://github.com/AceDataCloud/AiChatCli) | [![PyPI](https://img.shields.io/pypi/v/aichat-cli?style=flat-square)](https://pypi.org/project/aichat-cli/) | AI Dialogue (aichat) |
 | [FluxCli](https://github.com/AceDataCloud/FluxCli) | [![PyPI](https://img.shields.io/pypi/v/flux-pro-cli?style=flat-square)](https://pypi.org/project/flux-pro-cli/) | Flux AI Image Generation |
 | [GlmCli](https://github.com/AceDataCloud/GlmCli) | [![PyPI](https://img.shields.io/pypi/v/glm-cli?style=flat-square)](https://pypi.org/project/glm-cli/) | GLM Chat Completions via AceDataCloud |
+| [HailuoCli](https://github.com/AceDataCloud/HailuoCli) | [![PyPI](https://img.shields.io/pypi/v/hailuo-cli?style=flat-square)](https://pypi.org/project/hailuo-cli/) | Hailuo AI Video Generation |
 | [KlingCli](https://github.com/AceDataCloud/KlingCli) | [![PyPI](https://img.shields.io/pypi/v/kling-pro-cli?style=flat-square)](https://pypi.org/project/kling-pro-cli/) | Kling AI Video Generation |
 | [LumaCli](https://github.com/AceDataCloud/LumaCli) | [![PyPI](https://img.shields.io/pypi/v/luma-pro-cli?style=flat-square)](https://pypi.org/project/luma-pro-cli/) | Luma Dream Machine AI Video Generation |
 | [NanoBananaCli](https://github.com/AceDataCloud/NanoBananaCli) | [![PyPI](https://img.shields.io/pypi/v/nano-banana-pro-cli?style=flat-square)](https://pypi.org/project/nano-banana-pro-cli/) | NanoBanana AI Image Generation |
