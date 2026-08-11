@@ -74,7 +74,7 @@ Generate images, videos, and music directly from your terminal.
 | [AceDataCloudCli](https://github.com/AceDataCloud/AceDataCloudCli) | [![PyPI](https://img.shields.io/pypi/v/acedatacloud-cli?style=flat-square)](https://pypi.org/project/acedatacloud-cli/) | Unified CLI for AceDataCloud AI services - images, videos, music, search, and chat |
 | [AiChatCli](https://github.com/AceDataCloud/AiChatCli) | [![PyPI](https://img.shields.io/pypi/v/aichat-pro-cli?style=flat-square)](https://pypi.org/project/aichat-pro-cli/) | AI Dialogue (aichat) |
 | [FluxCli](https://github.com/AceDataCloud/FluxCli) | [![PyPI](https://img.shields.io/pypi/v/flux-pro-cli?style=flat-square)](https://pypi.org/project/flux-pro-cli/) | Flux AI Image Generation |
-| [GlmCli](https://github.com/AceDataCloud/GlmCli) | [![PyPI](https://img.shields.io/pypi/v/glm-cli?style=flat-square)](https://pypi.org/project/glm-cli/) | GLM Chat Completions via AceDataCloud |
+| [GlmCli](https://github.com/AceDataCloud/GlmCli) | [![PyPI](https://img.shields.io/pypi/v/glm-pro-cli?style=flat-square)](https://pypi.org/project/glm-pro-cli/) | GLM Chat Completions via AceDataCloud |
 | [HailuoCli](https://github.com/AceDataCloud/HailuoCli) | [![PyPI](https://img.shields.io/pypi/v/hailuo-cli?style=flat-square)](https://pypi.org/project/hailuo-cli/) | Hailuo AI Video Generation |
 | [KlingCli](https://github.com/AceDataCloud/KlingCli) | [![PyPI](https://img.shields.io/pypi/v/kling-pro-cli?style=flat-square)](https://pypi.org/project/kling-pro-cli/) | Kling AI Video Generation |
 | [LumaCli](https://github.com/AceDataCloud/LumaCli) | [![PyPI](https://img.shields.io/pypi/v/luma-pro-cli?style=flat-square)](https://pypi.org/project/luma-pro-cli/) | Luma Dream Machine AI Video Generation |
