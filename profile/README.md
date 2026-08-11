@@ -72,14 +72,14 @@ Generate images, videos, and music directly from your terminal.
 | Tool | PyPI | Description |
 | --- | --- | --- |
 | [AceDataCloudCli](https://github.com/AceDataCloud/AceDataCloudCli) | [![PyPI](https://img.shields.io/pypi/v/acedatacloud-cli?style=flat-square)](https://pypi.org/project/acedatacloud-cli/) | Unified CLI for AceDataCloud AI services - images, videos, music, search, and chat |
-| [AiChatCli](https://github.com/AceDataCloud/AiChatCli) | [![PyPI](https://img.shields.io/pypi/v/aichat-cli?style=flat-square)](https://pypi.org/project/aichat-cli/) | AI Dialogue (aichat) |
+| [AiChatCli](https://github.com/AceDataCloud/AiChatCli) | [![PyPI](https://img.shields.io/pypi/v/aichat-pro-cli?style=flat-square)](https://pypi.org/project/aichat-pro-cli/) | AI Dialogue (aichat) |
 | [FluxCli](https://github.com/AceDataCloud/FluxCli) | [![PyPI](https://img.shields.io/pypi/v/flux-pro-cli?style=flat-square)](https://pypi.org/project/flux-pro-cli/) | Flux AI Image Generation |
 | [GlmCli](https://github.com/AceDataCloud/GlmCli) | [![PyPI](https://img.shields.io/pypi/v/glm-cli?style=flat-square)](https://pypi.org/project/glm-cli/) | GLM Chat Completions via AceDataCloud |
 | [HailuoCli](https://github.com/AceDataCloud/HailuoCli) | [![PyPI](https://img.shields.io/pypi/v/hailuo-cli?style=flat-square)](https://pypi.org/project/hailuo-cli/) | Hailuo AI Video Generation |
 | [KlingCli](https://github.com/AceDataCloud/KlingCli) | [![PyPI](https://img.shields.io/pypi/v/kling-pro-cli?style=flat-square)](https://pypi.org/project/kling-pro-cli/) | Kling AI Video Generation |
 | [LumaCli](https://github.com/AceDataCloud/LumaCli) | [![PyPI](https://img.shields.io/pypi/v/luma-pro-cli?style=flat-square)](https://pypi.org/project/luma-pro-cli/) | Luma Dream Machine AI Video Generation |
 | [NanoBananaCli](https://github.com/AceDataCloud/NanoBananaCli) | [![PyPI](https://img.shields.io/pypi/v/nano-banana-pro-cli?style=flat-square)](https://pypi.org/project/nano-banana-pro-cli/) | NanoBanana AI Image Generation |
-| [OpenAICli](https://github.com/AceDataCloud/OpenAICli) | [![PyPI](https://img.shields.io/pypi/v/openai-cli?style=flat-square)](https://pypi.org/project/openai-cli/) | OpenAI-compatible APIs via AceDataCloud |
+| [OpenAICli](https://github.com/AceDataCloud/OpenAICli) | [![PyPI](https://img.shields.io/pypi/v/openai-pro-cli?style=flat-square)](https://pypi.org/project/openai-pro-cli/) | OpenAI-compatible APIs via AceDataCloud |
 | [SeedanceCli](https://github.com/AceDataCloud/SeedanceCli) | [![PyPI](https://img.shields.io/pypi/v/seedance-cli?style=flat-square)](https://pypi.org/project/seedance-cli/) | Seedance AI Video Generation |
 | [SeedreamCli](https://github.com/AceDataCloud/SeedreamCli) | [![PyPI](https://img.shields.io/pypi/v/seedream-cli?style=flat-square)](https://pypi.org/project/seedream-cli/) | Seedream AI Image Generation |
 | [SerpCli](https://github.com/AceDataCloud/SerpCli) | [![PyPI](https://img.shields.io/pypi/v/serp-cli?style=flat-square)](https://pypi.org/project/serp-cli/) | Google SERP (Search Engine Results) |
