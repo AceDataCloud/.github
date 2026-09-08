@@ -2,7 +2,7 @@
 
 ![Ace Data Cloud](https://cdn.acedata.cloud/logo.png/thumb_450x_)
 
-[![Platform](https://img.shields.io/badge/platform-blue?style=flat-square)](https://platform.acedata.cloud) [![API Docs](https://img.shields.io/badge/API%20Docs-green?style=flat-square)](https://docs.acedata.cloud) [![Nexior App](https://img.shields.io/badge/Nexior%20App-orange?style=flat-square)](https://hub.acedata.cloud) [![Status](https://img.shields.io/badge/Status-brightgreen?style=flat-square)](https://status.acedata.cloud)
+[![Platform](https://img.shields.io/badge/platform-blue?style=flat-square)](https://platform.acedata.cloud) [![API Docs](https://img.shields.io/badge/API%20Docs-green?style=flat-square)](https://docs.acedata.cloud) [![Nexior App](https://img.shields.io/badge/Nexior%20App-orange?style=flat-square)](https://studio.acedata.cloud) [![Status](https://img.shields.io/badge/Status-brightgreen?style=flat-square)](https://status.acedata.cloud)
 
 **Unified AI API Platform for Developers, AI Agents, and MCP Tools.**
 
@@ -102,7 +102,7 @@ Explore detailed API references for our services:
 | --- | --- | --- |
 | Developer Platform | API keys, docs, billing, analytics | [platform.acedata.cloud](https://platform.acedata.cloud) |
 | API Gateway | OpenAI-compatible REST API endpoint | [api.acedata.cloud](https://api.acedata.cloud) |
-| Nexior | Consumer app - chat, generate images, video, music | [hub.acedata.cloud](https://hub.acedata.cloud) |
+| Nexior | Consumer app - chat, generate images, video, music | [studio.acedata.cloud](https://studio.acedata.cloud) |
 | Documentation | Quickstart guides and API references | [docs.acedata.cloud](https://docs.acedata.cloud) |
 | Dify AI | Visual AI workflow builder | [dify.acedata.cloud](https://dify.acedata.cloud) |
 | Status | Real-time service health monitoring | [status.acedata.cloud](https://status.acedata.cloud) |
