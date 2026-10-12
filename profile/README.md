@@ -87,6 +87,7 @@ Generate images, videos, and music directly from your terminal.
 | [LumaCli](https://github.com/AceDataCloud/LumaCli) | [![PyPI](https://img.shields.io/pypi/v/luma-pro-cli?style=flat-square)](https://pypi.org/project/luma-pro-cli/) | Luma Dream Machine AI Video Generation |
 | [NanoBananaCli](https://github.com/AceDataCloud/NanoBananaCli) | [![PyPI](https://img.shields.io/pypi/v/nano-banana-pro-cli?style=flat-square)](https://pypi.org/project/nano-banana-pro-cli/) | NanoBanana AI Image Generation |
 | [OpenAICli](https://github.com/AceDataCloud/OpenAICli) | [![PyPI](https://img.shields.io/pypi/v/openai-pro-cli?style=flat-square)](https://pypi.org/project/openai-pro-cli/) | OpenAI-compatible APIs via AceDataCloud |
+| [ProducerCli](https://github.com/AceDataCloud/ProducerCli) | [![PyPI](https://img.shields.io/pypi/v/producer-cli?style=flat-square)](https://pypi.org/project/producer-cli/) | Producer AI Music Generation |
 | [SeedanceCli](https://github.com/AceDataCloud/SeedanceCli) | [![PyPI](https://img.shields.io/pypi/v/seedance-cli?style=flat-square)](https://pypi.org/project/seedance-cli/) | Seedance AI Video Generation |
 | [SeedreamCli](https://github.com/AceDataCloud/SeedreamCli) | [![PyPI](https://img.shields.io/pypi/v/seedream-cli?style=flat-square)](https://pypi.org/project/seedream-cli/) | Seedream AI Image Generation |
 | [SerpCli](https://github.com/AceDataCloud/SerpCli) | [![PyPI](https://img.shields.io/pypi/v/serp-cli?style=flat-square)](https://pypi.org/project/serp-cli/) | Google SERP (Search Engine Results) |
