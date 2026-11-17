@@ -79,6 +79,7 @@ Generate images, videos, and music directly from your terminal.
 
 | Tool | PyPI | Description |
 | --- | --- | --- |
+| [AceMusicCli](https://github.com/AceDataCloud/AceMusicCli) | [![PyPI](https://img.shields.io/pypi/v/acemusic-cli?style=flat-square)](https://pypi.org/project/acemusic-cli/) | ACE Music AI Music Generation |
 | [AceDataCloudCli](https://github.com/AceDataCloud/AceDataCloudCli) | [![PyPI](https://img.shields.io/pypi/v/acedatacloud-cli?style=flat-square)](https://pypi.org/project/acedatacloud-cli/) | Unified CLI for AceDataCloud AI services - images, videos, music, search, and chat |
 | [AiChatCli](https://github.com/AceDataCloud/AiChatCli) | [![PyPI](https://img.shields.io/pypi/v/aichat-pro-cli?style=flat-square)](https://pypi.org/project/aichat-pro-cli/) | AI Dialogue (aichat) |
 | [FluxCli](https://github.com/AceDataCloud/FluxCli) | [![PyPI](https://img.shields.io/pypi/v/flux-pro-cli?style=flat-square)](https://pypi.org/project/flux-pro-cli/) | Flux AI Image Generation |
