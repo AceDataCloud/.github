@@ -2,7 +2,7 @@
 
 ![Ace Data Cloud](https://cdn.acedata.cloud/logo.png/thumb_450x_)
 
-[![Platform](https://img.shields.io/badge/platform-blue?style=flat-square)](https://platform.acedata.cloud) [![API Docs](https://img.shields.io/badge/API%20Docs-green?style=flat-square)](https://docs.acedata.cloud) [![Nexior App](https://img.shields.io/badge/Nexior%20App-orange?style=flat-square)](https://hub.acedata.cloud) [![Status](https://img.shields.io/badge/Status-brightgreen?style=flat-square)](https://status.acedata.cloud)
+[![Platform](https://img.shields.io/badge/platform-blue?style=flat-square)](https://platform.acedata.cloud?utm_source=github) [![API Docs](https://img.shields.io/badge/API%20Docs-green?style=flat-square)](https://docs.acedata.cloud?utm_source=github) [![Nexior App](https://img.shields.io/badge/Nexior%20App-orange?style=flat-square)](https://hub.acedata.cloud?utm_source=github) [![Status](https://img.shields.io/badge/Status-brightgreen?style=flat-square)](https://status.acedata.cloud)
 
 **Unified AI API Platform for Developers, AI Agents, and MCP Tools.**
 
@@ -31,7 +31,7 @@ Ace Data Cloud is a developer-first AI infrastructure platform. We make it pract
 | Music & Audio | Fish voice, Suno, Producer, ACE Music |
 | Web Search | Google SERP, WebExtrator Web Render & Extract, Dreamina |
 
-**Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud)
+**Browse all services →** [platform.acedata.cloud](https://platform.acedata.cloud?utm_source=github)
 
 ## MCP Servers
 
@@ -104,16 +104,16 @@ Generate images, videos, and music directly from your terminal.
 
 Explore detailed API references for our services:
 
-[ACEMusic API](https://github.com/AceDataCloud/ACEMusicAPI) · [Ai Chat API](https://github.com/AceDataCloud/AiChatAPI) · [Claude API](https://github.com/AceDataCloud/ClaudeAPI) · [Coze API](https://github.com/AceDataCloud/CozeAPI) · [Face API](https://github.com/AceDataCloud/FaceAPI) · [Fish API](https://github.com/AceDataCloud/FishAPI) · [Flux API](https://github.com/AceDataCloud/FluxAPI) · [Gemini API](https://github.com/AceDataCloud/GeminiAPI) · [Glm API](https://github.com/AceDataCloud/GlmAPI) · [Grok API](https://github.com/AceDataCloud/GrokAPI) · [Hailuo API](https://github.com/AceDataCloud/HailuoAPI) · [Happy Horse API](https://github.com/AceDataCloud/HappyHorseAPI) · [Kimi API](https://github.com/AceDataCloud/KimiAPI) · [Kling API](https://github.com/AceDataCloud/KlingAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Maestro API](https://github.com/AceDataCloud/MaestroAPI) · [Mini Max API](https://github.com/AceDataCloud/MiniMaxAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Producer API](https://github.com/AceDataCloud/ProducerAPI) · [Seedance API](https://github.com/AceDataCloud/SeedanceAPI) · [Seedream API](https://github.com/AceDataCloud/SeedreamAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Short URLAPI](https://github.com/AceDataCloud/ShortURLAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Wan API](https://github.com/AceDataCloud/WanAPI) · [Web Extrator API](https://github.com/AceDataCloud/WebExtratorAPI) · [Full Documentation](https://docs.acedata.cloud)
+[ACEMusic API](https://github.com/AceDataCloud/ACEMusicAPI) · [Ai Chat API](https://github.com/AceDataCloud/AiChatAPI) · [Claude API](https://github.com/AceDataCloud/ClaudeAPI) · [Coze API](https://github.com/AceDataCloud/CozeAPI) · [Face API](https://github.com/AceDataCloud/FaceAPI) · [Fish API](https://github.com/AceDataCloud/FishAPI) · [Flux API](https://github.com/AceDataCloud/FluxAPI) · [Gemini API](https://github.com/AceDataCloud/GeminiAPI) · [Glm API](https://github.com/AceDataCloud/GlmAPI) · [Grok API](https://github.com/AceDataCloud/GrokAPI) · [Hailuo API](https://github.com/AceDataCloud/HailuoAPI) · [Happy Horse API](https://github.com/AceDataCloud/HappyHorseAPI) · [Kimi API](https://github.com/AceDataCloud/KimiAPI) · [Kling API](https://github.com/AceDataCloud/KlingAPI) · [Luma API](https://github.com/AceDataCloud/LumaAPI) · [Maestro API](https://github.com/AceDataCloud/MaestroAPI) · [Mini Max API](https://github.com/AceDataCloud/MiniMaxAPI) · [Nano Banana API](https://github.com/AceDataCloud/NanoBananaAPI) · [OpenAI API](https://github.com/AceDataCloud/OpenAIAPI) · [Producer API](https://github.com/AceDataCloud/ProducerAPI) · [Seedance API](https://github.com/AceDataCloud/SeedanceAPI) · [Seedream API](https://github.com/AceDataCloud/SeedreamAPI) · [Serp API](https://github.com/AceDataCloud/SerpAPI) · [Short URLAPI](https://github.com/AceDataCloud/ShortURLAPI) · [Sora API](https://github.com/AceDataCloud/SoraAPI) · [Suno API](https://github.com/AceDataCloud/SunoAPI) · [Veo API](https://github.com/AceDataCloud/VeoAPI) · [Wan API](https://github.com/AceDataCloud/WanAPI) · [Web Extrator API](https://github.com/AceDataCloud/WebExtratorAPI) · [Full Documentation](https://docs.acedata.cloud?utm_source=github)
 
 ## Live Services
 
 | Service | Description | Link |
 | --- | --- | --- |
-| Developer Platform | API keys, docs, billing, analytics | [platform.acedata.cloud](https://platform.acedata.cloud) |
+| Developer Platform | API keys, docs, billing, analytics | [platform.acedata.cloud](https://platform.acedata.cloud?utm_source=github) |
 | API Gateway | OpenAI-compatible REST API endpoint | [api.acedata.cloud](https://api.acedata.cloud) |
-| Nexior | Consumer app - chat, generate images, video, music | [hub.acedata.cloud](https://hub.acedata.cloud) |
-| Documentation | Quickstart guides and API references | [docs.acedata.cloud](https://docs.acedata.cloud) |
+| Nexior | Consumer app - chat, generate images, video, music | [hub.acedata.cloud](https://hub.acedata.cloud?utm_source=github) |
+| Documentation | Quickstart guides and API references | [docs.acedata.cloud](https://docs.acedata.cloud?utm_source=github) |
 | Dify AI | Visual AI workflow builder | [dify.acedata.cloud](https://dify.acedata.cloud) |
 | Status | Real-time service health monitoring | [status.acedata.cloud](https://status.acedata.cloud) |
 | Roadmap | Public feature roadmap | [roadmap.acedata.cloud](https://roadmap.acedata.cloud) |
@@ -137,7 +137,7 @@ curl https://api.acedata.cloud/v1/chat/completions \
   }'
 ```
 
-Get your API key at [platform.acedata.cloud](https://platform.acedata.cloud) - free tier available.
+Get your API key at [platform.acedata.cloud](https://platform.acedata.cloud?utm_source=github) - free tier available.
 
 ## $ACE Token
 
@@ -145,7 +145,7 @@ The [$ACE token](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKp
 
 ## Connect
 
-- Website: [platform.acedata.cloud](https://platform.acedata.cloud)
-- Documentation: [docs.acedata.cloud](https://docs.acedata.cloud)
+- Website: [platform.acedata.cloud](https://platform.acedata.cloud?utm_source=github)
+- Documentation: [docs.acedata.cloud](https://docs.acedata.cloud?utm_source=github)
 - Twitter / X: [x.com/AceDataCloud](https://x.com/AceDataCloud)
 - Discord: [discord.gg/aedatacloud](https://discord.gg/aedatacloud)
