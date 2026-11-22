@@ -148,4 +148,4 @@ The [$ACE token](https://pump.fun/coin/GnHpRsrcyfHSMZNzmpjAzTFQA26vnbRMzbKQ11ZKp
 - Website: [platform.acedata.cloud](https://platform.acedata.cloud?utm_source=github)
 - Documentation: [docs.acedata.cloud](https://docs.acedata.cloud?utm_source=github)
 - Twitter / X: [x.com/AceDataCloud](https://x.com/AceDataCloud)
-- Discord: [discord.gg/aedatacloud](https://discord.gg/aedatacloud)
+- Discord: [Join the Ace Data Cloud Discord](https://discord.gg/f9GRuKCmRc)
