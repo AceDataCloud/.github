@@ -19,11 +19,13 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import ssl
 import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 try:
     import certifi
@@ -969,6 +971,19 @@ STYLE RULES:
 """
 
 
+def tag_profile_links(readme: str) -> str:
+    """Label clickable product and documentation links in both profile generators."""
+    def tag(match: re.Match[str]) -> str:
+        parts = urlsplit(match[1])
+        query = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True) if k != "utm_source"]
+        query.append(("utm_source", "github"))
+        return "](" + urlunsplit(parts._replace(query=urlencode(query)))
+
+    return re.sub(
+        r"\]\((https://(?:platform|docs|studio|hub)\.acedata\.cloud(?=[/?#)])[^`\s)]*)", tag, readme
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate organization profile README")
     parser.add_argument(
@@ -1115,7 +1130,7 @@ def main() -> None:
 
     # Write output
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(readme)
+    OUTPUT_PATH.write_text(tag_profile_links(readme))
     print(f"Updated: {OUTPUT_PATH}", file=sys.stderr)
 
 
